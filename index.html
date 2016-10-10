@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		  <title>МайКрафт</title>
+		  <link rel="stylesheet" type="text/css" href="style.css">
+		  <script src="script.js"></script>
+		  <script src="module.js"></script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="left_column">
+				<div id="img_container">
+				</div>
+				<div id="add_book">
+					<p>Название книги: <input id="book_name" type="text" style="border:1px solid black;"></p>
+					<p>Тип книги<input id="book_type" type="text" style="border:1px solid black;"></p>
+					<p>Адрес изображения <input id="book_src" type="text" style="border:1px solid black;"></p>
+					<input type="button" id="new_book" value="Добавить">
+				</div>
+			</div>
+			<div id="right_column">
+				<div id="recepts">
+					<p><select size="8" id="select_recept" style="width:150px;">
+					<option disabled>Выберите рецепт</option>
+				   </select></p>
+				   <p>Название списка: <input id="rec_name" type="text" style="border:1px solid black;"></p>
+					<p>Тип списка<input id="rec_type" type="text" style="border:1px solid black;"></p>
+					<input type="button" id="rec_book" value="Добавить">
+				</div>
+				<div draggable="true" id="books_container">
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
