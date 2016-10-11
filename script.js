@@ -105,11 +105,11 @@ document.addEventListener("DOMContentLoaded", function(e)
 			}
 			else//если нажата первый раз
 			{
-				target.style.border="2px solid black";
+				target.style.border="3px solid black";
 				if(masBookfind.indexOf(obj.id)==-1)
 				{
 					masBookfind.push(obj.id);
-					alert(masBookfind);
+					//alert(masBookfind);
 				}
 				FindRecept(listBook);
 			}
@@ -139,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function(e)
 								masBookfind.push(data_book[k].id);
 								var book_sel=document.getElementById(data_book[k].type+"_"+data_book[k].id);
 								//alert(book_sel.id);
-								book_sel.firstChild.nextSibling.style.border="2px solid black";
+								book_sel.firstChild.nextSibling.style.border="3px solid black";
 							}
 						}
 					break;
@@ -148,9 +148,12 @@ document.addEventListener("DOMContentLoaded", function(e)
 		}
 	});
 	var finish=document.getElementById("books_container");
-	function RefMasCount()
+	function RefMasCount()//проверка наличия нужного списка литературы
 	{
+		var masSelRec=[]
 		var flag;
+		var sels=document.getElementById("selected_recepts");
+		var d="";
 		for(var i=0, len=data_recept.length;i<len;i++)
 		{
 			flag=false;
@@ -173,12 +176,17 @@ document.addEventListener("DOMContentLoaded", function(e)
 				}
 			}
 			if(flag)
-				alert(data_recept[i].title);
+			{
+				d+='<li>'+data_recept[i].title+'</li>\n';
+			}				
 		}
+		sels.innerHTML=d;
 	}
 	finish.addEventListener("drop",function(e)
 	{
 		var obj=ParserId(e.dataTransfer.getData("text"));
+		var elem=document.getElementById(e.dataTransfer.getData("text"));
+		elem.childNodes[1].style.border="";
 		masBookReferat.push(obj.id);
 		RefMasCount();
 		//alert(masBookReferat);
@@ -193,7 +201,6 @@ document.addEventListener("DOMContentLoaded", function(e)
 			masBookReferat.splice(search,1);
 			RefMasCount();
 		}
-		alert(masBookReferat);
 	});
 });
 

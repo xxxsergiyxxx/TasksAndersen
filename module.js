@@ -25,7 +25,6 @@
 	recBook.addEventListener("click", function(e)
 	{
 		rBook=new Recept();
-		alert(masBookfind);
 		rBook.getIncludes();
 		rBook.title=document.getElementById("rec_name").value;
 		rBook.type=document.getElementById("rec_type").value;		
