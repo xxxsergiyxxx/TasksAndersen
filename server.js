@@ -12,13 +12,13 @@ function accept(req, res)
     {
 	    case '/vote':
 	    {
-		  obj=fs.readFileSync('\\test\\objects.json', 'utf8');
+		  obj=fs.readFileSync('objects.json', 'utf8');
 		  res.end(obj);
 		  break;
 	    }
 	    case '/recept':
 	    {
-		   obj=fs.readFileSync('\\test\\recepts.json', 'utf8');
+		   obj=fs.readFileSync('recepts.json', 'utf8');
 		   res.end(obj);
 		   break; 
 	    }

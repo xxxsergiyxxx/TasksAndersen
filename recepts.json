@@ -1,6 +1,7 @@
 ﻿{ 
   "recept": [ 
-    {"title":"Программирование","includes":["1","2"],"type":"receptProgr","id":"1"}, 
-    {"title":"Биология","includes":["1","3"],"type":"receptBiolog","id":"2"}
+    {"title":"Программирование","includes":["1","4","7"],"type":"receptProgr","id":"1"}, 
+    {"title":"Химия","includes":["5","6"],"type":"receptBiolog","id":"2"},
+	{"title":"Математика","includes":["1","2","3","4"],"type":"receptProgr","id":"3"}
   ]
 }

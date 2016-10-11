@@ -1,10 +1,11 @@
 ﻿{ 
   "books": [ 
-    {"title":"Курс испанского","src":"/img/books/1.jpg","type":"books_matem", "id":"1"}, 
-    {"title":"День рождения","src":"/img/books/2.jpg","type":"books_fizik", "id":"2"}, 
-	{"title":"День рождения","src":"/img/books/3.jpg","type":"books_fizik", "id":"3"},
-	{"title":"День рождения","src":"/img/books/4.jpg","type":"books_fizik", "id":"4"}, 
-	{"title":"День рождения","src":"/img/books/5.jpg","type":"books_fizik", "id":"5"}, 
-	{"title":"День рождения","src":"/img/books/6.jpg","type":"books_fizik", "id":"6"} 
+    {"title":"Справочник по вышмату","src":"/img/books/1.jpg","type":"books_mat", "id":"1"}, 
+    {"title":"Конспект лекций по вышмату","src":"/img/books/2.jpg","type":"books_mat", "id":"2"}, 
+	{"title":"Алгоритмы","src":"/img/books/3.jpg","type":"books_prog", "id":"3"},
+	{"title":"Матан","src":"/img/books/4.jpg","type":"books_mat", "id":"4"}, 
+	{"title":"Общая химия","src":"/img/books/5.jpg","type":"books_chem", "id":"5"}, 
+	{"title":"Химия","src":"/img/books/6.jpg","type":"books_chem", "id":"6"}, 
+	{"title":"Алгоритмы","src":"/img/books/7.jpg","type":"books_prog", "id":"7"} 
   ]
 }

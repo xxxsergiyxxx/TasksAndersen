@@ -7,12 +7,21 @@ function DeleteBorder()
 	{
 		if(imges.childNodes[i].nodeName.toLowerCase()=="div")
 		{
-			imges.childNodes[i].childNodes[1].style.border="";
+			imges.childNodes[i].style.backgroundColor="";
 		}
 	}
 }
 document.addEventListener("DOMContentLoaded", function(e)
 {
+	function StyleImages(elem,nameStyle,value, flag)//функция задания стиля
+	{
+		if(flag)
+		{
+			elem.style[nameStyle]=value;
+		}
+		else
+			elseelemStyle=null;
+	}
 	var masBookReferat=[];//выбранные рефераты
 	function ToServer(elem,url,func)
 	{
@@ -92,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function(e)
 		{
 			target=e.target;
 			obj=ParserId(target.parentNode.id);
-			if(target.style.border!="")//нажата второй раз
+			if(target.parentNode.style.backgroundColor!="")//нажата второй раз
 			{
 				var delel=masBookfind.indexOf(obj.id);
 				if(delel!=-1)
@@ -100,16 +109,15 @@ document.addEventListener("DOMContentLoaded", function(e)
 					masBookfind.splice(delel,1);
 					FindRecept(listBook);
 				}
-				target.style.border="";
+				StyleImages(target.parentNode,"backgroundColor",null,false);
 				//alert(target.parentNode.id);
 			}
 			else//если нажата первый раз
 			{
-				target.style.border="3px solid black";
+				StyleImages(target.parentNode,"backgroundColor","blue",true);
 				if(masBookfind.indexOf(obj.id)==-1)
 				{
 					masBookfind.push(obj.id);
-					//alert(masBookfind);
 				}
 				FindRecept(listBook);
 			}
@@ -138,8 +146,7 @@ document.addEventListener("DOMContentLoaded", function(e)
 							{
 								masBookfind.push(data_book[k].id);
 								var book_sel=document.getElementById(data_book[k].type+"_"+data_book[k].id);
-								//alert(book_sel.id);
-								book_sel.firstChild.nextSibling.style.border="3px solid black";
+								StyleImages(book_sel,"backgroundColor","blue",true);
 							}
 						}
 					break;
@@ -186,7 +193,7 @@ document.addEventListener("DOMContentLoaded", function(e)
 	{
 		var obj=ParserId(e.dataTransfer.getData("text"));
 		var elem=document.getElementById(e.dataTransfer.getData("text"));
-		elem.childNodes[1].style.border="";
+		elem.style.backgroundColor="";
 		masBookReferat.push(obj.id);
 		RefMasCount();
 		//alert(masBookReferat);
@@ -196,6 +203,7 @@ document.addEventListener("DOMContentLoaded", function(e)
 	{
 		var obj=ParserId(e.dataTransfer.getData("text"));
 		var search=masBookReferat.indexOf(obj.id);
+		//alert(e.dataTransfer.getData("text"));
 		if(search>-1)
 		{
 			masBookReferat.splice(search,1);

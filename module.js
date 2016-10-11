@@ -59,11 +59,14 @@ function allowDrop(ev)
 function drag(e) 
 {
 	var target;
-	if(e.target.tagName.toLowerCase() =="img" || e.target.parentNode.tagName.toLowerCase()=="div")
+	if(e.target.parentNode.id!="right_column")
 	{
-		target=e.target.parentNode;
-	}	
-	else return;
+		if(e.target.tagName.toLowerCase() =="img" || e.target.parentNode.tagName.toLowerCase()=="div")
+		{
+			target=e.target.parentNode;
+		}	
+		else return;
+	}
     e.dataTransfer.setData("text", target.id);
 }
 
