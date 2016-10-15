@@ -15,6 +15,20 @@
 	border:1px solid green;
 	min-height:200px;
 }
+#header
+{
+	position:relative;
+	float:left;
+	width:100%;
+	height:auto;
+}
+#footer
+{
+	position:relative;
+	float:left;
+	width:100%;
+	height:auto;
+}
 #all_recepts
 {
 	position:relative;
@@ -38,6 +52,15 @@
 	width:380px;
 	position:relative;
 	overflow-x:scroll;
+}
+#available_recepts
+{
+	position:relative;
+	float:left;
+	margin:5px;
+	border: 1px solid black;
+	min-width:300px;
+	min-height:300px;
 }
 .component
 {

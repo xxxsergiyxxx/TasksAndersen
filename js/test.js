@@ -1,6 +1,7 @@
 ﻿var container_components=document.getElementById("container_components");
 var constract_container=document.getElementById("constract_container");
 var show_recept_list=document.getElementById("show_recept");
+var available_recepts=document.getElementById("available_recepts");
 var userRecept=[];
 var current={};
 var masEnabledComponents=[];
@@ -21,6 +22,16 @@ function InstallCurrent(type, current){
 }
 function resetSelected(){
 	container_components.innerHTML=current.currentHtmlComponent;
+}
+function addToMasEnabledComponents(elemId){
+	var idElem=ParseId(elemId).id;
+	masEnabledComponents.push(idElem);
+}
+function deleteElemMasEnabledComponents(elemId){
+	var idElem=ParseId(elemId).id;
+	var index=masEnabledComponents.indexOf(idElem);
+	if(index!==-1)
+		masEnabledComponents.splice(index,1);
 }
 function addComponetsToPage(typeComponent,arrayComponents){
 	var htmlComponents="";
@@ -84,10 +95,29 @@ function dropToConstract(ev) {
 function addToUserRecept(component){
 	userRecept.push(component.getComponentId());
 }
+function findReceptForSelectedComp(receptArray,masEnabledComponents){
+	var flag=false;
+	for(var indexReceptArray=0;indexReceptArray<receptArray.length;indexReceptArray++){
+		for(var indexMasEnabledComponents=0;indexMasEnabledComponents<masEnabledComponents.length;indexMasEnabledComponents++){
+			var component=findComponentById(masEnabledComponents[indexMasEnabledComponents]);
+			if(ComponentIndexOf(component,receptArray[indexReceptArray])===-1){
+				break;
+			}
+			else{
+				
+			}
+		}
+		
+	}
+}
 function findComponentById(idComponent, componentsArray){
-	
+	var idComponent=ParseId(idComponent).id;
+	for(var indexComp=0;indexComp<componentsArray.length;componentsArray++)
+		if(idComponent===componentsArray[indexComp].getComponentId())
+			return componentsArray[indexComp];
 }
 function findReceptById(idRecept, receptArray){
+	var idRecept=ParseId(idRecept).id;
 	for(var indexRecept=0;indexRecept<receptArray.length;indexRecept++){
 		if(receptArray[indexRecept].getReceptId()==idRecept){
 			return receptArray[indexRecept].getRecept();
@@ -96,8 +126,21 @@ function findReceptById(idRecept, receptArray){
 }
 show_recept_list.addEventListener("click",function(ev){
 	if(ev.target.className=="recept"){
-		var component=ParseId(ev.target.id);
-		showAvailableComponents(current.currentTypeComp,findReceptById(component.id, current.currentRec), current.currentComp);
+		showAvailableComponents(current.currentTypeComp,findReceptById(ev.target.id, current.currentRec), current.currentComp);
+	}
+});
+container_components.addEventListener("click",function(ev){
+	if(ev.target.className=="component"){
+		var idElem=ParseId(ev.target.id).id;
+		var position=masEnabledComponents.indexOf(idElem);
+		if(position==-1){
+			addToMasEnabledComponents(ev.target.id);
+			ev.target.style.border="1px solid green";
+		}
+		else{
+			deleteElemMasEnabledComponents(ev.target.id);
+			ev.target.style.border="1px solid red";
+		}
 	}
 });
 container_components.innerHTML=addComponetsToPage(current.currentTypeComp,current.currentComp);
