@@ -12,11 +12,11 @@ function ClassAbstractRecept(receptName, recept, id){
 	this._id=id;
 }
 
-ClassAbstractRecept.prototype.getIngridient=function(index){
-		return this._recept[index];
+ClassAbstractRecept.prototype.getRecept=function(){
+		return this._recept;
 }
-ClassAbstractRecept.prototype.setIngridient=function(ingr){
-		this._recept.push(ingr);
+ClassAbstractRecept.prototype.setRecept=function(recept){
+		this._recept=recept;
 }
 ClassAbstractRecept.prototype.getReceptName=function(){
 		return this._receptName;

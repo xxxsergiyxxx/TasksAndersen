@@ -1,8 +1,12 @@
 ﻿var container_components=document.getElementById("container_components");
 var constract_container=document.getElementById("constract_container");
+var show_recept_list=document.getElementById("show_recept");
 var userRecept=[];
-var componentsArch=ReceptCollection.ComponentsArch;
-var receptsArch=ReceptCollection.receptsArch;
+var componentsArch=ReceptCollection.ComponentsArch;//массив всех компонентов лука
+var receptsArch=ReceptCollection.ReceptsArch;//массив всех рецептов лука
+var masEnabledComponents=[];
+var typesComp={arch:"archComp", cuiras:"cuirasComp"};
+var typesRec={arch:"archRec", cuiras:"cuirasRec"};
 function addComponetsToPage(typeComponent,arrayComponents){
 	var htmlComponents="";
 	for(var compIndex=0;compIndex<arrayComponents.length;compIndex++){
@@ -10,6 +14,20 @@ function addComponetsToPage(typeComponent,arrayComponents){
 		+arrayComponents[compIndex].getComponentName()+'</div>\n';
 	}
 	return htmlComponents;
+}
+function addReceptsToPage(typeRecept,arrayRecepts){
+	var htmlRecepts="";
+	for(var recIndex=0;recIndex<arrayRecepts.length;recIndex++){
+		htmlRecepts+='<option class="recept" id="'+typeRecept+'_'+arrayRecepts[recIndex].getIdRecept()+'">'
+		+arrayRecepts[recIndex].getReceptName()+'</option>\n';
+	}
+	return htmlRecepts;
+}
+function showAvailableComponents(type, recept, components){//выделить компоненты
+	for(var compIndex=0;compIndex<components.length;compIndex++){
+		if(recept.indexOf(components[compIndex].getComponentId())!==-1&&masEnabledComponents.indexOf(components[compIndex].getComponentId())===-1)
+			document.getElementById(type+"_"+components[compIndex].getComponentId()).style.border="2px solid green";
+	}
 }
 container_components.addEventListener("dragstart",drag);
 container_components.addEventListener("drop",dropToContainer);
@@ -42,7 +60,20 @@ function dropToConstract(ev) {
 function addToUserRecept(component){
 	userRecept.push(component.getComponentId());
 }
-function findComponentById(componentsArray){
+function findComponentById(idComponent, componentsArray){
 	
 }
-container_components.innerHTML=addComponetsToPage("arch",componentsArch);
+function findReceptById(idRecept, receptArray){
+	for(var indexRecept=0;indexRecept<receptArray.length;indexRecept++){
+		if(receptArray[indexRecept].getReceptId()==idRecept)
+			return receptArray[indexRecept].getRecept();
+	}
+}
+show_recept_list.addEventListener("click",function(ev){
+	if(ev.target.className=="recept"){
+		var component=ParseId(ev.target.id);
+		showAvailableComponents(component.type,receptsArch)
+	}
+});
+container_components.innerHTML=addComponetsToPage(typesComp.archComp,componentsArch);
+show_recept_list.innerHTML=addReceptsToPage(typesRec.archRec, receptsArch);

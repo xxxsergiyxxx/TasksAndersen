@@ -33,6 +33,12 @@
 	border: 1px solid green;
 	min-height:200px;
 }
+#show_recept
+{
+	width:380px;
+	position:relative;
+	overflow-x:scroll;
+}
 .component
 {
 	position:relative;
