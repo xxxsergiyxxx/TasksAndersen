@@ -5,7 +5,6 @@ var componentsArch=ReceptCollection.ComponentsArch;
 var receptsArch=ReceptCollection.receptsArch;
 function addComponetsToPage(typeComponent,arrayComponents){
 	var htmlComponents="";
-	alert(arrayComponents.length);
 	for(var compIndex=0;compIndex<arrayComponents.length;compIndex++){
 		htmlComponents+='<div class="component" draggable="true" id="'+typeComponent+'_'+arrayComponents[compIndex].getComponentId()+'">'
 		+arrayComponents[compIndex].getComponentName()+'</div>\n';
