@@ -2,31 +2,55 @@
 var constract_container=document.getElementById("constract_container");
 var show_recept_list=document.getElementById("show_recept");
 var userRecept=[];
-var componentsArch=ReceptCollection.ComponentsArch;//массив всех компонентов лука
-var receptsArch=ReceptCollection.ReceptsArch;//массив всех рецептов лука
+var current={};
 var masEnabledComponents=[];
-var typesComp={arch:"archComp", cuiras:"cuirasComp"};
-var typesRec={arch:"archRec", cuiras:"cuirasRec"};
+InstallCurrent("arch",current);
+function InstallCurrent(type, current){
+	switch (type)
+	{
+		case "arch":
+		{
+			current.currentRec=ReceptCollection.ReceptsArch;
+			current.currentComp=ReceptCollection.ComponentsArch;
+			current.currentTypeComp="archComp";
+			current.currentTypeRec="archRec";
+			current.currentHtmlComponent="";
+			return type;
+		}
+	}
+}
+function resetSelected(){
+	container_components.innerHTML=current.currentHtmlComponent;
+}
 function addComponetsToPage(typeComponent,arrayComponents){
 	var htmlComponents="";
 	for(var compIndex=0;compIndex<arrayComponents.length;compIndex++){
 		htmlComponents+='<div class="component" draggable="true" id="'+typeComponent+'_'+arrayComponents[compIndex].getComponentId()+'">'
 		+arrayComponents[compIndex].getComponentName()+'</div>\n';
 	}
+	current.currentHtmlComponent=htmlComponents;
 	return htmlComponents;
 }
 function addReceptsToPage(typeRecept,arrayRecepts){
 	var htmlRecepts="";
 	for(var recIndex=0;recIndex<arrayRecepts.length;recIndex++){
-		htmlRecepts+='<option class="recept" id="'+typeRecept+'_'+arrayRecepts[recIndex].getIdRecept()+'">'
+		htmlRecepts+='<option class="recept" id="'+typeRecept+'_'+arrayRecepts[recIndex].getReceptId()+'">'
 		+arrayRecepts[recIndex].getReceptName()+'</option>\n';
 	}
 	return htmlRecepts;
 }
+function ComponentIndexOf(component, componentsList){
+	for(var indexComp=0;indexComp<componentsList.length;indexComp++){
+		if(component.getComponentId()===componentsList[indexComp].getComponentId())
+			return indexComp;
+	}
+	return -1;
+}
 function showAvailableComponents(type, recept, components){//выделить компоненты
+	resetSelected();
 	for(var compIndex=0;compIndex<components.length;compIndex++){
-		if(recept.indexOf(components[compIndex].getComponentId())!==-1&&masEnabledComponents.indexOf(components[compIndex].getComponentId())===-1)
-			document.getElementById(type+"_"+components[compIndex].getComponentId()).style.border="2px solid green";
+		if(ComponentIndexOf(components[compIndex],recept)!==-1&&masEnabledComponents.indexOf(components[compIndex].getComponentId())===-1)
+			document.getElementById(type+"_"+components[compIndex].getComponentId()).style.border="1px solid green";
 	}
 }
 container_components.addEventListener("dragstart",drag);
@@ -65,15 +89,16 @@ function findComponentById(idComponent, componentsArray){
 }
 function findReceptById(idRecept, receptArray){
 	for(var indexRecept=0;indexRecept<receptArray.length;indexRecept++){
-		if(receptArray[indexRecept].getReceptId()==idRecept)
+		if(receptArray[indexRecept].getReceptId()==idRecept){
 			return receptArray[indexRecept].getRecept();
+		}
 	}
 }
 show_recept_list.addEventListener("click",function(ev){
 	if(ev.target.className=="recept"){
 		var component=ParseId(ev.target.id);
-		showAvailableComponents(component.type,receptsArch)
+		showAvailableComponents(current.currentTypeComp,findReceptById(component.id, current.currentRec), current.currentComp);
 	}
 });
-container_components.innerHTML=addComponetsToPage(typesComp.archComp,componentsArch);
-show_recept_list.innerHTML=addReceptsToPage(typesRec.archRec, receptsArch);
+container_components.innerHTML=addComponetsToPage(current.currentTypeComp,current.currentComp);
+show_recept_list.innerHTML=addReceptsToPage(current.currentTypeRec,current.currentRec);

@@ -24,12 +24,12 @@ ClassAbstractRecept.prototype.getReceptName=function(){
 ClassAbstractRecept.prototype.setReceptName=function(receptName){
 		this._receptName=receptName;
 }
-ClassAbstractRecept.prototype.getIdRecept=function(){
+ClassAbstractRecept.prototype.getReceptId=function(){
 		return this._id;
 }
 //рецепт лука
-function ClassArchRecept(receptName,recept){
-	ClassAbstractRecept.call(this,receptName,recept);
+function ClassArchRecept(receptName,recept, id){
+	ClassAbstractRecept.call(this,receptName,recept, id);
 }
 extend(ClassArchRecept, ClassAbstractRecept);
 ClassArchRecept.prototype.CalculateArrowSpeed=function()
@@ -38,8 +38,8 @@ ClassArchRecept.prototype.CalculateArrowSpeed=function()
 	return ;
 }
 //рецепт кирасы
-function ClassCuirassRecept(receptName,recept){
-	ClassAbstractRecept.call(this,receptName,recept);
+function ClassCuirassRecept(receptName,recept, id){
+	ClassAbstractRecept.call(this,receptName,recept, id);
 }
 extend(ClassCuirassRecept, ClassAbstractRecept);
 ClassCuirassRecept.prototype.CalculateArmor=function()
