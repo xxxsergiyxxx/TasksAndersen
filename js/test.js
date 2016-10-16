@@ -4,6 +4,8 @@ var show_recept_list=document.getElementById("show_recept");
 var available_recepts=document.getElementById("available_recepts");
 var add_component=document.getElementById("add_component");
 var recepts=document.getElementById("recepts");
+var all_reset=document.getElementById("all_reset");
+var select_equip=document.getElementById("select_equip");
 var TYPE="arch";
 var current=ReceptCollection(TYPE);
 loadHtml();
@@ -188,8 +190,8 @@ rec_add.addEventListener("click", function(e){
 			var opt = document.createElement('option');
 			opt.className="recept";
 			opt.id=current.currentTypeRec+'_'+newId;
-			//show_recept_list.innerHTML+='<option class="recept" id="'+current.currentTypeRec+'_'+newId+'">'
-			//+rec_name.value+'</option>\n';
+			show_recept_list.appendChild(opt);
+			opt.appendChild(document.createTextNode(rec_name.value));
 			current.currentRec.push(newRec);
 			masEnabledComponents=[];
 			resetSelected();
@@ -216,6 +218,16 @@ comp_add.addEventListener("click", function(e){
 			break;
 		}
 	}
+});
+all_reset.addEventListener("click", function(e){
+	masEnabledComponents=[];
+	available_recepts.innerHTML="";
+	for(var indexCashComp=0;indexCashComp<cashComp.length;indexCashComp++)
+		container_components.appendChild(cashComp[indexCashComp]);
+	constract_container.innerHTML="";
+});
+select_equip.addEventListener("change", function(e){
+	console.log(select_equip.selectedIndex);
 });
 function loadHtml()
 {
