@@ -11,7 +11,6 @@ function ClassAbstractRecept(receptName, recept, id){
 	this._recept=recept;	
 	this._id=id;
 }
-
 ClassAbstractRecept.prototype.getRecept=function(){
 		return this._recept;
 }

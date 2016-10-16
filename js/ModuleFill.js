@@ -17,8 +17,26 @@
 	ReceptsArch.push(new ClassArchRecept("Дубовый лук с плечами из слоновой кости и тетивой из олиэтилентерефталата",[ComponentsArch[3],ComponentsArch[4],ComponentsArch[2]],5));
 	ReceptsArch.push(new ClassArchRecept("Дубовый лук с фанерными плечами и тетивой из кевлара",[ComponentsArch[3],ComponentsArch[1],ComponentsArch[5]],6));
 	ReceptsArch.push(new ClassArchRecept("Дубовый лук с плечами из слоновой кости и тетивой из кевлара",[ComponentsArch[3],ComponentsArch[4],ComponentsArch[5]],7));
-	return {
-		ComponentsArch:ComponentsArch,
-		ReceptsArch:ReceptsArch
+	function GetLoadData(type){
+		var current={};
+		switch (type)
+		{
+			case "arch":
+			{
+				current.currentRec=ReceptsArch;
+				current.currentComp=ComponentsArch;
+				current.currentTypeComp="archComp";
+				current.currentTypeRec="archRec";
+				current.currentHtmlComponent="";
+				current.currentHtmlAddComp='<p>Название компонент: <input class="inp" id="comp_name" type="text"></p>\n'+
+							'<p>Коэффициент скорости <input class="inp" id="book_src" type="text"></p>\n'+
+							'<input class="inp" type="button" id="new_book" value="Добавить">\n';
+				current.currentHtmlAddRec='<p>Название списка: <input class="inp" id="rec_name" type="text"></p>\n'+
+						'<p>Тип списка<input class="inp" id="rec_type" type="text" ></p>\n'+
+						'<input class="inp" type="button" id="rec_add" value="Добавить">\n'
+				return current;
+			}
+		}
 	}
+	return GetLoadData;
 })();

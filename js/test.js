@@ -2,26 +2,26 @@
 var constract_container=document.getElementById("constract_container");
 var show_recept_list=document.getElementById("show_recept");
 var available_recepts=document.getElementById("available_recepts");
+var add_component=document.getElementById("add_component");
+var recepts=document.getElementById("recepts");
+var TYPE="arch";
+var current=ReceptCollection(TYPE);
+loadHtml();
+var cashComp=(function(){
+	var masEl=[];
+	for(var indexCashComp=0;indexCashComp<current.currentComp.length;indexCashComp++)
+		masEl.push(document.getElementById(current.currentTypeComp+"_"+current.currentComp[indexCashComp].getComponentId()));
+	return masEl;
+})();
+var rec_add=document.getElementById("rec_add");
+var rec_name=document.getElementById("rec_name");
+var rec_type=document.getElementById("rec_type");
 var userRecept=[];
-var current={};
 var masEnabledComponents=[];
-InstallCurrent("arch",current);
-function InstallCurrent(type, current){
-	switch (type)
-	{
-		case "arch":
-		{
-			current.currentRec=ReceptCollection.ReceptsArch;
-			current.currentComp=ReceptCollection.ComponentsArch;
-			current.currentTypeComp="archComp";
-			current.currentTypeRec="archRec";
-			current.currentHtmlComponent="";
-			return type;
-		}
-	}
-}
 function resetSelected(){
-	container_components.innerHTML=current.currentHtmlComponent;
+	
+	for(var indexCashComp=0;indexCashComp<cashComp.length;indexCashComp++)
+		cashComp[indexCashComp].style.border="1px solid red";
 }
 function addToMasEnabledComponents(elemId){
 	var idElem=ParseId(elemId).id;
@@ -122,14 +122,18 @@ function findReceptForSelectedComp(receptArray,masEnabledComponents){
 		var component=findComponentById(masEnabledComponents[indexMasEnabledComponents],current.currentComp);
 		if(ComponentIndexOf(component,receptArray)!==-1){
 			concurencyCount++;
-			if((concurencyCount==receptArray.length)||(concurencyCount==masEnabledComponents.length)){
+			if((concurencyCount==receptArray.length)){
 				return true;
 			}
 		}
 	}
 }
-function findComponentById(idComponent, componentsArray){
-	var idComponent=ParseId(idComponent).id;
+function findComponentById(idComponent, componentsArray, flag){
+	var idComponent;
+	if(flag)
+		idComponent=idComponent;
+	else
+		idComponent=ParseId(idComponent).id;
 	for(var indexComp=0;indexComp<componentsArray.length;indexComp++){
 		if(idComponent==componentsArray[indexComp].getComponentId()){
 			return componentsArray[indexComp];
@@ -147,10 +151,6 @@ function findReceptById(idRecept, receptArray){
 show_recept_list.addEventListener("click",function(ev){
 	if(ev.target.className=="recept"){
 		showAvailableComponents(current.currentTypeComp,findReceptById(ev.target.id, current.currentRec), current.currentComp);
-		masEnabledComponents=null;
-		masEnabledComponents=[];
-		constract_container.innerHTML="";
-		available_recepts.innerHTML="";
 	}
 });
 container_components.addEventListener("click",function(ev){
@@ -167,5 +167,29 @@ container_components.addEventListener("click",function(ev){
 		}
 	}
 });
-container_components.innerHTML=addComponetsToPage(current.currentTypeComp,current.currentComp);
-show_recept_list.innerHTML=addReceptsToPage(current.currentTypeRec,current.currentRec);
+rec_add.addEventListener("click", function(e){
+	var masComp=[];
+	var newId,newRec;
+	for(var indexMasEnabledComponents=0;indexMasEnabledComponents<masEnabledComponents.length;indexMasEnabledComponents++)
+		masComp.push(findComponentById(masEnabledComponents[indexMasEnabledComponents],current.currentComp,true));
+	switch (TYPE)
+	{
+		case "arch":
+		{		
+			newId=current.currentRec[current.currentRec.length-1].getReceptId()+1;		
+			newRec=new ClassArchRecept(rec_name.value,masComp,newId);
+			show_recept_list.innerHTML+='<option class="recept" id="'+current.currentTypeRec+'_'+newId+'">'
+			+rec_name.value+'</option>\n';
+			current.currentRec.push(newRec);
+			break;
+		}
+	}
+});
+function loadHtml()
+{
+	container_components.innerHTML=addComponetsToPage(current.currentTypeComp,current.currentComp);
+	show_recept_list.innerHTML=addReceptsToPage(current.currentTypeRec,current.currentRec);
+	add_component.innerHTML=current.currentHtmlAddComp;
+	recepts.innerHTML=current.currentHtmlAddRec;
+}
+
