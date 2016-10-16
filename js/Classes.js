@@ -29,6 +29,10 @@ ClassAbstractRecept.prototype.getReceptId=function(){
 //рецепт лука
 function ClassArchRecept(receptName,recept, id){
 	ClassAbstractRecept.call(this,receptName,recept, id);
+	ClassArchRecept._id=id;
+}
+ClassArchRecept.getLastId=function(){
+	return ClassArchRecept._id;
 }
 extend(ClassArchRecept, ClassAbstractRecept);
 ClassArchRecept.prototype.CalculateArrowSpeed=function()
@@ -39,8 +43,12 @@ ClassArchRecept.prototype.CalculateArrowSpeed=function()
 //рецепт кирасы
 function ClassCuirassRecept(receptName,recept, id){
 	ClassAbstractRecept.call(this,receptName,recept, id);
+	ClassCuirassRecept._id=id;
 }
 extend(ClassCuirassRecept, ClassAbstractRecept);
+ClassCuirassRecept.getLastId=function(){
+	return ClassCuirassRecept._id;
+}
 ClassCuirassRecept.prototype.CalculateArmor=function()
 {
 	alert("CalculateArmor");
@@ -69,8 +77,12 @@ ClassAbstractComponent.prototype.getComponentId=function(){
 function ClassArchComponent(componentName, speedIndex, idComponent){
 	this._speedIndex=speedIndex;
 	ClassAbstractComponent.call(this,componentName,idComponent);
+	ClassArchComponent._id=idComponent;
 }
 extend(ClassArchComponent, ClassAbstractComponent);
+ClassArchComponent.getLastId=function(){
+	return ClassArchComponent._id;
+};
 ClassArchComponent.prototype.getSpeedIndex=function(){
 	
 	return this._speedIndex;
@@ -83,8 +95,12 @@ ClassArchComponent.prototype.setSpeedIndex=function(speedIndex){
 function ClassCuirasComponent(componentName, armorIndex, idComponent){
 	this._armorIndex=armorIndex;
 	ClassAbstractComponent.call(this,componentName,idComponent);
+	ClassCuirasComponent._id=idComponent;
 }
 extend(ClassCuirasComponent, ClassAbstractComponent);
+ClassCuirasComponent.getLastId=function(){
+	return ClassCuirasComponent._id;
+};
 ClassCuirasComponent.prototype.getArmorIndex=function(){
 	
 	return this.armorIndex;

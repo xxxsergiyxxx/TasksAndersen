@@ -13,15 +13,22 @@ var cashComp=(function(){
 		masEl.push(document.getElementById(current.currentTypeComp+"_"+current.currentComp[indexCashComp].getComponentId()));
 	return masEl;
 })();
+var comp_add=document.getElementById("comp_add");
+var koef=document.getElementById("koef");
+var comp_name=document.getElementById("comp_name");
+
 var rec_add=document.getElementById("rec_add");
 var rec_name=document.getElementById("rec_name");
-var rec_type=document.getElementById("rec_type");
 var userRecept=[];
 var masEnabledComponents=[];
 function resetSelected(){
 	
 	for(var indexCashComp=0;indexCashComp<cashComp.length;indexCashComp++)
+	{
+		//alert(cashComp[indexCashComp].id);
 		cashComp[indexCashComp].style.border="1px solid red";
+	}
+	//alert(cashComp.length);
 }
 function addToMasEnabledComponents(elemId){
 	var idElem=ParseId(elemId).id;
@@ -176,11 +183,36 @@ rec_add.addEventListener("click", function(e){
 	{
 		case "arch":
 		{		
-			newId=current.currentRec[current.currentRec.length-1].getReceptId()+1;		
+			newId=ClassArchRecept.getLastId()+1;		
 			newRec=new ClassArchRecept(rec_name.value,masComp,newId);
-			show_recept_list.innerHTML+='<option class="recept" id="'+current.currentTypeRec+'_'+newId+'">'
-			+rec_name.value+'</option>\n';
+			var opt = document.createElement('option');
+			opt.className="recept";
+			opt.id=current.currentTypeRec+'_'+newId;
+			//show_recept_list.innerHTML+='<option class="recept" id="'+current.currentTypeRec+'_'+newId+'">'
+			//+rec_name.value+'</option>\n';
 			current.currentRec.push(newRec);
+			masEnabledComponents=[];
+			resetSelected();
+			break;
+		}
+	}
+});
+comp_add.addEventListener("click", function(e){
+	var newId,newComp;
+	switch (TYPE)
+	{
+		case "arch":
+		{		
+			newId=ClassArchComponent.getLastId()+1;		
+			newComp=new ClassArchComponent(comp_name.value,koef.value,newId);
+			current.currentComp.push(newComp);
+			var div = document.createElement('div');
+			div.className = "component";
+			div.id=current.currentTypeComp+'_'+newId;
+			div.draggable="true";
+			container_components.appendChild(div);
+			div.appendChild(document.createTextNode(comp_name.value));
+			cashComp.push(document.getElementById(current.currentTypeComp+'_'+newId));
 			break;
 		}
 	}
