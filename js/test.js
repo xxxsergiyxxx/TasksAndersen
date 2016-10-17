@@ -6,31 +6,17 @@ var add_component=document.getElementById("add_component");
 var recepts=document.getElementById("recepts");
 var all_reset=document.getElementById("all_reset");
 var select_equip=document.getElementById("select_equip");
-var TYPE="arch";
-var current=ReceptCollection(TYPE);
-loadHtml();
-var cashComp=(function(){
-	var masEl=[];
-	for(var indexCashComp=0;indexCashComp<current.currentComp.length;indexCashComp++)
-		masEl.push(document.getElementById(current.currentTypeComp+"_"+current.currentComp[indexCashComp].getComponentId()));
-	return masEl;
-})();
-var comp_add=document.getElementById("comp_add");
-var koef=document.getElementById("koef");
-var comp_name=document.getElementById("comp_name");
-
-var rec_add=document.getElementById("rec_add");
-var rec_name=document.getElementById("rec_name");
+var TYPE;
+var current;
+var cashComp=[1,2,3];
+Main("arch");
+var koef,comp_name,rec_name;
 var userRecept=[];
 var masEnabledComponents=[];
 function resetSelected(){
-	
-	for(var indexCashComp=0;indexCashComp<cashComp.length;indexCashComp++)
-	{
-		//alert(cashComp[indexCashComp].id);
+	for(var indexCashComp=0;indexCashComp<cashComp.length;indexCashComp++){
 		cashComp[indexCashComp].style.border="1px solid red";
 	}
-	//alert(cashComp.length);
 }
 function addToMasEnabledComponents(elemId){
 	var idElem=ParseId(elemId).id;
@@ -176,46 +162,70 @@ container_components.addEventListener("click",function(ev){
 		}
 	}
 });
-rec_add.addEventListener("click", function(e){
-	var masComp=[];
-	var newId,newRec;
-	for(var indexMasEnabledComponents=0;indexMasEnabledComponents<masEnabledComponents.length;indexMasEnabledComponents++)
-		masComp.push(findComponentById(masEnabledComponents[indexMasEnabledComponents],current.currentComp,true));
-	switch (TYPE)
-	{
-		case "arch":
-		{		
-			newId=ClassArchRecept.getLastId()+1;		
-			newRec=new ClassArchRecept(rec_name.value,masComp,newId);
-			var opt = document.createElement('option');
-			opt.className="recept";
-			opt.id=current.currentTypeRec+'_'+newId;
-			show_recept_list.appendChild(opt);
-			opt.appendChild(document.createTextNode(rec_name.value));
-			current.currentRec.push(newRec);
-			masEnabledComponents=[];
-			resetSelected();
-			break;
+function addNewRec(newId, newRec){
+	var opt = document.createElement('option');
+	opt.className="recept";
+	opt.id=current.currentTypeRec+'_'+newId;
+	show_recept_list.appendChild(opt);
+	opt.appendChild(document.createTextNode(rec_name.value));
+	current.currentRec.push(newRec);
+	masEnabledComponents=[];
+	resetSelected();
+}
+recepts.addEventListener("click", function(e){
+	if(e.target.id=="rec_add"){
+		var masComp=[];
+		var newId,newRec;
+		for(var indexMasEnabledComponents=0;indexMasEnabledComponents<masEnabledComponents.length;indexMasEnabledComponents++)
+			masComp.push(findComponentById(masEnabledComponents[indexMasEnabledComponents],current.currentComp,true));
+		switch (TYPE)
+		{
+			case "arch":
+			{		
+				newId=ClassArchRecept.getLastId()+1;		
+				newRec=new ClassArchRecept(rec_name.value,masComp,newId);	
+				addNewRec(newId, newRec);				
+				break;
+			}
+			case "cuiras":
+			{		
+				newId=ClassCuirassRecept.getLastId()+1;	
+				newRec=new ClassCuirassRecept(rec_name.value,masComp,newId);			
+				addNewRec(newId, newRec);
+				break;
+			}
 		}
 	}
 });
-comp_add.addEventListener("click", function(e){
-	var newId,newComp;
-	switch (TYPE)
-	{
-		case "arch":
-		{		
-			newId=ClassArchComponent.getLastId()+1;		
-			newComp=new ClassArchComponent(comp_name.value,koef.value,newId);
-			current.currentComp.push(newComp);
-			var div = document.createElement('div');
-			div.className = "component";
-			div.id=current.currentTypeComp+'_'+newId;
-			div.draggable="true";
-			container_components.appendChild(div);
-			div.appendChild(document.createTextNode(comp_name.value));
-			cashComp.push(document.getElementById(current.currentTypeComp+'_'+newId));
-			break;
+function addNewComp(newId, newComp){	
+	current.currentComp.push(newComp);
+	var div = document.createElement('div');
+	div.className = "component";
+	div.id=current.currentTypeComp+'_'+newId;
+	div.draggable="true";
+	container_components.appendChild(div);
+	div.appendChild(document.createTextNode(comp_name.value));
+	cashComp.push(document.getElementById(current.currentTypeComp+'_'+newId));
+}
+add_component.addEventListener("click", function(e){
+	if(e.target.id=="comp_add"){
+		var newId,newComp;
+		switch (TYPE)
+		{
+			case "arch":
+			{		
+				newId=ClassArchComponent.getLastId()+1;	
+				newComp=new ClassArchComponent(comp_name.value,koef.value,newId);			
+				addNewComp(newId,newComp);
+				break;
+			}
+			case "cuiras":
+			{		
+				newId=ClassCuirasComponent.getLastId()+1;	
+				newComp=new ClassCuirasComponent(comp_name.value,koef.value,newId);			
+				addNewComp(newId,newComp);
+				break;
+			}
 		}
 	}
 });
@@ -227,7 +237,17 @@ all_reset.addEventListener("click", function(e){
 	constract_container.innerHTML="";
 });
 select_equip.addEventListener("change", function(e){
-	console.log(select_equip.selectedIndex);
+	switch(select_equip.selectedIndex)
+	{
+		case 0: {
+			Main("arch");
+			break;
+		}
+		case 1:{
+			Main("cuiras")
+			break;
+		}
+	}
 });
 function loadHtml()
 {
@@ -237,3 +257,20 @@ function loadHtml()
 	recepts.innerHTML=current.currentHtmlAddRec;
 }
 
+function Main(type){
+	TYPE=type;
+	current=ReceptCollection(TYPE);
+	loadHtml();
+	constract_container.innerHTML="";
+	available_recepts.innerHTML="";
+	masEnabledComponents=[];
+	cashComp=(function(){
+		var masEl=[];
+		for(var indexCashComp=0;indexCashComp<current.currentComp.length;indexCashComp++)
+			masEl.push(document.getElementById(current.currentTypeComp+"_"+current.currentComp[indexCashComp].getComponentId()));
+		return masEl;
+	})();	
+	koef=document.getElementById("koef");
+	comp_name=document.getElementById("comp_name");
+	rec_name=document.getElementById("rec_name");
+}

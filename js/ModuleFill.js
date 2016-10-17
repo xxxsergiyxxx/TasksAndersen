@@ -24,10 +24,10 @@
 	ComponentsCuiras.push(new ClassCuirasComponent("Стальная пластина",3,2));
 	ComponentsCuiras.push(new ClassCuirasComponent("Кожаная подстежка",3,3));
 	var ReceptsCuiras=[];
-ReceptsCuiras.push(new ClassCuirassRecept("Кленовый лук с фанерными плечами и тетивой из олиэтилентерефталата",[ComponentsCuiras[0],ComponentsCuiras[1]],0));
-	ReceptsCuiras.push(new ClassCuirassRecept("Кленовый лук с плечами из слоновой кости и тетивой из олиэтилентерефталата",[ComponentsArch[0],ComponentsArch[3]],1));
-	ReceptsCuiras.push(new ClassCuirassRecept("Кленовый лук с фанерными плечами и тетивой из олиэтилентерефталата",[ComponentsCuiras[2],ComponentsCuiras[1]],2));
-	ReceptsCuiras.push(new ClassCuirassRecept("Кленовый лук с плечами из слоновой кости и тетивой из олиэтилентерефталата",[ComponentsArch[2],ComponentsArch[3]],1));
+ReceptsCuiras.push(new ClassCuirassRecept("Медная кираса с меховой подстежкой",[ComponentsCuiras[0],ComponentsCuiras[1]],0));
+	ReceptsCuiras.push(new ClassCuirassRecept("Медная кираса скожаной подстежкой",[ComponentsArch[0],ComponentsArch[3]],1));
+	ReceptsCuiras.push(new ClassCuirassRecept("Стальная кираса с меховой подстежкой",[ComponentsCuiras[2],ComponentsCuiras[1]],2));
+	ReceptsCuiras.push(new ClassCuirassRecept("Стальная кираса скожаной подстежкой",[ComponentsArch[2],ComponentsArch[3]],1));
 	
 	function GetLoadData(type){
 		var current={};
