@@ -29,21 +29,16 @@ function drag(ev) {
 function dropToContainer(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
-	if(ev.target.id=="container_components"){
-		ev.target.appendChild(document.getElementById(data));
-		Runner.deleteElemMasEnabledComponents(data);
-		Runner.findAllReceptsForSelectedComp(current.currentRec,masEnabledComponents);
-	}
-	
+	container_components.appendChild(document.getElementById(data));
+	Runner.deleteElemMasEnabledComponents(data);
+	Runner.findAllReceptsForSelectedComp(current.currentRec,masEnabledComponents);	
 }
 function dropToConstract(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
-	if(ev.target.id=="constract_container"){
-		ev.target.appendChild(document.getElementById(data));		
-		Runner.addToMasEnabledComponents(data);
-		Runner.findAllReceptsForSelectedComp(current.currentRec,masEnabledComponents);
-	}
+	constract_container.appendChild(document.getElementById(data));		
+	Runner.addToMasEnabledComponents(data);
+	Runner.findAllReceptsForSelectedComp(current.currentRec,masEnabledComponents);
 	
 }
 show_recept_list.addEventListener("click",function(ev){
