@@ -7,13 +7,25 @@
 	</head>
 	<body>
 		<div id="all_container">
-			<p>Выберите вид снаряжения</p>
+		<div style="position:relative; float:left; width:auto;margin-left:5px;">
+			<h5>Выберите вид снаряжения</h5>
 			<select id="select_equip">
 				<disabled>Выберите снаряжение</disabled>
 				<option class="change">Лук</option>
 				<option class="change">Кираса</option>
 			</select>
+		</div>
+		<div style="position:relative; float:left;margin-left:100px; width:auto;">
+			<p>1) Зеленым цветом выделяются активные компоненты, красным- неактивные</p>
+			<p>2) Для крафта нужно выбрать нужные компоненты (нажатием по ним) ввести имя и жмякнуть по кнопке "Добавить"</p>
+			<p>3) При клике на рецепт подсвечиваются его составляющие</p>
+		</div>
 			<div id="header">
+				<div id="header_component">
+					<h5 style="display:block;float:left;position:relative;">Брать отсюда</h5>
+					<h5 style="display:block;float:left;left:450px;position:relative;">Это перечень рецептов</h5>
+					<h5 style="display:block;float:left;left:750px;position:relative;">Кидать сюда</h5>
+				</div>
 				<div id="container_components">
 				</div>
 				<div id="all_recepts">
@@ -26,6 +38,7 @@
 			</div>
 			<div id="footer">
 				<div id="left_column 2">
+				<p>Тут выводится перечень возможных рецептов из выбранных компонентов</p>
 					<ul id="available_recepts">
 					</ul>
 				</div>
