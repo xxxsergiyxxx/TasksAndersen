@@ -6,7 +6,6 @@ var add_component=document.getElementById("add_component");
 var recepts=document.getElementById("recepts");
 var all_reset=document.getElementById("all_reset");
 var select_equip=document.getElementById("select_equip");
-var TYPE;
 var current;
 var cashComp=[];
 var koef,comp_name,rec_name;
@@ -66,7 +65,7 @@ recepts.addEventListener("click", function(e){
 		var newId,newRec;
 		for(var indexMasEnabledComponents=0;indexMasEnabledComponents<masEnabledComponents.length;indexMasEnabledComponents++)
 			masComp.push(Runner.findComponentById(masEnabledComponents[indexMasEnabledComponents],current.currentComp,true));
-		switch (TYPE)
+		switch (current.currentType)
 		{
 			case "arch":
 			{		
@@ -88,7 +87,7 @@ recepts.addEventListener("click", function(e){
 add_component.addEventListener("click", function(e){
 	if(e.target.id=="comp_add"){
 		var newId,newComp;
-		switch (TYPE)
+		switch (current.currentType)
 		{
 			case "arch":
 			{		

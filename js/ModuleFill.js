@@ -37,6 +37,7 @@ ReceptsCuiras.push(new ClassCuirassRecept("Медная кираса с мехо
 			{
 				current.currentRec=ReceptsArch;
 				current.currentComp=ComponentsArch;
+				current.currentType=type;
 				current.currentTypeComp="archComp";
 				current.currentTypeRec="archRec";
 				current.currentHtmlComponent="";
@@ -52,6 +53,7 @@ ReceptsCuiras.push(new ClassCuirassRecept("Медная кираса с мехо
 				current.currentRec=ReceptsCuiras;
 				current.currentComp=ComponentsCuiras;
 				current.currentTypeComp="cuirasComp";
+				current.currentType=type;
 				current.currentTypeRec="cuirasRec";
 				current.currentHtmlComponent="";
 				current.currentHtmlAddComp='<p>Название компонент: <input class="inp" id="comp_name" type="text"></p>\n'+

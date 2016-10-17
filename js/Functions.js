@@ -69,7 +69,7 @@
 			var component=findComponentById(masEnabledComponents[indexMasEnabledComponents],current.currentComp);
 			if(ComponentIndexOf(component,receptArray)!==-1){
 				concurencyCount++;
-				if((concurencyCount==receptArray.length)){
+				if(concurencyCount==receptArray.length){
 					return true;
 				}
 			}
@@ -116,6 +116,7 @@
 		container_components.appendChild(div);
 		div.appendChild(document.createTextNode(comp_name.value));
 		cashComp.push(document.getElementById(current.currentTypeComp+'_'+newId));
+		resetSelected();
 	}
 
 	function loadHtml()
