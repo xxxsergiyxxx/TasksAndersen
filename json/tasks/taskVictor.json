@@ -1,0 +1,21 @@
+{
+   "todos":[
+      {
+         "title":"get up",
+         "done":"false"
+      },
+      {
+         "title":"breakfast",
+         "done":"false"
+      },
+      {
+         "title":"take a shower",
+         "done":"false"
+      },
+      {
+         "title":"go to work",
+         "done":"false"
+      }
+   ],
+   "meetingsFilePath":"json/meetengs/meetVictor.json"  
+}

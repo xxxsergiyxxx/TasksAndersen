@@ -1,0 +1,29 @@
+<div id="meet-list">
+<h1>Meetengs</h1>
+    <ul>
+        <li ng-repeat="meet in meetCtrl.meetData.data">
+            <p>
+                <label>
+                    Place:
+                </label>
+                <label>
+                    {{meet.place}}
+                </label>
+            </p>
+                <label>
+                    Time:
+                </label>
+                <label>
+                    {{meet.time}}
+                </label>
+            <p>
+                <label>
+                    Description
+                </label>
+                <label>
+                    {{meet.description}}
+                </label>
+            </p>
+        </li>
+    </ul>
+</div>

@@ -1,1 +1,0 @@
-﻿Runner.Main("arch");

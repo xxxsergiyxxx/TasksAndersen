@@ -1,0 +1,7 @@
+{
+	"name":"Victor",
+	"surname":"Smitt",
+	"age":"20",
+	"gender":"M",
+	"toDoList":"/json/tasks/taskVictor.json"
+}

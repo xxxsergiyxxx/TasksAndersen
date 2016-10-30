@@ -1,63 +1,26 @@
-﻿<!DOCTYPE html>
-<html>
-	<head>
-		 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		 <link rel="stylesheet" href="css/style.css">
-		  <title>МайКрафт</title>
-	</head>
-	<body>
-		<div id="all_container">
-		<div style="position:relative; float:left; width:auto;margin-left:5px;">
-			<h5>Выберите вид снаряжения</h5>
-			<select id="select_equip">
-				<disabled>Выберите снаряжение</disabled>
-				<option class="change">Лук</option>
-				<option class="change">Кираса</option>
-			</select>
-		</div>
-		<div style="position:relative; float:left;margin-left:100px; width:auto;">
-			<p>1) Зеленым цветом выделяются активные компоненты, красным- неактивные</p>
-			<p>2) Для добавления нужно выбрать нужные компоненты (нажатием по ним) ввести имя и жмякнуть по кнопке "Добавить"</p>
-			<p>3) При клике на рецепт подсвечиваются его составляющие</p>
-			<p>4) Для крафта-тащите и будет счастье в виде всех доступных рецептов для компонентов</p>
-		</div>
-			<div id="header">
-				<div id="header_component">
-					<h5 style="display:block;float:left;position:relative;">Брать отсюда</h5>
-					<h5 style="display:block;float:left;left:450px;position:relative;">Это перечень рецептов</h5>
-					<h5 style="display:block;float:left;left:750px;position:relative;">Кидать сюда</h5>
-				</div>
-				<div id="container_components">
-				</div>
-				<div id="all_recepts">
-					<select id="show_recept" size="8">
-					<option disabled>Выберите рецепт</option>
-					</select>
-				</div>
-				<div id="constract_container">
-				</div>
-			</div>
-			<div id="footer">
-				<div id="left_column 2">
-				<p>Тут выводится перечень возможных рецептов из выбранных компонентов</p>
-					<ul id="available_recepts">
-					</ul>
-				</div>
-				<div id="add_container">
-					<div id="add_component">
-						
-					</div>
-					<div id="recepts">
-						
-					</div>
-					<input type="button" value ="Сброс" id="all_reset">
-				</div>
-			</div>
-		</div>
-		<script src="js/Classes.js"></script>
-		<script src="js/ModuleFill.js"></script>
-		<script src="js/Actions.js"></script>
-		<script src="js/Functions.js"></script>	
-		<script src="js/MyCraftWorker.js"></script>			
-	</body>
+<!doctype html>
+<html ng-app="mainApp">
+  <head>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="angular.min.js"></script>  
+    <script src="sources/modules/app.js"></script>  
+    <script src="sources/components/containerList/containerList.module.js"></script>
+    <script src="sources/components/headerData/header.module.js"></script>
+    <script src="sources/components/taskList/task.module.js"></script>
+    <script src="sources/components/meetList/meet.module.js"></script>
+    <script src="sources/modules/mainData/data.module.js"></script>
+    <script src="sources/components/containerList/containerList.component.js"></script>
+    <script src="sources/components/headerData/header.component.js"></script>
+    <script src="sources/components/taskList/task.component.js"></script>
+    <script src="sources/components/meetList/meet.component.js"></script>  
+    <script src="sources/modules/directives/taksList.directive.js"></script>
+    <script src="sources/modules/mainData/data.service.js"></script>
+    <script src="sources/modules/mainData/data.controller.js"></script>
+    
+    
+
+  </head>
+  <body>
+    <container-list></container-list>
+  </body>
 </html>
