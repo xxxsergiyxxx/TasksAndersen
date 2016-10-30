@@ -3,28 +3,23 @@
 	angular.module("taskList").
 	component("taskList",{
       templateUrl:"/sources/components/taskList/task.template.html",
-      controller:["dataService", TaskListController],
+      controller:["dataService", "taskService", TaskListController],
       controllerAs:"taskCtrl",
       bindings:{
          tasksData:"="
       }
    });
 
-   function TaskListController(service){
+   function TaskListController(service,taskService){
       var vmTaskList=this;
-      vmTaskList.addTask=addTask;
-      vmTaskList.delTask=delTask;
-      function addTask(){
-         vmTaskList.tasksData.data.todos.push({title:vmTaskList.task,done: false });
-      }
-      function delTask(){
-         var oldTodos = vmTaskList.tasksData.data.todos;
-         vmTaskList.tasksData.data.todos = [];
-         angular.forEach(oldTodos, function(todo) {
-           if (!todo.done) vmTaskList.tasksData.data.todos.push(todo);
-         });
-      }
-
+      vmTaskList.addTask=function(){
+         taskService.task=vmTaskList.task;
+         taskService.addTask(vmTaskList.tasksData);
+      };
+      vmTaskList.delTask=function(){
+         taskService.delTask(vmTaskList.tasksData);
+      };
+      vmTaskList.selTodos=taskService.selTodos;      
    }
 }
 )();
