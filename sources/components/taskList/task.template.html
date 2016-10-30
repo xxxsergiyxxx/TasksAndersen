@@ -1,8 +1,8 @@
-<div id="task-list">
+<div id="task-list" tasks-list="taskCtrl.taskData">
     <h2>Todo</h2>
-  <span> of remaining</span>
+  <span> {{taskCtrl.selTask().count}} of remaining {{taskCtrl.selTask().length}}</span>
   [ <a href="" ng-click="taskCtrl.delTask()">archive</a> ]
-  <ul class="unstyled" tasks-list="taskCtrl.taskData">
+  <ul class="unstyled">
     <li ng-repeat="task in taskCtrl.tasksData.data.todos">
       <label class="checkbox">
         <input type="checkbox" ng-model="task.done">

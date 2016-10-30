@@ -19,7 +19,9 @@
       vmTaskList.delTask=function(){
          taskService.delTask(vmTaskList.tasksData);
       };
-      vmTaskList.selTodos=taskService.selTodos;      
+      vmTaskList.selTask=function(){
+         return taskService.selTask(vmTaskList.tasksData);
+      };      
    }
 }
 )();
