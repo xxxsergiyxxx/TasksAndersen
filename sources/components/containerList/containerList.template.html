@@ -1,8 +1,8 @@
 <div class="container">
-    <h1>{{contCtrl.test}}</h1>
+    <h1>{{contCtrl.data}}</h1>
     <input type="button" value="ok" ng-click="contCtrl.getInfo();">
    <header-info mans-info="contCtrl.mansInfo"></header-info>
-   <task-list tasks-data="contCtrl.tasksData"></task-list>
+   <task-list tasks-data="contCtrl.tasksData" mas-complete="contCtrl.compelteListData"></task-list>
    <meet-list meet-data="contCtrl.meetData"></meet-list> 
    <archive-tasks mas-complete="contCtrl.compelteListData"></archive-tasks>
 </div>

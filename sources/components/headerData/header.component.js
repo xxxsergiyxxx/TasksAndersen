@@ -3,13 +3,13 @@
    angular.module("headerData").
    component("headerInfo",{
       templateUrl:"/sources/components/headerData/header.template.html",
-         controller:["dataService",HeaderController],
+         controller:HeaderController,
          controllerAs:"headCtrl",
          bindings:{
             mansInfo:"=",
          }
    })
-   function HeaderController(service){
+   function HeaderController(){
       
    }
 })();

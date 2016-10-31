@@ -1,15 +1,17 @@
 .container{
    position:relative;
-   width: 550px;
+   width: 1050px;
    margin:auto;
 }
 #task-list{
    position:relative;
    float:left;
+   width:300px;
 }
 #meet-list{
    position:relative;
    float:left;
+   width:300px;
 }
 #archive{
 	position:relative;

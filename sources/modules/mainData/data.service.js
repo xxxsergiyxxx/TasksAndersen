@@ -19,7 +19,6 @@
       self.getDataMeetengs=getDataMeetengs;
       self.getDataTasks=getDataTasks;
       self.getMasCompleteTask=getMasCompleteTask;
-
       (function memoryAllocation(){
          for(var i=0;i<masPathes.length;i++){
             _masMansInfo[i]={};
@@ -39,7 +38,7 @@
          return _masMeetengs[idData];
       }
       function getMasCompleteTask(){
-         return _masCompleteTask;
+         return _masCompleteTask[idData];
       }
 
       function getManId(id){
@@ -62,6 +61,7 @@
       function getData(id){
          idData=id;
          if(!_masMansInfo[id].data){
+            _masCompleteTask[id]=[];
             getManId(id).then(getManTasks).then(getManMeet);
          }
       }

@@ -1,14 +1,14 @@
 (function(){
    angular.module("archiveTasks").
    component("archiveTasks",{
-      controller:["dataService", ArchiveTasks],
+      controller:ArchiveTasks,
       controllerAs:"archCtrl",
       templateUrl:"sources/components/archiveTasks/archive.template.html",
       bindings:{
-         masComplete:"="
+         masComplete:"=",
+         masTest:"="
       }
    });
    function ArchiveTasks(){
-
    }
 })();

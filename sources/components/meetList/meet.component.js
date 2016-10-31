@@ -3,14 +3,13 @@
 	angular.module("meetList").
 	component("meetList",{
       templateUrl:"/sources/components/meetList/meet.template.html",
-      controller:["dataService", MeetListController],
+      controller:MeetListController,
       controllerAs:"meetCtrl",
       bindings:{
          meetData:"="
       }
    });
-	function MeetListController(service){
-      this.a=123;
+	function MeetListController(){
 	}
 }
 )();

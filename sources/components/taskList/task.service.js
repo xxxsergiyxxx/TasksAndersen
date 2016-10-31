@@ -9,12 +9,18 @@
          vmTaskServ.selTask=selTask;
 
          function addTask(tasksData){
-            tasksData.data.todos.push({title:vmTaskServ.task,done: false });
+            tasksData.data.todos.push({
+               title:vmTaskServ.task,
+               done: false });
          }
-         function delTask(tasksData){
+         function delTask(tasksData, completeTask){
             var oldTodos = tasksData.data.todos;
             for(var i=0;i<oldTodos.length;i++)
                if(oldTodos[i].done==true){
+                  completeTask.push({
+                     title:oldTodos[i].title,
+                     done:oldTodos[i].done
+                     });
                   oldTodos.splice(i,1);
                   i--;
             }
