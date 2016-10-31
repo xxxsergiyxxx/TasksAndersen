@@ -1,6 +1,6 @@
 (function(){
 	angular.module("containerList").
-      service("dataService", ["$http", DataService]);
+      service("dataService",["$http", DataService]);
 
    function DataService(http){
       var self=this;

@@ -1,3 +1,1 @@
-angular.module("headerData",[
-   "dataModule"
-   ]);
+angular.module("headerData",[]);

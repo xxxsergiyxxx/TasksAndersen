@@ -9,9 +9,6 @@
       var getRandom=getRandom;
       var vmContainerList=this;
       vmContainerList.getInfo=getInfo;
-      vmContainerList.alertTask=function(a){
-         alert(a);
-      }
       function getRandom(){
          return Math.floor(Math.random() * 3);
       }

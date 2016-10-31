@@ -1,2 +1,1 @@
-angular.module("taskList",[
-   "dataModule"]);
+angular.module("taskList",[]);

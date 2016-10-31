@@ -1,3 +1,1 @@
-angular.module("meetList",[
-   "dataModule"
-   ]);
+angular.module("meetList",[]);
