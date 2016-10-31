@@ -1,5 +1,5 @@
 (function(){
-	angular.module("dataModule").
+	angular.module("containerList").
       service("dataService", ["$http", DataService]);
 
    function DataService(http){
