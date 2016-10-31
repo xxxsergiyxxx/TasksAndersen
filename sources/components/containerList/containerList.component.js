@@ -21,6 +21,7 @@
          vmContainerList.mansInfo=service.getDataMansInfo();
          vmContainerList.tasksData=service.getDataTasks();
          vmContainerList.meetData=service.getDataMeetengs();
+         vmContainerList.compelteListData=service.getMasCompleteTask();
       }
    }
 })();

@@ -7,7 +7,6 @@
          controllerAs:"headCtrl",
          bindings:{
             mansInfo:"=",
-            testValue:"="
          }
    })
    function HeaderController(service){

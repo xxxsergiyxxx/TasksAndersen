@@ -12,11 +12,13 @@
       var _masMansInfo=[];
       var _masMeetengs=[];
       var _masTasks=[];
+      var _masCompleteTask=[];
       var idData;
       self.getData=getData;
       self.getDataMansInfo=getDataMansInfo;
       self.getDataMeetengs=getDataMeetengs;
       self.getDataTasks=getDataTasks;
+      self.getMasCompleteTask=getMasCompleteTask;
 
       (function memoryAllocation(){
          for(var i=0;i<masPathes.length;i++){
@@ -26,6 +28,7 @@
             
          }
       })();
+
       function getDataMansInfo(){
          return _masMansInfo[idData];
       }
@@ -35,7 +38,9 @@
       function getDataMeetengs(){
          return _masMeetengs[idData];
       }
-      
+      function getMasCompleteTask(){
+         return _masCompleteTask;
+      }
 
       function getManId(id){
          return http.get(masPathes[id]).then(function(res){
