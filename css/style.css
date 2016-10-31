@@ -1,20 +1,43 @@
+* { 
+    font-size: 100%; 
+    padding: 1px; 
+    margin: 1px; 
+} 
 .container{
    position:relative;
    width: 1050px;
    margin:auto;
 }
+#header-button{
+  width:100%;
+  margin-left:400px;
+
+}
+
+#header-info{
+  position:relative;
+  float:left;
+  border-right:1px solid black;
+  padding:5px;
+  min-height:600px;
+  min-width:150px;
+}
+
 #task-list{
    position:relative;
    float:left;
    width:300px;
+   margin-left:15px;
+   padding:5px;
 }
 #meet-list{
    position:relative;
+   padding:5px;
    float:left;
    width:300px;
 }
 #archive{
-	position:relative;
+	  position:relative;
     float:left;
     width:200px;
 }
