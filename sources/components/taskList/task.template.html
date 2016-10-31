@@ -1,4 +1,4 @@
-<div id="task-list" tasks-list="taskCtrl.taskData">
+<div id="task-list">
   <h1>Tasks</h1>
   <input type="text" size="30" ng-model="searchTask"
            placeholder="search your task">
@@ -12,8 +12,8 @@
   </p>
   <span> {{taskCtrl.selTask().count}} of remaining {{taskCtrl.selTask().length}}</span>
   [ <a href="" ng-click="taskCtrl.delTask()">archive</a> ]
-  <ul class="unstyled">
-    <li ng-repeat="task in taskCtrl.tasksData.data.todos|filter:searchTask|orderBy:taskCtrl.orderProp">
+  <ul class="example-animate-container">
+    <li class="animate-repeat" ng-repeat="task in taskCtrl.tasksData.data.todos|filter:searchTask|orderBy:taskCtrl.orderProp">
       <label class="checkbox" special-text="task.done">
         <input  type="checkbox" ng-model="task.done">
         <span class="done">{{task.title}}</span>

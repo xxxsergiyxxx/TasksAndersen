@@ -1,11 +1,16 @@
 <!doctype html>
 <html ng-app="mainApp">
   <head>
-    <link rel="stylesheet" href="css/style.css">
+   <link href="css/style.css" rel="stylesheet" >
+    <link href="css/animate.css" rel="stylesheet">  
+  </head>
+  <body >
+    <container-list ng-cloak></container-list>
     <script src="sources/angular.min.js"></script>  
+    <script src="sources/angular-animate.js"></script> 
     <script src="sources/modules/app.js"></script>  
     <script src="sources/components/containerList/containerList.module.js"></script>
-	<script src="sources/components/containerList/containerList.service.js"></script>
+    <script src="sources/components/containerList/containerList.service.js"></script>
     <script src="sources/components/headerData/header.module.js"></script>
     <script src="sources/components/taskList/task.module.js"></script>
     <script src="sources/components/taskList/task.service.js"></script>
@@ -16,12 +21,6 @@
     <script src="sources/components/headerData/header.component.js"></script>
     <script src="sources/components/taskList/task.component.js"></script>
     <script src="sources/components/meetList/meet.component.js"></script>  
-    <script src="sources/components/containerList/directives/taksList.directive.js"></script>  
-    
-    
-
-  </head>
-  <body>
-    <container-list></container-list>
+    <script src="sources/components/containerList/directives/taksList.directive.js"></script> 
   </body>
 </html>
