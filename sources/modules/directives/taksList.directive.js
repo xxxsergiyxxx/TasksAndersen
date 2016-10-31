@@ -1,13 +1,20 @@
 (function (){
    angular.module("containerList").
-      directive("tasksList", TaskList);
+      directive("specialText", TaskList);
       function TaskList(){
-         return function(scope, element, attr){
-           // var masTasks=scope.taskCtrl.taskData;
-            //element.on("click",function(ev){
-               //alert(element.val());
-            //});
-            //masTasks.data.todos.push({"title":"rock","done":"false"});
+         return {
+            link:function(scope, element, attr){
+                     element.on("click",function(ev){
+                        if(scope.task.done===true){
+                           element.css("text-decoration","line-through");
+                           element.css("color","gray");
+                        }else{
+                           element.css("text-decoration","none");
+                           element.css("color","black");
+                        }
+                     });
+                  },
+            restrict:"A"
          }
       }
 })();
