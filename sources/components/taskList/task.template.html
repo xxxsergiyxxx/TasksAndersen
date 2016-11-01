@@ -10,7 +10,7 @@
           <option value="done">Done</option>
         </select>
   </p>
-  <span> {{taskCtrl.select().count}} of remaining {{taskCtrl.select().length}}</span>
+  <span> {{taskCtrl.select().count}} of remaining {{taskCtrl.countInfo.length}}</span>
   [ <a href="" ng-click="taskCtrl.delete()">archive</a> ]
   <ul class="example-animate-container">
     <li class="animate-repeat" ng-repeat="task in taskCtrl.tasksData.data.todos|filter:searchTask|orderBy:taskCtrl.orderProp">

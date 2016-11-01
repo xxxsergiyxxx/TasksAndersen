@@ -24,7 +24,8 @@
          vmTaskList.delTask({tasksData:vmTaskList.tasksData,completeListData:vmTaskList.masComplete});
       };
       vmTaskList.select=function(){
-         return vmTaskList.selTask({tasksData:vmTaskList.tasksData});
+         vmTaskList.countInfo= vmTaskList.selTask({tasksData:vmTaskList.tasksData});
+         return vmTaskList.countInfo;
       };      
    }
 }

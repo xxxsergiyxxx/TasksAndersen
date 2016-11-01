@@ -10,7 +10,6 @@
 
          function addTask(tasksData, task){
             if(tasksData){
-               alert(task);
                tasksData.data.todos.push({
                   title:task,
                   done: false });
