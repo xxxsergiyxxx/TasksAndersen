@@ -10,8 +10,8 @@
           <option value="done">Done</option>
         </select>
   </p>
-  <span> {{taskCtrl.selTask().count}} of remaining {{taskCtrl.selTask().length}}</span>
-  [ <a href="" ng-click="taskCtrl.delTask()">archive</a> ]
+  <span> {{taskCtrl.select().count}} of remaining {{taskCtrl.select().length}}</span>
+  [ <a href="" ng-click="taskCtrl.delete()">archive</a> ]
   <ul class="example-animate-container">
     <li class="animate-repeat" ng-repeat="task in taskCtrl.tasksData.data.todos|filter:searchTask|orderBy:taskCtrl.orderProp">
       <label class="checkbox" special-text="task.done">
@@ -23,6 +23,6 @@
   <form >
     <input type="text" size="30" ng-model="taskCtrl.task"
            placeholder="add new todo here">
-    <input class="btn-primary" type="submit" value="add" ng-click="taskCtrl.addTask()">
+    <input class="btn-primary" type="submit"  value="add" ng-click="taskCtrl.adding()">
   </form>
 </div>

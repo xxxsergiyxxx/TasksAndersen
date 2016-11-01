@@ -5,8 +5,7 @@
       controllerAs:"archCtrl",
       templateUrl:"sources/components/archiveTasks/archive.template.html",
       bindings:{
-         masComplete:"=",
-         masTest:"="
+         masComplete:"<",
       }
    });
    function ArchiveTasks(){

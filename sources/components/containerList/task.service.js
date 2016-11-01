@@ -8,10 +8,11 @@
          vmTaskServ.delTask=delTask;
          vmTaskServ.selTask=selTask;
 
-         function addTask(tasksData){
+         function addTask(tasksData, task){
             if(tasksData){
+               alert(task);
                tasksData.data.todos.push({
-                  title:vmTaskServ.task,
+                  title:task,
                   done: false });
             }
          }

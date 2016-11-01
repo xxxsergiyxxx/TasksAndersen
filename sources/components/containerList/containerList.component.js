@@ -2,13 +2,17 @@
    angular.module("containerList").
       component("containerList",{
          templateUrl:"/sources/components/containerList/containerList.template.html",
-         controller:["dataService", ContainerListController],
+         controller:["dataService","taskService", ContainerListController],
          controllerAs:"contCtrl"
       });
-   function ContainerListController (service){     
+   function ContainerListController (service, taskService){     
       var getRandom=getRandom;
       var vmContainerList=this;
       vmContainerList.getInfo=getInfo;
+      vmContainerList.delTask=taskService.delTask;
+      vmContainerList.addTask=taskService.addTask;
+      vmContainerList.selTask=taskService.selTask;
+      vmContainerList.task="asdad";
       function getRandom(){
          return Math.floor(Math.random() * 3);
       }
@@ -18,7 +22,7 @@
          vmContainerList.mansInfo=service.getDataMansInfo();
          vmContainerList.tasksData=service.getDataTasks();
          vmContainerList.meetData=service.getDataMeetengs();
-         vmContainerList.compelteListData=service.getMasCompleteTask();
+         vmContainerList.completeListData=service.getMasCompleteTask();
       }
    }
 })();
