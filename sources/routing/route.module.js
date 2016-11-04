@@ -1,4 +1,4 @@
-angular.module('router', 
+angular.module('routerModule', 
 [
-   'ui.router'
+   "ui.router"
 ]);

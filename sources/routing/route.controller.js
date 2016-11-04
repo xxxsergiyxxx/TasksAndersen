@@ -1,20 +1,28 @@
 (function (){
-   angular.module("router").controller(["routeService", RouteController]).
-   config(["$stateProvider", Provider]);  
+   angular.module("routerModule").config(["$stateProvider", Provider]). 
+   controller("routeController",RouteController);
    var states;
-   function test($stateProvider){
-      for(state in $stateProvider)
-      alert (state);
-   }
-   
    function Provider(stateProvider){
-      states.forEach(function(state) {
-      $stateProvider.state(state);
-      });
+      stateProvider.state({
+       name: 'hello',
+       url: '/hello',
+       templateUrl: '/tab1.html'
+     }).state({
+       name: 'about',
+       url: '/about',
+       templateUrl: 'tab2.html'
+     }).state({
+       name:'test',
+       url:'/test',
+       component:"test",
+       resolve:{
+         myFunction:"asd"
+       }
+     })
    }
-   function RouteController(stateProvider){
-      states=stateProvider.getStates();
-      test();
+   function RouteController(routeService){
+      //states=routeService.getStates();
+      //test();
       alert("aa");
    }
 })();
