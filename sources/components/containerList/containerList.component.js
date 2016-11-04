@@ -12,7 +12,6 @@
       vmContainerList.delTask=taskService.delTask;
       vmContainerList.addTask=taskService.addTask;
       vmContainerList.selTask=taskService.selTask;
-      vmContainerList.task="asdad";
       function getRandom(){
          return Math.floor(Math.random() * 3);
       }

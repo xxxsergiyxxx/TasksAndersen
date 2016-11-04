@@ -1,4 +1,7 @@
 'use strict';
-angular.module("mainApp", [
-"containerList",
-"ngAnimate"]);
+angular.module("mainApp", 
+[
+   "router",
+   "containerList",
+   "ngAnimate",
+]);
