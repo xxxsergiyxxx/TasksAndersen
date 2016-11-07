@@ -1,11 +1,11 @@
-#h1 AngularJS Task3
+#AngularJS Task3
 ***
 ***
-#h2 Project structure
+## Project structure
 ***
-/sources
-  /components
-  /modules
-  /routing
-/css
-/json
+* /sources
+  *  /components
+  *  /modules
+  *  /routing
+* /css
+* /json
