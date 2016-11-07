@@ -1,4 +1,5 @@
 angular.module('routerModule', 
 [
-   "ui.router"
+   "ui.router",
+   "containerList"
 ]);

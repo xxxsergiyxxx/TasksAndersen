@@ -1,0 +1,25 @@
+{
+  "name": "task3",
+  "version": "1.0.1",
+  "description": "Task with using ui-router",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-animate": "^1.5.8",
+    "angular-ui-router": "^1.0.0-beta.1",
+    "http-server": "^0.9.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xxxsergiyxxx/TasksAndersen.git"
+  },
+  "author": "Sergey Kornilyuk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xxxsergiyxxx/TasksAndersen/issues"
+  },
+  "homepage": "https://github.com/xxxsergiyxxx/TasksAndersen#readme"
+}

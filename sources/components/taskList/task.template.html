@@ -14,7 +14,7 @@
   [ <a href="" ng-click="taskCtrl.delete()">archive</a> ]
   <ul class="example-animate-container">
     <li class="animate-repeat" ng-repeat="task in taskCtrl.tasksData.data.todos|filter:searchTask|orderBy:taskCtrl.orderProp">
-      <label class="checkbox" special-text="task.done">
+      <label class="checkbox" special-text>
         <input  type="checkbox" ng-model="task.done">
         <span class="done">{{task.title}}</span>
       </label>

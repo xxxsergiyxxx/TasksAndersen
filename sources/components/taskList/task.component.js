@@ -8,23 +8,22 @@
       bindings:{
          tasksData:"<",
          masComplete:"<",
-         newTask:"<",
-         addTask:"&",
-         delTask:"&",
-         selTask:"&"
+         addTask:"<",
+         delTask:"<",
+         selTask:"<"
       }
    });
 
    function TaskListController(){
       var vmTaskList=this;
       vmTaskList.adding=function(){
-         vmTaskList.addTask({tasksData:vmTaskList.tasksData,task:vmTaskList.task});
+         vmTaskList.addTask(vmTaskList.tasksData,vmTaskList.task);
       };
       vmTaskList.delete=function(){
-         vmTaskList.delTask({tasksData:vmTaskList.tasksData,completeListData:vmTaskList.masComplete});
+         vmTaskList.delTask(vmTaskList.tasksData,vmTaskList.masComplete);
       };
       vmTaskList.select=function(){
-         vmTaskList.countInfo= vmTaskList.selTask({tasksData:vmTaskList.tasksData});
+         vmTaskList.countInfo= vmTaskList.selTask(vmTaskList.tasksData);
          return vmTaskList.countInfo;
       };      
    }

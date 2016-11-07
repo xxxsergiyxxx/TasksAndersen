@@ -1,14 +1,10 @@
 (function(){
 	angular.module("containerList").
-      service("dataService",["$http", DataService]);
+      service("dataService",["$http","$q", DataService]);
 
-   function DataService(http){
+   function DataService(http, Q){
       var self=this;
-      var masPathes=[
-         "/json/mansInfo/jon.json",
-         "/json/mansInfo/nik.json",
-         "/json/mansInfo/victor.json"
-      ];
+      var _masNames=[];
       var _masMansInfo=[];
       var _masMeetengs=[];
       var _masTasks=[];
@@ -19,14 +15,16 @@
       self.getDataMeetengs=getDataMeetengs;
       self.getDataTasks=getDataTasks;
       self.getMasCompleteTask=getMasCompleteTask;
-      (function memoryAllocation(){
-         for(var i=0;i<masPathes.length;i++){
-            _masMansInfo[i]={};
-            _masTasks[i]={};
-            _masMeetengs[i]={};
-            
+      self.getAllMan=getAllMan;
+      
+      function memoryAllocation(){
+         for(var i=0;i<_masNames.length;i++){
+            _masMansInfo[_masNames[i]]={};
+            _masTasks[_masNames[i]]={};
+            _masMeetengs[_masNames[i]]={};
+            _masCompleteTask[_masNames[i]]=[];          
          }
-      })();
+      };
 
       function getDataMansInfo(){
          return _masMansInfo[idData];
@@ -40,29 +38,44 @@
       function getMasCompleteTask(){
          return _masCompleteTask[idData];
       }
-
-      function getManId(id){
-         return http.get(masPathes[id]).then(function(res){
-            _masMansInfo[idData].data=res.data
-            return res.data.toDoList;
+      function getAllMan(){
+         return http.get("/json/allMan.json").then(function(res){
+            for(var i=0;i<res.data.length;i++){
+               _masNames[i]=res.data[i].name;
+            }
+            memoryAllocation();
+            return res.data;
          })
       }
-      function getManTasks(path){
+      function getManId(path, def){
          return http.get(path).then(function(res){
+            _masMansInfo[idData].data=res.data
+            return {
+               path:res.data.toDoList,
+               def:def
+            };
+         })
+      }
+      function getManTasks(data){
+         return http.get(data.path).then(function(res){
             _masTasks[idData].data=res.data;
-            return res.data.meetingsFilePath;
+            data.path=res.data.meetingsFilePath;
+            return data;
          });
       }
-      function getManMeet(path){
-         return http.get(path).then(function(res){
-            _masMeetengs[idData].data=res.data;
+      function getManMeet(data){
+         return http.get(data.path).then(function(res){
+            _masMeetengs[idData].data=res.data
+            data.def.resolve();         
+            return res.data;
          });
       }
-      function getData(id){
-         idData=id;
-         if(!_masMansInfo[id].data){
-            _masCompleteTask[id]=[];
-            getManId(id).then(getManTasks).then(getManMeet);
+      function getData(path, name){
+         idData=name;
+         if(!_masMansInfo[name].data){
+            var deferred = Q.defer();
+            getManId(path, deferred).then(getManTasks).then(getManMeet);
+            return deferred.promise;
          }
       }
    }

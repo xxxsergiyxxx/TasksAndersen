@@ -3,6 +3,9 @@
     padding: 1px; 
     margin: 1px; 
 } 
+h1{
+  font-size: 25px;
+}
 .container{
    position:relative;
    width: 1050px;
@@ -17,9 +20,7 @@
 #header-info{
   position:relative;
   float:left;
-  border-right:1px solid black;
   padding:5px;
-  min-height:600px;
   min-width:150px;
 }
 
@@ -40,4 +41,18 @@
 	  position:relative;
     float:left;
     width:200px;
+}
+#container-left{
+  position: :relative;
+  float:left;
+  width:200px;
+}
+#container-right{
+  position: :relative;
+  float:left;
+  width:800px;
+}
+.header_info li{
+  display: inline;
+  margin-left:50px;
 }

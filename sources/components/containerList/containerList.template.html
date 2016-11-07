@@ -1,12 +1,12 @@
 <div class="container">
-	<div id="header-button">
-    	<input type="button" value="Load random user" ng-click="contCtrl.getInfo();">
+  <div id="container-left">
+      <ul ng-repeat="man in $ctrl.peoples">
+        <li>
+          <a ui-sref="people.allInfo.header({name:man.name})">{{man.name}}</a>
+        </li>
+      </ul>
     </div>
-   <header-info mans-info="contCtrl.mansInfo"></header-info>
-   <task-list tasks-data="contCtrl.tasksData" mas-complete="contCtrl.completeListData" 
-   			  new-task="contCtrl.task" add-task="contCtrl.addTask(tasksData,task)" 
-              del-task="contCtrl.delTask(tasksData, completeListData)" 
-              sel-task="contCtrl.selTask(tasksData)"></task-list>
-   <meet-list meet-data="contCtrl.meetData"></meet-list> 
-   <archive-tasks mas-complete="contCtrl.completeListData"></archive-tasks>
+    <div id="container-right">
+      <ui-view></ui-view>
+    </div>
 </div>
