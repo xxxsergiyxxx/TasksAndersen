@@ -23,8 +23,8 @@
 
 ### Running the Application during Development
 
-- Run `http-server`.
-- Navigate your browser to [http://localhost:8000/](http://localhost:8000/) to see the application 
+- Run `npm start`.
+- Navigate your browser to [http://localhost:8080/](http://localhost:8080/) to see the application 
 - running.
 
 [git-home]: https://git-scm.com
