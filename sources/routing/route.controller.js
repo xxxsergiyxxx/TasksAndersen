@@ -58,7 +58,7 @@
         }
      })
 
-     urlRouterProvider.otherwise('/people');
+     urlRouterProvider.otherwise('/');
    }
 
    function meetData(dataService){

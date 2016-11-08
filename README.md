@@ -21,6 +21,11 @@
 - Install the tool dependencies: `npm install`
 
 
+### Running the Application during Development
+
+- Run `http-server`.
+- Navigate your browser to [http://localhost:8000/](http://localhost:8000/) to see the application 
+- running.
 
 [git-home]: https://git-scm.com
 [git-setup]: https://help.github.com/articles/set-up-git/
