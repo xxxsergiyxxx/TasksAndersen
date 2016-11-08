@@ -19,3 +19,9 @@
 
 - Get [Node.js][node-download].
 - Install the tool dependencies: `npm install`
+
+
+
+[git-home]: https://git-scm.com
+[git-setup]: https://help.github.com/articles/set-up-git/
+[node-download]: https://nodejs.org/en/download/
