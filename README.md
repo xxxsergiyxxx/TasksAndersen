@@ -3,12 +3,13 @@
 ***
 ## Project structure
 ***
-* /sources
-  *  /components
-  *  /modules
-  *  /routing
-* /css
-* /json
+* /app
+  * /sources
+    * /components
+    * /modules
+    * /routing
+  * /css
+  * /json
 
 ### Git
 
