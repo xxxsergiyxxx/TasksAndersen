@@ -1,83 +1,81 @@
 (function(){
-	angular.module("containerList").
-      service("dataService",["$http","$q", DataService]);
-
-   function DataService(http, Q){
-      var self=this;
-      var _masNames=[];
-      var _masMansInfo=[];
-      var _masMeetengs=[];
-      var _masTasks=[];
-      var _masCompleteTask=[];
-      var idData;
-      self.getData=getData;
-      self.getDataMansInfo=getDataMansInfo;
-      self.getDataMeetengs=getDataMeetengs;
-      self.getDataTasks=getDataTasks;
-      self.getMasCompleteTask=getMasCompleteTask;
-      self.getAllMan=getAllMan;
-      
-      function memoryAllocation(){
-         for(var i=0;i<_masNames.length;i++){
-            _masMansInfo[_masNames[i]]={};
-            _masTasks[_masNames[i]]={};
-            _masMeetengs[_masNames[i]]={};
-            _masCompleteTask[_masNames[i]]=[];          
+   class DataService1{
+      constructor(http, Q){
+         this._masNames=[];
+         this._masMansInfo=[];
+         this._masMeetengs=[];
+         this._masTasks=[];
+         this._masCompleteTask=[];
+         this.idData;
+         this.http=http;
+         this.Q=Q;
+      }
+      memoryAllocation(){
+         for(var i=0;i<this._masNames.length;i++){
+            this._masMansInfo[this._masNames[i]]={};
+            this._masTasks[this._masNames[i]]={};
+            this._masMeetengs[this._masNames[i]]={};
+            this._masCompleteTask[this._masNames[i]]=[];          
          }
-      };
+      }
 
-      function getDataMansInfo(){
-         return _masMansInfo[idData];
+      getDataMansInfo(){
+         return this._masMansInfo[this.idData];
       }
-      function getDataTasks(){
-         return _masTasks[idData];
+      getDataTasks(){
+         return this._masTasks[this.idData];
       }
-      function getDataMeetengs(){
-         return _masMeetengs[idData];
+      getDataMeetengs(){
+         return this._masMeetengs[this.idData];
       }
-      function getMasCompleteTask(){
-         return _masCompleteTask[idData];
+      getMasCompleteTask(){
+         return this._masCompleteTask[this.idData];
       }
-      function getAllMan(){
-         return http.get("/json/allMan.json").then(function(res){
+      getAllMan(){
+         return this.http.get("/json/allMan.json").then(res =>{
             for(var i=0;i<res.data.length;i++){
-               _masNames[i]=res.data[i].name;
+               this._masNames[i]=res.data[i].name;
+               
             }
-            memoryAllocation();
+            this.memoryAllocation();
             return res.data;
          })
       }
-      function getManId(path, def){
-         return http.get(path).then(function(res){
-            _masMansInfo[idData].data=res.data
+      getManId(path, def){
+         var salfe=this;
+         return this.http.get(path).then(res=>{
+            this._masMansInfo[this.idData].data=res.data
             return {
                path:res.data.toDoList,
                def:def
             };
          })
       }
-      function getManTasks(data){
-         return http.get(data.path).then(function(res){
-            _masTasks[idData].data=res.data;
+      getManTasks(data){
+         return this.http.get(data.path).then(res =>{
+            this._masTasks[this.idData].data=res.data;
             data.path=res.data.meetingsFilePath;
             return data;
          });
       }
-      function getManMeet(data){
-         return http.get(data.path).then(function(res){
-            _masMeetengs[idData].data=res.data
+      getManMeet(data){
+         return this.http.get(data.path).then(res =>{
+            this._masMeetengs[this.idData].data=res.data
             data.def.resolve();         
             return res.data;
          });
       }
-      function getData(path, name){
-         idData=name;
-         if(!_masMansInfo[name].data){
-            var deferred = Q.defer();
-            getManId(path, deferred).then(getManTasks).then(getManMeet);
+      getData(path, name){
+         this.idData=name;
+         if(!this._masMansInfo[name].data){
+            var deferred = this.Q.defer();
+            var th=this;
+            this.getManId(path, deferred).then(this.getManTasks).then(this.getManMeet);
             return deferred.promise;
          }
       }
    }
+	angular.module("containerList").
+      service("dataService",["$http","$q", DataService1]);
 }
 )();

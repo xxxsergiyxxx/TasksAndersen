@@ -1,1 +1,2 @@
-angular.module("meetList",[]);
+export default angular.module("meetList",[]);
+require("./meet.component.js");
