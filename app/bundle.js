@@ -36018,11 +36018,13 @@
 
 	var _containerListModule2 = _interopRequireDefault(_containerListModule);
 
+	var _routeController = __webpack_require__(22);
+
+	var _routeController2 = _interopRequireDefault(_routeController);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = _angular2.default.module('routerModule', ['ui.router', _containerListModule2.default.name]);
-
-	__webpack_require__(22);
+	exports.default = _angular2.default.module('routerModule', ['ui.router', _containerListModule2.default.name]).config(_routeController2.default);
 
 /***/ },
 /* 6 */
@@ -44377,7 +44379,7 @@
 /* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	   value: true
@@ -44387,14 +44389,27 @@
 
 	var _infoModule2 = _interopRequireDefault(_infoModule);
 
+	var _containerListService = __webpack_require__(18);
+
+	var _containerListService2 = _interopRequireDefault(_containerListService);
+
+	var _taskService = __webpack_require__(20);
+
+	var _taskService2 = _interopRequireDefault(_taskService);
+
+	var _taksListDirective = __webpack_require__(21);
+
+	var _taksListDirective2 = _interopRequireDefault(_taksListDirective);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = angular.module("containerList", [_infoModule2.default.name]);
-
-	__webpack_require__(18);
-	__webpack_require__(19);
-	__webpack_require__(20);
-	__webpack_require__(21);
+	var template = __webpack_require__(23);
+	exports.default = angular.module("containerList", [_infoModule2.default.name]).service("dataService", ["$http", "$q", _containerListService2.default]).service("taskService", _taskService2.default).component("containerList", {
+	   template: template,
+	   bindings: {
+	      peoples: '<'
+	   }
+	}).directive("specialText", _taksListDirective2.default);
 
 /***/ },
 /* 8 */
@@ -44424,9 +44439,10 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = angular.module("containerInfo", [_headerModule2.default.name, _taskModule2.default.name, _meetModule2.default.name, _archiveModule2.default.name]);
-
-	__webpack_require__(17);
+	var template = __webpack_require__(29);
+	exports.default = angular.module("containerInfo", [_headerModule2.default.name, _taskModule2.default.name, _meetModule2.default.name, _archiveModule2.default.name]).component("containerInfo", {
+	   template: template
+	});
 
 /***/ },
 /* 9 */
@@ -44435,77 +44451,79 @@
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	   value: true
 	});
-	exports.default = angular.module("headerData", []);
-
-	__webpack_require__(10);
-
-/***/ },
-/* 10 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	(function () {
-
-	   angular.module("headerData").component("headerInfo", {
-	      templateUrl: "/sources/components/headerData/header.template.html",
-	      controllerAs: "headCtrl",
-	      bindings: {
-	         mansInfo: "<"
-	      }
-	   });
-	})();
+	var template = __webpack_require__(24);
+	exports.default = angular.module("headerData", []).component("headerInfo", {
+	   template: template,
+	   controllerAs: "headCtrl",
+	   bindings: {
+	      mansInfo: "<"
+	   }
+	});
 
 /***/ },
+/* 10 */,
 /* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	               value: true
 	});
-	exports.default = angular.module("taskList", []);
 
-	__webpack_require__(12);
+	var _taskComponent = __webpack_require__(12);
+
+	var _taskComponent2 = _interopRequireDefault(_taskComponent);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = angular.module("taskList", []).component("taskList", _taskComponent2.default);
 
 /***/ },
 /* 12 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	(function () {
+	Object.defineProperty(exports, "__esModule", {
+	   value: true
+	});
 
-	   angular.module("taskList").component("taskList", {
-	      templateUrl: "/sources/components/taskList/task.template.html",
-	      controller: TaskListController,
-	      controllerAs: "taskCtrl",
-	      bindings: {
-	         tasksData: "<",
-	         masComplete: "<",
-	         addTask: "<",
-	         delTask: "<",
-	         selTask: "<"
-	      }
-	   });
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	   function TaskListController() {
-	      var vmTaskList = this;
-	      vmTaskList.adding = function () {
-	         vmTaskList.addTask(vmTaskList.tasksData, vmTaskList.task);
-	      };
-	      vmTaskList.delete = function () {
-	         vmTaskList.delTask(vmTaskList.tasksData, vmTaskList.masComplete);
-	      };
-	      vmTaskList.select = function () {
-	         vmTaskList.countInfo = vmTaskList.selTask(vmTaskList.tasksData);
-	         return vmTaskList.countInfo;
-	      };
+	var template = __webpack_require__(27);
+
+	var TaskListController = function TaskListController() {
+	   var _this = this;
+
+	   _classCallCheck(this, TaskListController);
+
+	   this.adding = function () {
+	      _this.addTask(_this.tasksData, _this.task);
+	   };
+	   this.delete = function () {
+	      _this.delTask(_this.tasksData, _this.masComplete);
+	   };
+	   this.select = function () {
+	      _this.countInfo = _this.selTask(_this.tasksData);
+	      return _this.countInfo;
+	   };
+	};
+
+	exports.default = {
+	   template: template,
+	   controller: TaskListController,
+	   controllerAs: "taskCtrl",
+	   bindings: {
+	      tasksData: "<",
+	      masComplete: "<",
+	      addTask: "<",
+	      delTask: "<",
+	      selTask: "<"
 	   }
-	})();
+	};
 
 /***/ },
 /* 13 */
@@ -44514,273 +44532,233 @@
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	   value: true
 	});
-	exports.default = angular.module("meetList", []);
-
-	__webpack_require__(14);
-
-/***/ },
-/* 14 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	(function () {
-
-	   angular.module("meetList").component("meetList", {
-	      templateUrl: "/sources/components/meetList/meet.template.html",
-	      controllerAs: "meetCtrl",
-	      bindings: {
-	         meetData: "<"
-	      }
-	   });
-	})();
+	var template = __webpack_require__(26);
+	exports.default = angular.module("meetList", []).component("meetList", {
+	   template: template,
+	   controllerAs: "meetCtrl",
+	   bindings: {
+	      meetData: "<"
+	   }
+	});
 
 /***/ },
+/* 14 */,
 /* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	   value: true
 	});
-	exports.default = angular.module("archiveTasks", []);
-
-	__webpack_require__(16);
-
-/***/ },
-/* 16 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	(function () {
-	   angular.module("archiveTasks").component("archiveTasks", {
-	      templateUrl: "sources/components/archiveTasks/archive.template.html",
-	      bindings: {
-	         masComplete: "<"
-	      }
-	   });
-	})();
+	var template = __webpack_require__(31);
+	exports.default = angular.module("archiveTasks", []).component("archiveTasks", {
+	   template: template,
+	   bindings: {
+	      masComplete: "<"
+	   }
+	});
 
 /***/ },
-/* 17 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	(function () {
-	   angular.module("containerInfo").component("containerInfo", {
-	      templateUrl: "/sources/components/containerInfo/info.template.html"
-	   });
-	})();
-
-/***/ },
+/* 16 */,
+/* 17 */,
 /* 18 */
 /***/ function(module, exports) {
 
 	"use strict";
 
+	Object.defineProperty(exports, "__esModule", {
+	   value: true
+	});
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	(function () {
-	   var DataService1 = function () {
-	      function DataService1(http, Q) {
-	         _classCallCheck(this, DataService1);
+	var DataService = function () {
+	   function DataService(http, Q) {
+	      _classCallCheck(this, DataService);
 
-	         this._masNames = [];
-	         this._masMansInfo = [];
-	         this._masMeetengs = [];
-	         this._masTasks = [];
-	         this._masCompleteTask = [];
-	         this.idData;
-	         this.http = http;
-	         this.Q = Q;
+	      this._masNames = [];
+	      this._masMansInfo = [];
+	      this._masMeetengs = [];
+	      this._masTasks = [];
+	      this._masCompleteTask = [];
+	      this.idData;
+	      this.http = http;
+	      this.Q = Q;
+	   }
+
+	   _createClass(DataService, [{
+	      key: "memoryAllocation",
+	      value: function memoryAllocation() {
+	         for (var i = 0; i < this._masNames.length; i++) {
+	            this._masMansInfo[this._masNames[i]] = {};
+	            this._masTasks[this._masNames[i]] = {};
+	            this._masMeetengs[this._masNames[i]] = {};
+	            this._masCompleteTask[this._masNames[i]] = [];
+	         }
 	      }
+	   }, {
+	      key: "getDataMansInfo",
+	      value: function getDataMansInfo() {
+	         return this._masMansInfo[this.idData];
+	      }
+	   }, {
+	      key: "getDataTasks",
+	      value: function getDataTasks() {
+	         return this._masTasks[this.idData];
+	      }
+	   }, {
+	      key: "getDataMeetengs",
+	      value: function getDataMeetengs() {
+	         return this._masMeetengs[this.idData];
+	      }
+	   }, {
+	      key: "getMasCompleteTask",
+	      value: function getMasCompleteTask() {
+	         return this._masCompleteTask[this.idData];
+	      }
+	   }, {
+	      key: "getAllMan",
+	      value: function getAllMan() {
+	         var _this = this;
 
-	      _createClass(DataService1, [{
-	         key: "memoryAllocation",
-	         value: function memoryAllocation() {
-	            for (var i = 0; i < this._masNames.length; i++) {
-	               this._masMansInfo[this._masNames[i]] = {};
-	               this._masTasks[this._masNames[i]] = {};
-	               this._masMeetengs[this._masNames[i]] = {};
-	               this._masCompleteTask[this._masNames[i]] = [];
+	         return this.http.get("/json/allMan.json").then(function (res) {
+	            for (var i = 0; i < res.data.length; i++) {
+	               _this._masNames[i] = res.data[i].name;
+	               alert;
 	            }
-	         }
-	      }, {
-	         key: "getDataMansInfo",
-	         value: function getDataMansInfo() {
-	            return this._masMansInfo[this.idData];
-	         }
-	      }, {
-	         key: "getDataTasks",
-	         value: function getDataTasks() {
-	            return this._masTasks[this.idData];
-	         }
-	      }, {
-	         key: "getDataMeetengs",
-	         value: function getDataMeetengs() {
-	            return this._masMeetengs[this.idData];
-	         }
-	      }, {
-	         key: "getMasCompleteTask",
-	         value: function getMasCompleteTask() {
-	            return this._masCompleteTask[this.idData];
-	         }
-	      }, {
-	         key: "getAllMan",
-	         value: function getAllMan() {
-	            var _this = this;
+	            _this.memoryAllocation();
+	            return res.data;
+	         });
+	      }
+	   }, {
+	      key: "getManId",
+	      value: function getManId(path, def) {
+	         var _this2 = this;
 
-	            return this.http.get("/json/allMan.json").then(function (res) {
-	               for (var i = 0; i < res.data.length; i++) {
-	                  _this._masNames[i] = res.data[i].name;
-	               }
-	               _this.memoryAllocation();
-	               return res.data;
-	            });
-	         }
-	      }, {
-	         key: "getManId",
-	         value: function getManId(path, def) {
-	            var _this2 = this;
+	         var salfe = this;
+	         return this.http.get(path).then(function (res) {
+	            _this2._masMansInfo[_this2.idData].data = res.data;
+	            return {
+	               path: res.data.toDoList,
+	               def: def
+	            };
+	         });
+	      }
+	   }, {
+	      key: "getManTasks",
+	      value: function getManTasks(data) {
+	         var _this3 = this;
 
-	            var salfe = this;
-	            return this.http.get(path).then(function (res) {
-	               _this2._masMansInfo[_this2.idData].data = res.data;
-	               return {
-	                  path: res.data.toDoList,
-	                  def: def
-	               };
-	            });
-	         }
-	      }, {
-	         key: "getManTasks",
-	         value: function getManTasks(data) {
-	            var _this3 = this;
+	         return this.http.get(data.path).then(function (res) {
+	            _this3._masTasks[_this3.idData].data = res.data;
+	            data.path = res.data.meetingsFilePath;
+	            return data;
+	         });
+	      }
+	   }, {
+	      key: "getManMeet",
+	      value: function getManMeet(data) {
+	         var _this4 = this;
 
-	            return this.http.get(data.path).then(function (res) {
-	               _this3._masTasks[_this3.idData].data = res.data;
-	               data.path = res.data.meetingsFilePath;
-	               return data;
-	            });
+	         return this.http.get(data.path).then(function (res) {
+	            _this4._masMeetengs[_this4.idData].data = res.data;
+	            data.def.resolve();
+	            return res.data;
+	         });
+	      }
+	   }, {
+	      key: "getData",
+	      value: function getData(path, name) {
+	         this.idData = name;
+	         alert(name);
+	         if (!this._masMansInfo[name].data) {
+	            var deferred = this.Q.defer();
+	            var th = this;
+	            this.getManId(path, deferred).then(this.getManTasks).then(this.getManMeet);
+	            return deferred.promise;
 	         }
-	      }, {
-	         key: "getManMeet",
-	         value: function getManMeet(data) {
-	            var _this4 = this;
+	      }
+	   }]);
 
-	            return this.http.get(data.path).then(function (res) {
-	               _this4._masMeetengs[_this4.idData].data = res.data;
-	               data.def.resolve();
-	               return res.data;
-	            });
-	         }
-	      }, {
-	         key: "getData",
-	         value: function getData(path, name) {
-	            this.idData = name;
-	            if (!this._masMansInfo[name].data) {
-	               var deferred = this.Q.defer();
-	               var th = this;
-	               this.getManId(path, deferred).then(this.getManTasks).then(this.getManMeet);
-	               return deferred.promise;
-	            }
-	         }
-	      }]);
+	   return DataService;
+	}();
 
-	      return DataService1;
-	   }();
-
-	   angular.module("containerList").service("dataService", ["$http", "$q", DataService1]);
-	})();
+	exports.default = DataService;
 
 /***/ },
-/* 19 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	(function () {
-	   angular.module("containerList").component("containerList", {
-	      templateUrl: "/sources/components/containerList/containerList.template.html",
-	      bindings: {
-	         peoples: '<'
-	      }
-	   });
-	})();
-
-/***/ },
+/* 19 */,
 /* 20 */
 /***/ function(module, exports) {
 
 	"use strict";
 
+	Object.defineProperty(exports, "__esModule", {
+	   value: true
+	});
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	(function () {
-	   var TaskService = function () {
-	      function TaskService() {
-	         _classCallCheck(this, TaskService);
-	      }
+	var TaskService = function () {
+	   function TaskService() {
+	      _classCallCheck(this, TaskService);
+	   }
 
-	      _createClass(TaskService, [{
-	         key: "addTask",
-	         value: function addTask(tasksData, task) {
-	            if (tasksData) {
-	               tasksData.data.todos.push({
-	                  title: task,
-	                  done: false });
-	            }
+	   _createClass(TaskService, [{
+	      key: "addTask",
+	      value: function addTask(tasksData, task) {
+	         if (tasksData) {
+	            tasksData.data.todos.push({
+	               title: task,
+	               done: false });
 	         }
-	      }, {
-	         key: "delTask",
-	         value: function delTask(tasksData, completeTask) {
-	            if (tasksData) {
-	               var oldTodos = tasksData.data.todos;
-	               for (var i = 0; i < oldTodos.length; i++) {
-	                  if (oldTodos[i].done == true) {
-	                     completeTask.push({
-	                        title: oldTodos[i].title,
-	                        done: oldTodos[i].done
-	                     });
-	                     oldTodos.splice(i, 1);
-	                     i--;
-	                  }
+	      }
+	   }, {
+	      key: "delTask",
+	      value: function delTask(tasksData, completeTask) {
+	         if (tasksData) {
+	            var oldTodos = tasksData.data.todos;
+	            for (var i = 0; i < oldTodos.length; i++) {
+	               if (oldTodos[i].done == true) {
+	                  completeTask.push({
+	                     title: oldTodos[i].title,
+	                     done: oldTodos[i].done
+	                  });
+	                  oldTodos.splice(i, 1);
+	                  i--;
 	               }
 	            }
 	         }
-	      }, {
-	         key: "selTask",
-	         value: function selTask(tasksData) {
-	            if (tasksData && tasksData.data) {
-	               var oldTodos = tasksData.data.todos;
-	               var length = oldTodos.length;
-	               var count = 0;
-	               for (var i = 0; i < oldTodos.length; i++) {
-	                  if (oldTodos[i].done == true) {
-	                     count++;
-	                  }
-	               }return {
-	                  length: length,
-	                  count: count
-	               };
-	            }
+	      }
+	   }, {
+	      key: "selTask",
+	      value: function selTask(tasksData) {
+	         if (tasksData && tasksData.data) {
+	            var oldTodos = tasksData.data.todos;
+	            var length = oldTodos.length;
+	            var count = 0;
+	            for (var i = 0; i < oldTodos.length; i++) {
+	               if (oldTodos[i].done == true) {
+	                  count++;
+	               }
+	            }return {
+	               length: length,
+	               count: count
+	            };
 	         }
-	      }]);
+	      }
+	   }]);
 
-	      return TaskService;
-	   }();
+	   return TaskService;
+	}();
 
-	   angular.module("containerList").service("taskService", TaskService);
-	})();
+	exports.default = TaskService;
 
 /***/ },
 /* 21 */
@@ -44788,139 +44766,239 @@
 
 	"use strict";
 
-	(function () {
-	   angular.module("containerList").directive("specialText", TaskList);
-	   function TaskList() {
-	      return {
-	         link: function link(scope, element, attr) {
-	            element.on("click", function (ev) {
-	               if (ev.target.type == "checkbox") {
-	                  if (element.css("text-decoration") == "none" || !element.css("text-decoration")) {
-	                     element.css("text-decoration", "line-through");
-	                     element.css("color", "gray");
-	                  } else {
-	                     element.css("text-decoration", "none");
-	                     element.css("color", "black");
-	                  }
+	Object.defineProperty(exports, "__esModule", {
+	   value: true
+	});
+	exports.default = TaskList;
+	function TaskList() {
+	   return {
+	      link: function link(scope, element, attr) {
+	         element.on("click", function (ev) {
+	            if (ev.target.type == "checkbox") {
+	               if (element.css("text-decoration") == "none" || !element.css("text-decoration")) {
+	                  element.css("text-decoration", "line-through");
+	                  element.css("color", "gray");
+	               } else {
+	                  element.css("text-decoration", "none");
+	                  element.css("color", "black");
 	               }
-	            });
-	         },
-	         restrict: "A"
-	      };
-	   }
-	})();
+	            }
+	         });
+	      },
+	      restrict: "A"
+	   };
+	}
 
 /***/ },
 /* 22 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
-	(function () {
-	   angular.module("routerModule").config(["$stateProvider", "$urlRouterProvider", Provider]);
-	   function Provider(stateProvider, urlRouterProvider) {
-	      stateProvider.state({
+	Object.defineProperty(exports, "__esModule", {
+	   value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var about = __webpack_require__(33);
+	var hello = __webpack_require__(34);
+
+	var Provider = function () {
+	   function Provider($stateProvider, $urlRouterProvider) {
+	      var _this = this;
+
+	      _classCallCheck(this, Provider);
+
+	      this.stateProvider = $stateProvider;
+	      this.urlRouterProvider = $urlRouterProvider;
+	      var states = [{
 	         name: 'hello',
 	         url: '/hello',
-	         templateUrl: "/sources/templates/hello.template.html"
-	      }).state({
+	         template: hello
+	      }, {
 	         name: 'about',
 	         url: '/about',
-	         templateUrl: "/sources/templates/about.template.html"
-	      }).state({
+	         template: about
+	      }, {
 	         name: 'people',
 	         url: '/people',
 	         component: "containerList",
 	         resolve: {
-	            peoples: ["dataService", getPeoples]
+	            peoples: ["dataService", this.getPeoples]
 	         }
-	      }).state({
+	      }, {
 	         name: 'people.allInfo',
 	         abstract: true,
 	         url: '/{name}',
 	         component: "containerInfo",
 	         resolve: {
-	            getInfo: ["peoples", "$stateParams", "dataService", getInfo]
+	            getInfo: ["peoples", "$stateParams", "dataService", this.getInfo]
 	         }
-	      }).state({
+	      }, {
 	         name: 'people.allInfo.header',
 	         url: '/header',
 	         component: "headerInfo",
 	         resolve: {
-	            mansInfo: ["dataService", mansInfo]
+	            mansInfo: ["dataService", this.mansInfo]
 	         }
-	      }).state({
+	      }, {
 	         name: 'people.allInfo.taskList',
 	         url: '/taskList',
 	         component: "taskList",
 	         resolve: {
-	            tasksData: ["dataService", taskData],
-	            masComplete: ["dataService", masComplete],
-	            addTask: ["taskService", addTask],
-	            delTask: ["taskService", delTask],
-	            selTask: ["taskService", selTask]
+	            tasksData: ["dataService", this.taskData],
+	            masComplete: ["dataService", this.masComplete],
+	            addTask: ["taskService", this.addTask],
+	            delTask: ["taskService", this.delTask],
+	            selTask: ["taskService", this.selTask]
 	         }
-	      }).state({
+	      }, {
 	         name: 'people.allInfo.meets',
 	         url: '/meets',
 	         component: "meetList",
 	         resolve: {
-	            meetData: ["dataService", meetData]
+	            meetData: ["dataService", this.meetData]
 	         }
-	      }).state({
+	      }, {
 	         name: 'people.allInfo.archive',
 	         url: '/archive',
 	         component: "archiveTasks",
 	         resolve: {
-	            masComplete: ["dataService", masComplete]
+	            masComplete: ["dataService", this.masComplete]
 	         }
+	      }];
+	      states.forEach(function (state) {
+	         _this.stateProvider.state(state);
 	      });
-
-	      urlRouterProvider.otherwise('/');
+	      this.urlRouterProvider.otherwise('/');
 	   }
 
-	   function meetData(dataService) {
-	      return dataService.getDataMeetengs();
-	   }
-	   function masComplete(dataService) {
-	      return dataService.getMasCompleteTask();
-	   }
-
-	   function taskData(dataService) {
-	      return dataService.getDataTasks();
-	   }
-
-	   function getPeoples(dataService) {
-	      return dataService.getAllMan();
-	   }
-
-	   function addTask(taskService) {
-	      return taskService.addTask;
-	   }
-
-	   function delTask(taskService) {
-	      return taskService.delTask;
-	   }
-
-	   function selTask(taskService) {
-	      return taskService.selTask;
-	   }
-	   function findPeople(peoples, stateParams) {
-	      return peoples.find(function (person) {
-	         return person.name === stateParams.name;
-	      });
-	   }
-	   function getInfo(peoples, stateParams, dataService) {
-	      var people = findPeople(peoples, stateParams);
-	      if (people) {
-	         return dataService.getData(people.info, people.name);
+	   _createClass(Provider, [{
+	      key: 'meetData',
+	      value: function meetData(dataService) {
+	         return dataService.getDataMeetengs();
 	      }
-	   }
+	   }, {
+	      key: 'masComplete',
+	      value: function masComplete(dataService) {
+	         return dataService.getMasCompleteTask();
+	      }
+	   }, {
+	      key: 'taskData',
+	      value: function taskData(dataService) {
+	         return dataService.getDataTasks();
+	      }
+	   }, {
+	      key: 'getPeoples',
+	      value: function getPeoples(dataService) {
+	         return dataService.getAllMan();
+	      }
+	   }, {
+	      key: 'addTask',
+	      value: function addTask(taskService) {
+	         return taskService.addTask;
+	      }
+	   }, {
+	      key: 'delTask',
+	      value: function delTask(taskService) {
+	         return taskService.delTask;
+	      }
+	   }, {
+	      key: 'selTask',
+	      value: function selTask(taskService) {
+	         return taskService.selTask;
+	      }
+	   }, {
+	      key: 'findPeople',
+	      value: function findPeople(peoples, stateParams) {
+	         return peoples.find(function (person) {
+	            return person.name === stateParams.name;
+	         });
+	      }
+	   }, {
+	      key: 'getInfo',
+	      value: function getInfo(peoples, stateParams, dataService) {
+	         var people = this.findPeople(peoples, stateParams);
+	         if (people) {
+	            return dataService.getData(people.info, people.name);
+	         }
+	      }
+	   }, {
+	      key: 'mansInfo',
+	      value: function mansInfo(dataService) {
+	         return dataService.getDataMansInfo();
+	      }
+	   }], [{
+	      key: 'getStates',
+	      value: function getStates() {
+	         var inj = function inj(stateProvider, urlRouterProvider) {
+	            return new Provider(stateProvider, urlRouterProvider);
+	         };
+	         inj.$inject = ["$stateProvider", "$urlRouterProvider"];
+	         return inj;
+	      }
+	   }]);
 
-	   function mansInfo(dataService) {
-	      return dataService.getDataMansInfo();
-	   }
-	})();
+	   return Provider;
+	}();
+
+	Provider.$inject = ["$stateProvider", "$urlRouterProvider"];
+	exports.default = Provider.getStates();
+
+/***/ },
+/* 23 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"container\">\r\n  <div id=\"container-left\">\r\n      <ul ng-repeat=\"man in $ctrl.peoples\">\r\n        <li>\r\n          <a ui-sref=\"people.allInfo.header({name:man.name})\">{{man.name}}</a>\r\n        </li>\r\n      </ul>\r\n    </div>\r\n    <div id=\"container-right\">\r\n      <ui-view></ui-view>\r\n    </div>\r\n</div>";
+
+/***/ },
+/* 24 */
+/***/ function(module, exports) {
+
+	module.exports = "<div id=\"header-info\">\r\n    <h1>Info </h1>\r\n    <p>\r\n        <label>Name:</label>\r\n        <label>{{headCtrl.mansInfo.data.name}}</label>\r\n    </p>\r\n    <p>\r\n        <label>Surname:</label>\r\n        <label>{{headCtrl.mansInfo.data.surname}}</label>\r\n    </p>\r\n    <p>\r\n        <label>Age:</label>\r\n        <label>{{headCtrl.mansInfo.data.age}}</label>\r\n    </p>\r\n    <p>\r\n        <label>Gender:</label>\r\n        <label>{{headCtrl.mansInfo.data.gender}}</label>\r\n    </p>\r\n</div>";
+
+/***/ },
+/* 25 */,
+/* 26 */
+/***/ function(module, exports) {
+
+	module.exports = "<div id=\"meet-list\">\r\n<h1>Meetengs</h1>\r\n    <ul class=\"example-animate-container\">\r\n        <li class=\"animate-repeat\" ng-repeat=\"meet in meetCtrl.meetData.data\">\r\n            <h2>Meet {{$index+1}}</h2>\r\n            <p>\r\n                <label>\r\n                    Place:\r\n                </label>\r\n                <label>\r\n                    {{meet.place}}\r\n                </label>\r\n            </p>\r\n                <label>\r\n                    Time:\r\n                </label>\r\n                <label>\r\n                    {{meet.time}}\r\n                </label>\r\n            <p>\r\n                <label>\r\n                    Description:\r\n                </label>\r\n                <label>\r\n                    {{meet.description}}\r\n                </label>\r\n            </p>\r\n        </li>\r\n    </ul>\r\n</div>";
+
+/***/ },
+/* 27 */
+/***/ function(module, exports) {
+
+	module.exports = "<div id=\"task-list\">\r\n  <h1>Tasks</h1>\r\n  <input type=\"text\" size=\"30\" ng-model=\"searchTask.title\"\r\n           placeholder=\"search your task\">\r\n  <br>\r\n  <p>\r\n        Sort by:\r\n        <select ng-model=\"taskCtrl.orderProp\">\r\n          <option value=\"title\">Title</option>\r\n          <option value=\"done\">Done</option>\r\n        </select>\r\n  </p>\r\n  <span> {{taskCtrl.select().count}} of remaining {{taskCtrl.countInfo.length}}</span>\r\n  [ <a href=\"\" ng-click=\"taskCtrl.delete()\">archive</a> ]\r\n  <ul class=\"example-animate-container\">\r\n    <li class=\"animate-repeat\" ng-repeat=\"task in taskCtrl.tasksData.data.todos|filter:searchTask|orderBy:taskCtrl.orderProp\">\r\n      <label class=\"checkbox\" special-text>\r\n        <input  type=\"checkbox\" ng-model=\"task.done\">\r\n        <span class=\"done\">{{task.title}}</span>\r\n      </label>\r\n    </li>\r\n  </ul>\r\n  <form >\r\n    <input type=\"text\" size=\"30\" ng-model=\"taskCtrl.task\"\r\n           placeholder=\"add new todo here\">\r\n    <input class=\"btn-primary\" type=\"submit\"  value=\"add\" ng-click=\"taskCtrl.adding()\">\r\n  </form>\r\n</div>";
+
+/***/ },
+/* 28 */,
+/* 29 */
+/***/ function(module, exports) {
+
+	module.exports = "<div>\r\n  <div class=\"header_info\">\r\n    <ul >\r\n      <li>\r\n        <a ui-sref=\"people.allInfo.header\">Info</a>\r\n      </li>\r\n      <li>\r\n        <a ui-sref=\"people.allInfo.taskList\">Tasks</a>\r\n      </li>\r\n      <li>\r\n        <a ui-sref=\"people.allInfo.meets\">Meetings</a>\r\n      </li>\r\n      <li>\r\n        <a ui-sref=\"people.allInfo.archive\">Archive</a>\r\n      </li>\r\n    </ul>\r\n  </div>\r\n  <div id=\"info-by-user\">\r\n    <ui-view></ui-view>\r\n  </div>\r\n</div>";
+
+/***/ },
+/* 30 */,
+/* 31 */
+/***/ function(module, exports) {
+
+	module.exports = "<div id=\"archive\" class=\"example-animate-container\">\r\n\t<h1>Archive</h1>\r\n\t<p class=\"animate-repeat\" ng-repeat=\"item in $ctrl.masComplete\">\r\n\t\t{{item.title}}\r\n\t</p>\r\n</div>";
+
+/***/ },
+/* 32 */,
+/* 33 */
+/***/ function(module, exports) {
+
+	module.exports = "<div>\r\n    <h1>This is ABOUT page</h1>\r\n</div>";
+
+/***/ },
+/* 34 */
+/***/ function(module, exports) {
+
+	module.exports = "<div>\r\n    <h1>Hello, it`s me!!!</h1>\r\n</div>";
 
 /***/ }
 /******/ ]);

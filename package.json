@@ -3,9 +3,6 @@
   "version": "1.0.1",
   "description": "Task with using ui-router",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "dependencies": {
 	"angular": "^1.5.8",
     "babel-core": "^6.18.2",
@@ -30,6 +27,6 @@
   "scripts": {
     "prestart": "npm install",
     "start": "live-server ./app",
-    "pretest": "npm install"
+	"build":"webpack -w"
   }
 }

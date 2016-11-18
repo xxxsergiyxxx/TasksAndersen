@@ -1,5 +1,4 @@
-(function(){
-   class DataService1{
+   class DataService{
       constructor(http, Q){
          this._masNames=[];
          this._masMansInfo=[];
@@ -35,7 +34,7 @@
          return this.http.get("/json/allMan.json").then(res =>{
             for(var i=0;i<res.data.length;i++){
                this._masNames[i]=res.data[i].name;
-               
+               alert
             }
             this.memoryAllocation();
             return res.data;
@@ -67,6 +66,7 @@
       }
       getData(path, name){
          this.idData=name;
+         alert(name);
          if(!this._masMansInfo[name].data){
             var deferred = this.Q.defer();
             var th=this;
@@ -75,7 +75,5 @@
          }
       }
    }
-	angular.module("containerList").
-      service("dataService",["$http","$q", DataService1]);
-}
-)();
+export default DataService;
+      

@@ -1,2 +1,9 @@
-export default angular.module("meetList",[]);
-require("./meet.component.js");
+var template=require("html!./meet.template.html");
+export default angular.module("meetList",[])
+               .component("meetList",{
+                  template,
+                  controllerAs:"meetCtrl",
+                  bindings:{
+                     meetData:"<"
+                  }
+               });

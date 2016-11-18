@@ -1,8 +1,20 @@
-(function(){
-
-	angular.module("taskList").
-	component("taskList",{
-      templateUrl:"/sources/components/taskList/task.template.html",
+var template=require('html!./task.template.html');
+class TaskListController{
+   constructor(){
+      this.adding=()=>{
+         this.addTask(this.tasksData,this.task);
+      };
+      this.delete=()=>{
+         this.delTask(this.tasksData,this.masComplete);
+      };
+      this.select=()=>{
+         this.countInfo= this.selTask(this.tasksData);
+         return this.countInfo;
+      };  
+   }
+}
+export default {
+      template,
       controller:TaskListController,
       controllerAs:"taskCtrl",
       bindings:{
@@ -12,20 +24,4 @@
          delTask:"<",
          selTask:"<"
       }
-   });
-
-   function TaskListController(){
-      var vmTaskList=this;
-      vmTaskList.adding=function(){
-         vmTaskList.addTask(vmTaskList.tasksData,vmTaskList.task);
-      };
-      vmTaskList.delete=function(){
-         vmTaskList.delTask(vmTaskList.tasksData,vmTaskList.masComplete);
-      };
-      vmTaskList.select=function(){
-         vmTaskList.countInfo= vmTaskList.selTask(vmTaskList.tasksData);
-         return vmTaskList.countInfo;
-      };      
-   }
-}
-)();
+   };

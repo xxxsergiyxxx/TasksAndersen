@@ -1,107 +1,128 @@
-(function (){
-   angular.module("routerModule").config(["$stateProvider","$urlRouterProvider", Provider]);
-   function Provider(stateProvider,urlRouterProvider){
-      stateProvider.state({
-       name: 'hello',
-       url: '/hello',
-       templateUrl:"/sources/templates/hello.template.html"
-     }).state({
-       name: 'about',
-       url: '/about',
-       templateUrl:"/sources/templates/about.template.html"
-     }).state({
-       name: 'people',
-       url: '/people',
-       component:"containerList",
-       resolve:{
-          peoples:["dataService",getPeoples]
-       }
-     }).state({
-       name: 'people.allInfo',
-       abstract:true,
-       url: '/{name}',
-       component:"containerInfo",
-       resolve:{
-        getInfo:["peoples", "$stateParams","dataService",getInfo]
-      }
-     }).state({
-       name:'people.allInfo.header',
-       url:'/header',
-       component:"headerInfo",
-       resolve:{
-          mansInfo:["dataService", mansInfo]
-        }
-     }).state({
-       name:'people.allInfo.taskList',
-       url:'/taskList',
-       component:"taskList",
-       resolve:{
-          tasksData:["dataService", taskData],
-          masComplete:["dataService", masComplete],
-          addTask:["taskService", addTask],
-          delTask:["taskService", delTask],
-          selTask:["taskService", selTask] 
-        }
-     }).state({
-       name:'people.allInfo.meets',
-       url:'/meets',
-       component:"meetList",
-       resolve:{
-          meetData:["dataService", meetData]
-        }
-     }).state({
-       name:'people.allInfo.archive',
-       url:'/archive',
-       component:"archiveTasks",
-       resolve:{
-          masComplete:["dataService", masComplete]
-        }
-     })
-
-     urlRouterProvider.otherwise('/');
+var about=require('html!../templates/about.template.html');
+var hello=require('html!../templates/hello.template.html');
+class Provider{
+   constructor ($stateProvider,$urlRouterProvider){
+      this.stateProvider=$stateProvider;
+      this.urlRouterProvider=$urlRouterProvider;
+      var states=
+      [
+         {
+           name: 'hello',
+           url: '/hello',
+           template:hello
+         },
+         {
+           name: 'about',
+           url: '/about',
+           template:about
+         },
+         {
+           name: 'people',
+           url: '/people',
+           component:"containerList",
+           resolve:{
+              peoples:["dataService",this.getPeoples]
+           }
+         },
+         {
+           name: 'people.allInfo',
+           abstract:true,
+           url: '/{name}',
+           component:"containerInfo",
+           resolve:{
+            getInfo:["peoples", "$stateParams","dataService",this.getInfo]
+          }
+         },
+         {
+           name:'people.allInfo.header',
+           url:'/header',
+           component:"headerInfo",
+           resolve:{
+              mansInfo:["dataService",this.mansInfo]
+            }
+         },
+         {
+           name:'people.allInfo.taskList',
+           url:'/taskList',
+           component:"taskList",
+           resolve:{
+              tasksData:["dataService", this.taskData],
+              masComplete:["dataService", this.masComplete],
+              addTask:["taskService", this.addTask],
+              delTask:["taskService", this.delTask],
+              selTask:["taskService", this.selTask] 
+            }
+         },
+         {
+           name:'people.allInfo.meets',
+           url:'/meets',
+           component:"meetList",
+           resolve:{
+              meetData:["dataService", this.meetData]
+            }
+         },
+         {
+           name:'people.allInfo.archive',
+           url:'/archive',
+           component:"archiveTasks",
+           resolve:{
+              masComplete:["dataService", this.masComplete]
+            }
+         }
+       ]
+     states.forEach(state=>{
+        this.stateProvider.state(state);
+     });
+     this.urlRouterProvider.otherwise('/');
    }
 
-   function meetData(dataService){
+   meetData(dataService){
       return dataService.getDataMeetengs();
    }
-   function masComplete(dataService){
+   masComplete(dataService){
       return dataService.getMasCompleteTask();
    }
 
-   function taskData(dataService){
+   taskData(dataService){
       return dataService.getDataTasks();
    }
 
-   function getPeoples(dataService){
+   getPeoples(dataService){
       return dataService.getAllMan();
    }
 
-   function addTask(taskService){
+   addTask(taskService){
       return taskService.addTask;
    }
 
-   function delTask(taskService){
+   delTask(taskService){
       return taskService.delTask;
    }
 
-   function selTask(taskService){
+   selTask(taskService){
       return taskService.selTask;
    }
-   function findPeople(peoples,stateParams){
-      return peoples.find(function(person) {           
+   findPeople(peoples,stateParams){
+      return peoples.find(person=> {           
         return person.name === stateParams.name;
       });
    }
-   function getInfo(peoples, stateParams,dataService){
-      var people=findPeople(peoples,stateParams);
+   getInfo(peoples, stateParams,dataService){
+      var people=this.findPeople(peoples,stateParams);
       if(people){
         return dataService.getData(people.info,people.name);
       }
    }
-
-   function mansInfo(dataService){
+   mansInfo(dataService){
       return dataService.getDataMansInfo();
    }
-
-   
-})();
+   static getStates(){
+    const inj=(stateProvider, urlRouterProvider)=>{
+        return new Provider(stateProvider,urlRouterProvider)
+      };
+      inj.$inject=["$stateProvider","$urlRouterProvider"];
+      return inj;
+   }
+}
+Provider.$inject=["$stateProvider","$urlRouterProvider"];
+export default Provider.getStates();
