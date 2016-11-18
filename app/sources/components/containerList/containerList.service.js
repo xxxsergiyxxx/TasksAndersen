@@ -46,27 +46,27 @@
             this._masMansInfo[this.idData].data=res.data
             return {
                path:res.data.toDoList,
-               def:def
+               def:def,
+               this:this
             };
          })
       }
       getManTasks(data){
-         return this.http.get(data.path).then(res =>{
-            this._masTasks[this.idData].data=res.data;
+         return data.this.http.get(data.path).then(res =>{
+            data.this._masTasks[data.this.idData].data=res.data;
             data.path=res.data.meetingsFilePath;
             return data;
          });
       }
       getManMeet(data){
-         return this.http.get(data.path).then(res =>{
-            this._masMeetengs[this.idData].data=res.data
+         return data.this.http.get(data.path).then(res =>{
+            data.this._masMeetengs[data.this.idData].data=res.data
             data.def.resolve();         
             return res.data;
          });
       }
       getData(path, name){
          this.idData=name;
-         alert(name);
          if(!this._masMansInfo[name].data){
             var deferred = this.Q.defer();
             var th=this;

@@ -44645,17 +44645,16 @@
 	            _this2._masMansInfo[_this2.idData].data = res.data;
 	            return {
 	               path: res.data.toDoList,
-	               def: def
+	               def: def,
+	               this: _this2
 	            };
 	         });
 	      }
 	   }, {
 	      key: "getManTasks",
 	      value: function getManTasks(data) {
-	         var _this3 = this;
-
-	         return this.http.get(data.path).then(function (res) {
-	            _this3._masTasks[_this3.idData].data = res.data;
+	         return data.this.http.get(data.path).then(function (res) {
+	            data.this._masTasks[data.this.idData].data = res.data;
 	            data.path = res.data.meetingsFilePath;
 	            return data;
 	         });
@@ -44663,10 +44662,8 @@
 	   }, {
 	      key: "getManMeet",
 	      value: function getManMeet(data) {
-	         var _this4 = this;
-
-	         return this.http.get(data.path).then(function (res) {
-	            _this4._masMeetengs[_this4.idData].data = res.data;
+	         return data.this.http.get(data.path).then(function (res) {
+	            data.this._masMeetengs[data.this.idData].data = res.data;
 	            data.def.resolve();
 	            return res.data;
 	         });
@@ -44675,7 +44672,6 @@
 	      key: "getData",
 	      value: function getData(path, name) {
 	         this.idData = name;
-	         alert(name);
 	         if (!this._masMansInfo[name].data) {
 	            var deferred = this.Q.defer();
 	            var th = this;
@@ -44807,13 +44803,9 @@
 	var hello = __webpack_require__(34);
 
 	var Provider = function () {
-	   function Provider($stateProvider, $urlRouterProvider) {
-	      var _this = this;
-
+	   function Provider(stateProvider, urlRouterProvider) {
 	      _classCallCheck(this, Provider);
 
-	      this.stateProvider = $stateProvider;
-	      this.urlRouterProvider = $urlRouterProvider;
 	      var states = [{
 	         name: 'hello',
 	         url: '/hello',
@@ -44871,9 +44863,10 @@
 	         }
 	      }];
 	      states.forEach(function (state) {
-	         _this.stateProvider.state(state);
+	         stateProvider.state(state);
 	      });
-	      this.urlRouterProvider.otherwise('/');
+	      urlRouterProvider.otherwise('/');
+	      var salfe = this;
 	   }
 
 	   _createClass(Provider, [{
@@ -44912,16 +44905,14 @@
 	         return taskService.selTask;
 	      }
 	   }, {
-	      key: 'findPeople',
-	      value: function findPeople(peoples, stateParams) {
-	         return peoples.find(function (person) {
-	            return person.name === stateParams.name;
-	         });
-	      }
-	   }, {
 	      key: 'getInfo',
 	      value: function getInfo(peoples, stateParams, dataService) {
-	         var people = this.findPeople(peoples, stateParams);
+	         var findPeople = function findPeople(peoples, stateParams) {
+	            return peoples.find(function (person) {
+	               return person.name === stateParams.name;
+	            });
+	         };
+	         var people = findPeople(peoples, stateParams);
 	         if (people) {
 	            return dataService.getData(people.info, people.name);
 	         }

@@ -1,9 +1,7 @@
 var about=require('html!../templates/about.template.html');
 var hello=require('html!../templates/hello.template.html');
 class Provider{
-   constructor ($stateProvider,$urlRouterProvider){
-      this.stateProvider=$stateProvider;
-      this.urlRouterProvider=$urlRouterProvider;
+   constructor (stateProvider,urlRouterProvider){
       var states=
       [
          {
@@ -71,9 +69,10 @@ class Provider{
          }
        ]
      states.forEach(state=>{
-        this.stateProvider.state(state);
+        stateProvider.state(state);
      });
-     this.urlRouterProvider.otherwise('/');
+     urlRouterProvider.otherwise('/');
+     var salfe=this;
    }
 
    meetData(dataService){
@@ -102,13 +101,13 @@ class Provider{
    selTask(taskService){
       return taskService.selTask;
    }
-   findPeople(peoples,stateParams){
-      return peoples.find(person=> {           
-        return person.name === stateParams.name;
-      });
-   }
    getInfo(peoples, stateParams,dataService){
-      var people=this.findPeople(peoples,stateParams);
+      var findPeople=(peoples,stateParams)=>{
+        return peoples.find(person=> {           
+          return person.name === stateParams.name;
+        });
+     }
+      var people=findPeople(peoples,stateParams);
       if(people){
         return dataService.getData(people.info,people.name);
       }
