@@ -1,0 +1,29 @@
+<ng-form id="my-form" name="$ctrl.myForm">
+   <p>
+	  <label>
+         Имя  
+     </label>
+     <ng-form name="myForm2">
+         <input type="text" name="field1" ng-model="$ctrl.name1">
+     </ng-form>
+   </p>
+   <p>
+     <label>
+         Фамилия 
+     </label>
+     <ng-form name="myForm3">
+         <input type="text" name="field1" ng-model="$ctrl.name2">
+     </ng-form>
+   </p>
+   <p>
+      <input type="button" value="Отправить" ng-click="$ctrl.setForm($ctrl.myForm)">
+   </p>
+   <p>
+      <label>Угадай имя</label>
+      <input type="text" name="field1" ng-model="$ctrl.nameAsyn">
+   </p>
+   <div ng-messages="$ctrl.myForm.field1.$error">
+      <span ng-message="$ctrl.myForm.field1.$panding">Ждите</span><br>
+      <span ng-message="nameAsyn">Не угадал</span><br>
+   </div>
+</ng-form>

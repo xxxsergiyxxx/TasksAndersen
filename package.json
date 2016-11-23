@@ -1,18 +1,11 @@
 {
-  "name": "task3",
+  "name": "forms",
   "version": "1.0.1",
   "description": "Task with using ui-router",
-  "main": "index.js",
   "dependencies": {
-	"angular": "^1.5.8",
-    "babel-core": "^6.18.2",
-    "babel-loader": "^6.2.7",
-    "babel-preset-es2015": "^6.18.0",
-    "jquery": "^3.1.1",
-    "live-server": "^1.1.0",
-    "webpack": "^1.13.3",
-    "angular-animate": "^1.5.8",
-    "angular-ui-router": "1.0.0-beta.3"
+    "angular": "^1.5.8",
+    "angular-messages": "^1.5.8",
+    "live-server": "^1.1.0"
   },
   "repository": {
     "type": "git",
@@ -26,7 +19,6 @@
   "homepage": "https://github.com/xxxsergiyxxx/TasksAndersen#readme",
   "scripts": {
     "prestart": "npm install",
-    "start": "live-server ./app",
-	"build":"webpack -w"
+    "start": "live-server"
   }
 }
