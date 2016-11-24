@@ -2,13 +2,13 @@
    
      <ng-form name="myForm2">
 		 <p>
-		 <label>
-			 Имя  
-		 </label>
-         <input type="text" name="field1" ng-model="$ctrl.name1">
-		 <div ng-messages="$ctrl.myForm.myForm2.field1.$error">
-			<span ng-message="validField">Не верно</span><br>
-		</div>
+   		 <label>
+   			 Имя  
+   		 </label>
+            <input type="text" name="field1" ng-model="$ctrl.name1" required>
+   		 <div ng-messages="$ctrl.myForm.myForm2.field1.$error">
+   			<span ng-message="validField">Не верно</span><br>
+   		</div>
 		</p>
      </ng-form>
      <ng-form name="myForm3">
@@ -16,7 +16,7 @@
 			 <label>
 				 Фамилия 
 			 </label>
-			 <input type="text" name="field1" ng-model="$ctrl.name2">
+			 <input type="text" name="field1" ng-model="$ctrl.name2" required>
 			 <div ng-messages="$ctrl.myForm.myForm3.field1.$error">
 				<span ng-message="validField">Не верно</span><br>
 			</div>
