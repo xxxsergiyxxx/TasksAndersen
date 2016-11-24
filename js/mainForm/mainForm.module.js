@@ -21,8 +21,9 @@ function MainForm(service){
       //self.myForm.field1.$setAsyncValidity('nameAsyn',service.nameAsyn(self.nameAsyn));
       if(form.$valid){
          alert("Малайдзец");
-      }
-      console.log(self.myForm.field1);
+      }else{
+		 alert("Не маладзец");
+	  }
    }
 
 }
