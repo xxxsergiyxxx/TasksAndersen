@@ -4,8 +4,8 @@ class MyClass{
 
 }
 angular.module('aaaa',[])
-		.component('lalLol',{
+		.component('lalLol', {
 			controller: MyClass,
 			template:`<div>Hello ворлд</div>`
 		});
-console.log(person.firstName + " " + person.lastName);
+console.log(person.firstName + ' ' + person.lastName);
