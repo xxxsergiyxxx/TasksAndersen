@@ -8,4 +8,4 @@ angular.module('aaaa',[])
 			controller: MyClass,
 			template:`<div>Hello ворлд</div>`
 		});
-console.log(person.firstName + ' ' + person.lastName);
+console.log(person.firstName + ' Серега, привет! Настрой сонар)' + person.lastName);
