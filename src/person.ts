@@ -1,4 +1,4 @@
 export default {
-  firstName: "David",
-  lastName: "Barreto"
+  firstName: 'David',
+  lastName: 'Barreto'
 };
