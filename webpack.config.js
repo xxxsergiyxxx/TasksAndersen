@@ -2,10 +2,10 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  entry: "./src/app.ts",
+  entry: './src/app.ts',
   output: {
     path: __dirname,
-    filename: "bundle.js"
+    filename: 'bundle.js'
   },
   resolve: {
     extensions: ['','.ts','.js']
@@ -15,7 +15,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: "babel-loader",
+        loader: 'babel-loader',
         query: {
           presets: 'es2015'
         }
@@ -27,16 +27,16 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: "style-loader!css-loader!autoprefixer-loader",
+        loader: 'style-loader!css-loader!autoprefixer-loader',
         exclude: [/node_modules/]
       },
       {
         test: /\.html$/,
-        loader: "html"
+        loader: 'html'
       },
       {
         test: /\.sass$/,
-        loader: "style-loader!css-loader!autoprefixer-loader!sass",
+        loader: 'style-loader!css-loader!autoprefixer-loader!sass',
         exclude: [/node_modules/]
       },
       {
