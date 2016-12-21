@@ -4,8 +4,8 @@ class MyClass{
 
 }
 angular.module('aaaa',[])
-		.component('lalLol', {
-			controller: MyClass,
-			template:`<div>Hello ворлд</div>`
-		});
-console.log(person.firstName + ' Серега, привет! Настрой сонар)' + person.lastName);
+  .component('lalLol', {
+    controller: MyClass,
+    template:`<div>Hello ворлд</div>`
+  });
+alert(person.firstName + ' ' + person.lastName);
