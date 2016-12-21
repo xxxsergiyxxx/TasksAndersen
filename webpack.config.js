@@ -20,7 +20,7 @@ module.exports = {
           presets: 'es2015'
         }
       },
-      { 
+      {
         test: /\.ts$/,
         loader: 'ts-loader',
         exclude: /node_modules/
@@ -51,7 +51,7 @@ module.exports = {
     ],
     noParse: /angular\/angular.js/
   },
-  devServer: { 
+  devServer: {
     contentBase: __dirname + '\\src'
   }
 };
