@@ -17,8 +17,8 @@ module.exports = {
         exclude: /node_modules/,
         loader: "babel-loader",
         query: {
-          presets: 'es2015',
-        },
+          presets: 'es2015'
+        }
       },
       { 
         test: /\.ts$/,
@@ -42,14 +42,14 @@ module.exports = {
       {
         test: /\.(eot|woff|woff2|ttf|svg|png|jpg)(\?.+)?$/,
         loader: 'url-loader?name=[path][name].[ext]?[hash]',
-        limit: 10000,
+        limit: 10000
       },
       {
         test: /\.(eot,ttf)(\?.+)?$/,
         loader: 'file-loader?name=[path][name].[ext]?[hash]'
       }
     ],
-    noParse: /angular\/angular.js/,
+    noParse: /angular\/angular.js/
   },
   devServer: { 
     contentBase: __dirname + '\\src'
