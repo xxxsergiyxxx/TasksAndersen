@@ -1,0 +1,6 @@
+{
+  "globalDependencies": {
+    "angular/legacy/angular": "registry:dt/angular/legacy/angular#1.4.0+20160727175746",
+    "jquery": "registry:dt/jquery#1.10.0+20161119044246"
+  }
+}
