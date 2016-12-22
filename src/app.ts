@@ -1,11 +1,21 @@
 import * as angular from 'angular';
-import person  from "./person";
-class MyClass{
-
+import { Person }  from './person';
+export class MyClass {
+  public person: Person;
+  public b: number;
+  constructor() {
+    this.person = new Person();
+    this.person.firstName = 'Николай';
+    this.person.lastName = 'Игорев';
+  }
+  public getArray(): number[] {
+    const list: Array< number > = [1, 2, 3];
+    return list;
+  }
 }
-angular.module('aaaa',[])
+angular.module('aaaa', [])
+  .controller('MyClass', MyClass)
   .component('lalLol', {
     controller: MyClass,
-    template:`<div>Hello ворлд</div>`
+    template: `<div>Hello ворлд, {{$ctrl.person.firstName}}</div>`
   });
-alert(person.firstName + ' ' + person.lastName);

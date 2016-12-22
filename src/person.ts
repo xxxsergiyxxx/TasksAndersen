@@ -1,4 +1,4 @@
-export default {
-  firstName: 'David',
-  lastName: 'Barreto'
+export class Person {
+  public firstName: string;
+  public lastName: string;
 };
