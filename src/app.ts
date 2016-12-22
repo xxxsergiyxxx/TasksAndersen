@@ -13,7 +13,7 @@ export class MyClass {
     return list;
   }
 }
-angular.module('aaaa', [])
+angular.module('FirstModule', [])
   .controller('MyClass', MyClass)
   .component('lalLol', {
     controller: MyClass,

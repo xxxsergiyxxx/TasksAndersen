@@ -1,9 +1,9 @@
 import * as angular from 'angular';
 import 'angular-mocks';
 import { MyClass } from  './app';
-describe('MyClass', function() {
+describe('MyClass', ()=>{
   let controller: MyClass;
-  beforeEach(angular.mock.module("aaaa"));
+  beforeEach(angular.mock.module("FirstModule"));
   beforeEach(inject(($controller) => {
         controller = $controller("MyClass", {
         });
