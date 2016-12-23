@@ -1,21 +1,16 @@
 import * as angular from 'angular';
 import { Person }  from './person';
+import { PersonService} from './person.service'
 export class MyClass {
-  public person: Person;
-  public b: number;
   constructor() {
-    this.person = new Person();
-    this.person.firstName = 'Николай';
-    this.person.lastName = 'Игорев';
-  }
-  public getArray(): number[] {
-    const list: Array< number > = [1, 2, 3];
-    return list;
   }
 }
 angular.module('FirstModule', [])
-  .controller('MyClass', MyClass)
+  .controller('myClass', MyClass)
+  .service('personService', ['$http', PersonService])
   .component('lalLol', {
-    controller: MyClass,
-    template: `<div>Hello ворлд, {{$ctrl.person.firstName}}</div>`
+    controller: ['personService', Person],
+    template: `<div>Hello ворлд, {{$ctrl.firstName}}
+                {{$ctrl.getMessage();}}
+              </div>`
   });
