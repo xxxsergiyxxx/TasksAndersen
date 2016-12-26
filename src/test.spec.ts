@@ -8,24 +8,22 @@ describe('ModuleFirstModule', ()=>{
     let controller: Person;
     let compile;
     let getMessage;
-    let mock;
     let myService;
+    let $componentController;
     beforeEach(()=>{
-       mock={
-         getMessage:jasmine.createSpy("getMessage")
-       }
-       module( ($provide)=>{
-         $provide.service('personService', ()=>{
-           return mock;
+      module(($provide)=>{
+        $provide.service('personService',()=>{
+          return {
+            getMessage:jasmine.createSpy("getMessage")
+          }
         });
-       })
-       inject(($injector,$componentController)=> {
+      });  
+      inject(($injector,_$componentController_)=> {
         myService = $injector.get('personService');
-
-        controller = $componentController('lalLol', {
-          personService: myService
+        $componentController = _$componentController_;
+        controller=$componentController('lalLol', {
+          personService:myService
         });
-
       });
     });
 
@@ -38,11 +36,28 @@ describe('ModuleFirstModule', ()=>{
     });
 
     it("called function", () => {
-        controller.getMessage();
-        expect(myService.getMessage).toHaveBeenCalled();
+      controller.getMessage();
+      expect(myService.getMessage).toHaveBeenCalled();
+    });
+    it ("check message", () =>{
+      let bindings={
+        text:'message'
+      }
+      controller=$componentController('lalLol', null, bindings);
+      expect( controller.getText() ).toEqual('message');
+    });
+
+    it ("check listSurname", () =>{
+      let array=['Ivnov','Petrov', 'Sidorov'];
+      let bindings={
+        text:'message',
+        listSurnames:array
+      }
+      controller=$componentController('lalLol', null, bindings);
+      expect(controller.getListSurnames().length).toBe(3);
     });
   })
-  describe('Component: myComponent', function () {
+  describe('Component: lalLol', function () {
     let element;
     let scope;
     beforeEach(inject(($rootScope, $compile)=>{
@@ -54,7 +69,6 @@ describe('ModuleFirstModule', ()=>{
     }));
    
     it('should render the text', ()=> {
-      debugger;
       let h1 = element.find('h1');
       let k=h1.text();
       expect(h1.text()).toBe('Unit Testing AngularJS 1.5');

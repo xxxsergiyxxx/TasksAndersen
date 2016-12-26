@@ -13,5 +13,9 @@ angular.module('FirstModule', [])
     template: `<div>Hello ворлд, {{$ctrl.firstName}}
                 {{$ctrl.getMessage();}}
                 <h1>Unit Testing AngularJS 1.5</h1>
-              </div>`
+              </div>`,
+    bindings:{
+      text: '@',
+      listSurnames:'<'
+    }
   });

@@ -3,6 +3,8 @@ export class Person {
   private firstName: string;
   private lastName: string;
   private service: PersonService;
+  private text:string;
+  private listSurnames:string[];
   constructor(service: PersonService) {
     this.firstName = 'Olgerd';
     this.lastName = 'Olgerdovich';
@@ -14,7 +16,13 @@ export class Person {
   public getLastName() : string {
     return this.lastName;
   }
-  public getMessage(): void {
-    this.service.getMessage();
+  public getMessage() : string {
+    return this.service.getMessage();
+  }
+  public getText() : string {
+    return this.text;
+  }
+  public getListSurnames() : string []{
+    return this.listSurnames;
   }
 }

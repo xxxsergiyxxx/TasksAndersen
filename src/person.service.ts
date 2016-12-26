@@ -1,11 +1,14 @@
 export class PersonService {
   private curTask: number;
   private totalTask: number;
-  private tasks: Object;
+  private tasks: string[];
   private http: ng.IHttpService;
   constructor( http: ng.IHttpService ) {
     this.http = http;
     this.curTask = 5;
+  }
+  public encryptTask(task){
+    return task+'1';
   }
   public setTaskCount (count: number): void {
     this.totalTask = this.curTask + count;
@@ -16,9 +19,22 @@ export class PersonService {
   }
 
   public getTasks(): void {
+    let data;
     this.http.get( 'json/tasks.json' ).then( res => {
-      this.tasks = res.data ;
+      data=res.data;
+      this.tasks = data.tasks;
     });
+  }
+  public encrypting():void{
+    this.tasks.forEach( (element) =>{
+      element=this.encryptTask(element);
+    })
+  }
+  public setTasks(tasks: string[]):void{
+    this.tasks=tasks;
+  }
+  public viewTasks(): string[] {
+    return this.tasks;
   }
   public getMessage(): string {
     return 'Message' ;
