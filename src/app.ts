@@ -12,5 +12,6 @@ angular.module('FirstModule', [])
     controller: ['personService', Person],
     template: `<div>Hello ворлд, {{$ctrl.firstName}}
                 {{$ctrl.getMessage();}}
+                <h1>Unit Testing AngularJS 1.5</h1>
               </div>`
   });

@@ -20,7 +20,7 @@ export class PersonService {
       this.tasks = res.data ;
     });
   }
-  public getMessage():string {
+  public getMessage(): string {
     return 'Message' ;
   }
 
