@@ -1,7 +1,7 @@
 export class PersonService {
   private curTask: number;
   private totalTask: number;
-  private tasks: string[];
+  public tasks: string[];
   private http: ng.IHttpService;
   constructor( http: ng.IHttpService ) {
     this.http = http;
@@ -32,9 +32,6 @@ export class PersonService {
   }
   public setTasks(tasks: string[]) : void {
     this.tasks = tasks;
-  }
-  public viewTasks() : string[] {
-    return this.tasks;
   }
   public getMessage() : string {
     return 'Message';

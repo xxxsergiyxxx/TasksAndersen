@@ -24,7 +24,7 @@ describe('Testing service personService.',()=> {
       jasmine.addCustomEqualityTester(angular.equals);
       service.getTasks();
       httpBackend.flush();
-      expect(service.viewTasks()).toEqual(response.tasks);  
+      expect(service.tasks).toEqual(response.tasks);  
         
     });
     it('2) test length counts array', ()=>{
@@ -33,7 +33,7 @@ describe('Testing service personService.',()=> {
       jasmine.addCustomEqualityTester(angular.equals);
       service.getTasks();
       httpBackend.flush();
-      expect(service.viewTasks().length).toBe(response.tasks.length);
+      expect(service.tasks.length).toBe(response.tasks.length);
     });
     it('3) Test calling ', ()=>{
       let tasks=["task1", "task2", "task3"];

@@ -28,11 +28,11 @@ describe('ModuleFirstModule', ()=>{
     });
 
     it('check firstname', () => {
-      expect ( controller.getName() ).toEqual( 'Olgerd' );
+      expect ( controller.firstName ).toEqual( 'Olgerd' );
     });
 
     it('check lastname', () => {
-      expect ( controller.getLastName() ).toEqual( 'Olgerdovich' );
+      expect ( controller.lastName ).toEqual( 'Olgerdovich' );
     });
 
     it("called function", () => {
@@ -44,7 +44,7 @@ describe('ModuleFirstModule', ()=>{
         text:'message'
       }
       controller=$componentController('lalLol', null, bindings);
-      expect( controller.getText() ).toEqual('message');
+      expect( controller.text ).toEqual('message');
     });
 
     it ("check listSurname", () =>{
@@ -54,7 +54,7 @@ describe('ModuleFirstModule', ()=>{
         listSurnames:array
       }
       controller=$componentController('lalLol', null, bindings);
-      expect(controller.getListSurnames().length).toBe(3);
+      expect(controller.listSurnames.length).toBe(3);
     });
   })
   describe('Component: lalLol', function () {
