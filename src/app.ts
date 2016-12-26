@@ -1,5 +1,5 @@
 import * as angular from 'angular';
-import { Person }  from './person';
+import { Person }  from './person.component';
 import { PersonService} from './person.service'
 export class MyClass {
   constructor() {
@@ -14,8 +14,8 @@ angular.module('FirstModule', [])
                 {{$ctrl.getMessage();}}
                 <h1>Unit Testing AngularJS 1.5</h1>
               </div>`,
-    bindings:{
+    bindings: {
       text: '@',
-      listSurnames:'<'
+      listSurnames: '<'
     }
   });

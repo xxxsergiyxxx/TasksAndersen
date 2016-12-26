@@ -1,6 +1,6 @@
 import * as angular from 'angular';
 import 'angular-mocks';
-import { Person } from  './person';
+import { Person } from  './person.component';
 describe('ModuleFirstModule', ()=>{
   const module=angular.mock.module;
   beforeEach(module('FirstModule'));

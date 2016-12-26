@@ -7,37 +7,37 @@ export class PersonService {
     this.http = http;
     this.curTask = 5;
   }
-  public encryptTask(task){
-    return task+'1';
+  public encryptTask( task: string ) {
+    return task + '1';
   }
-  public setTaskCount (count: number): void {
+  public setTaskCount (count: number) : void {
     this.totalTask = this.curTask + count;
   }
 
-  public getTotalTask (): number {
+  public getTotalTask () : number {
     return this.totalTask;
   }
 
-  public getTasks(): void {
+  public getTasks() : void {
     let data;
     this.http.get( 'json/tasks.json' ).then( res => {
-      data=res.data;
+      data = res.data;
       this.tasks = data.tasks;
     });
   }
-  public encrypting():void{
-    this.tasks.forEach( (element) =>{
-      element=this.encryptTask(element);
+  public encrypting() : void {
+    this.tasks.forEach( (element) => {
+      element = this.encryptTask(element);
     })
   }
-  public setTasks(tasks: string[]):void{
-    this.tasks=tasks;
+  public setTasks(tasks: string[]) : void {
+    this.tasks = tasks;
   }
-  public viewTasks(): string[] {
+  public viewTasks() : string[] {
     return this.tasks;
   }
-  public getMessage(): string {
-    return 'Message' ;
+  public getMessage() : string {
+    return 'Message';
   }
 
 }
