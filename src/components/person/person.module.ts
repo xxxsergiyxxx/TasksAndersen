@@ -1,19 +1,17 @@
 import * as angular from 'angular';
 import { Person }  from './person.component';
 import { PersonService} from './person.service'
-export class MyClass {
+const template = require( './template.html' );
+export class PersonController {
   constructor() {
   }
 }
-angular.module('FirstModule', [])
-  .controller('myClass', MyClass)
+export default angular.module('personModule', [])
+  .controller('personController', PersonController)
   .service('personService', ['$http', PersonService])
-  .component('lalLol', {
+  .component('personTasks', {
     controller: ['personService', Person],
-    template: `<div>Hello ворлд, {{$ctrl.firstName}}
-                {{$ctrl.getMessage();}}
-                <h1>Unit Testing AngularJS 1.5</h1>
-              </div>`,
+    template,
     bindings: {
       text: '@',
       listSurnames: '<'
