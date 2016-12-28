@@ -1,12 +1,13 @@
 import { Man } from './types';
 import { MansData } from './types';
-
+//import * as _ from 'lodash';
+import { findIndex } from 'lodash';
 export class PersonService {
   public tasks: string[];
   public mansData: Array <Man>;
   private curTask: number;
   private totalTask: number;
-  
+
   constructor(private http: ng.IHttpService) {
     this.curTask = 5;
   }
@@ -24,14 +25,7 @@ export class PersonService {
   }
 
   public searchMan (firstName: string, lastName: string): number {
-    let index;
-    this.mansData.forEach((element: Man, ind: number) => {
-      if((element.firstName === firstName) && (element.lastName === lastName)) {
-        index = ind;
-        return;
-      }
-    })
-    return index;
+    return findIndex(this.mansData, {firstName: firstName, lastName: lastName});
   }
 
   public getTasks(firstName : string, lastName : string): ng.IHttpPromise <any> {

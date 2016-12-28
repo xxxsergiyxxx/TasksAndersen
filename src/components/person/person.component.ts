@@ -21,6 +21,7 @@ export class Person {
 
   public getTasks(): void {
     const personService: PersonService = this.service;
+    
     personService.getTasks(this.firstName, this.lastName).then((res: MansData) => {
       personService.mansData = res.data;
       this.currentMan = personService.searchMan(this.firstName, this.lastName );
