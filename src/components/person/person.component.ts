@@ -1,6 +1,5 @@
 import { PersonService} from './person.service'
-import { Man } from './types';
-import { MansData } from './types';
+import { Man, MansData } from './types';
 
 export class Person {
   public firstName: string;
@@ -17,7 +16,7 @@ export class Person {
   }
 
   public getMessage(): void {
-    this.message = this.service.getMessage(this.service.mansData[this.currentMan] );
+    this.message = this.service.getMessage(this.service.mansData[this.currentMan]);
   }
 
   public getTasks(): void {

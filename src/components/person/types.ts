@@ -4,5 +4,5 @@ export interface Man {
   tasks: string[] 
 }
 export interface MansData {
-  data: Array <Man>
+  data: Man []
 }

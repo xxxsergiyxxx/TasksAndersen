@@ -4,6 +4,7 @@ import { Person } from  './person.component';
 import { Man } from './types';
 import { MansData } from './types';
 import { PersonService } from './person.service';
+
 describe('Test module FirstModule. ', ()=>{
   const module=angular.mock.module;
   beforeEach(module('mainApp'));
@@ -14,6 +15,7 @@ describe('Test module FirstModule. ', ()=>{
     let getMessage;
     let myService: PersonService;
     let $componentController;
+
     beforeEach(()=>{
       inject(($injector,_$componentController_)=> {
         myService = $injector.get('personService');
@@ -32,10 +34,10 @@ describe('Test module FirstModule. ', ()=>{
       expect ( controller.lastName ).toEqual( 'Olgerdovich' );
     });
 
-    it("called function", () => {
+    it("should call PersonService.getMessage()", () => {
       myService.mansData=[{
-         "firstName": "Valera",
-         "lastName": "Volosyan",
+        "firstName": "Valera",
+        "lastName": "Volosyan",
         "tasks":[ "task1", "task2", "task3"]
         }];
       spyOn(myService,'getMessage');
@@ -43,7 +45,7 @@ describe('Test module FirstModule. ', ()=>{
       expect(myService.getMessage).toHaveBeenCalled();
     });
 
-    it ("check message", () =>{
+    it ("should   check message", () =>{
       const bindings={
         message:'message'
       }
@@ -61,6 +63,7 @@ describe('Test module FirstModule. ', ()=>{
       expect(controller.listSurnames.length).toBe(3);
     });
   })
+
   describe('Testing http', () =>{
     let myService: PersonService;
     let httpBackend: ng.IHttpBackendService;
@@ -74,7 +77,7 @@ describe('Test module FirstModule. ', ()=>{
         controller=$componentController('personTasks');
       }) 
     })
-    it('1) test response tasks', ()=>{
+    it('1) should response tasks', ()=>{
       controller.firstName ='Valera'
       controller.lastName = 'Volosyan'
       const response: Array<Man>=[{
@@ -105,6 +108,7 @@ describe('Test module FirstModule. ', ()=>{
       expect(myService.tasks.length).toBe(response[0].tasks.length);
     });
   })
+
   describe('Component: personTasks', () => {
     let element;
     let scope;

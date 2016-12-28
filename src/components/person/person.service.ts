@@ -6,6 +6,7 @@ export class PersonService {
   public mansData: Array <Man>;
   private curTask: number;
   private totalTask: number;
+  
   constructor(private http: ng.IHttpService) {
     this.curTask = 5;
   }
