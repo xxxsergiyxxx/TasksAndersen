@@ -8,10 +8,10 @@ export class Person {
   public message: string;
   public showTasks : boolean;
   public listSurnames: string[];
-  constructor(private service: PersonService) {
+  constructor( private service: PersonService ) {
   }
 
-  $onInit(){
+  public $onInit() {
     this.showTasks = false;
   }
 
@@ -25,7 +25,7 @@ export class Person {
       personService.mansData = res.data;
       this.currentMan = personService.searchMan( this.firstName, this.lastName );
       personService.tasks = personService.mansData[ this.currentMan ].tasks;
-      this.showTasks=true;
+      this.showTasks = true;
     }
   )}
 }

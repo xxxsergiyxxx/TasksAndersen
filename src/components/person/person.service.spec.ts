@@ -1,5 +1,5 @@
 import  * as angular from 'angular';
-import 'angular-mocks';
+import {mock} from 'angular-mocks';
 import { PersonService } from './person.service';
 import { Man } from './types';
 import { MansData } from './types';

@@ -9,7 +9,7 @@ export class PersonService {
     this.curTask = 5;
   }
 
-  public encryptTask( task: string ) {
+  public encryptTask( task: string ) : string {
     return task + '1';
   }
 
@@ -47,7 +47,7 @@ export class PersonService {
   }
 
   public getMessage(man: Man) : string {
-    return 'Dear '+ man.firstName + ' ' + man.lastName + '. You have ' + man.tasks.length + ' tasks!';
+    return 'Dear ' + man.firstName + ' ' + man.lastName + '. You have ' + man.tasks.length + ' tasks!';
   }
 
 }
