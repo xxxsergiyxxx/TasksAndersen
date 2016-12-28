@@ -1,18 +1,18 @@
-"use strict";
-module.exports = function(config) {
+'use strict';
+module.exports = (config)=> {
     config.set({
-        frameworks: ["jasmine", "karma-typescript"],
+        frameworks: ['jasmine', 'karma-typescript'],
         files: [          
             'src/**/*.ts'
         ],
         preprocessors: {
-            "src/**/*.ts": ["karma-typescript"]
+            'src/**/*.ts': ['karma-typescript']
         },
-        reporters: ["progress", "karma-typescript"],
+        reporters: ['progress', 'karma-typescript'],
         karmaTypescriptConfig: {
-            tsconfig: "./tsconfig.json"
+            tsconfig: './tsconfig.json'
         },
         logLevel: config.LOG_INFO,
-        browsers: ["Chrome"],
+        browsers: ['Chrome']
     });
 };
