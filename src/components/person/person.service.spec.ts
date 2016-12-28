@@ -25,6 +25,7 @@ describe('Testing service personService.',()=> {
 
     it('3) Test calling ', ()=>{
       const tasks=["task1", "task2", "task3"];
+
       service.setTasks(tasks);
       spyOn(service,'encryptTask');
       service.encrypting();
@@ -33,6 +34,7 @@ describe('Testing service personService.',()=> {
 
     it('4) Test expect value', () => {
       const tasks = ["task1"];
+      
       service.setTasks(tasks);
       spyOn(service,'encryptTask');
       service.encrypting();

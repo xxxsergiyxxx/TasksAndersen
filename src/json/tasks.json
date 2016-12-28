@@ -7,16 +7,16 @@
   {
     "firstName":"Igor",
     "lastName":"Volosyan",
-    "tasks":[ "task1", "task2", "task3"]
+    "tasks":[ "task1", "task2", "task4"]
   },
   {
     "firstName":"Dmitry",
     "lastName":"Volosyan",
-    "tasks":[ "task1", "task2", "task3"]
+    "tasks":[ "task1", "task2", "task5"]
   },
   {
     "firstName":"Ivan",
     "lastName":"Volosyan",
-    "tasks":[ "task1", "task2", "task3"]
+    "tasks":[ "task1", "task2", "task6"]
   }
 ]

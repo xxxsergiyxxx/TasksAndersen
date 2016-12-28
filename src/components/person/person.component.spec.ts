@@ -7,6 +7,7 @@ import { PersonService } from './person.service';
 
 describe('Test module FirstModule. ', ()=>{
   const module=angular.mock.module;
+  
   beforeEach(module('mainApp'));
 
   describe('Test ComponentPerson. ',()=>{
@@ -49,6 +50,7 @@ describe('Test module FirstModule. ', ()=>{
       const bindings={
         message:'message'
       }
+
       controller=$componentController('personTasks', null, bindings);
       expect( controller.message ).toEqual('message');
     });
@@ -59,6 +61,7 @@ describe('Test module FirstModule. ', ()=>{
         text:'message',
         listSurnames:array
       }
+
       controller=$componentController('personTasks', null, bindings);
       expect(controller.listSurnames.length).toBe(3);
     });
@@ -85,6 +88,7 @@ describe('Test module FirstModule. ', ()=>{
          "lastName": "Volosyan",
         "tasks":[ "task1", "task2", "task3"]
         }];
+
       httpBackend.expectGET('json/tasks.json').respond(response);
       jasmine.addCustomEqualityTester(angular.equals);
       controller.getTasks();
@@ -101,7 +105,8 @@ describe('Test module FirstModule. ', ()=>{
          "firstName": "Valera",
          "lastName": "Volosyan",
         "tasks":[ "task1", "task2", "task3"]
-      }]
+      }];
+
       httpBackend.expectGET('json/tasks.json').respond(response);
       controller.getTasks();
       httpBackend.flush();
