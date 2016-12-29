@@ -1,10 +1,10 @@
 <div>
   <p>
-    <input type="text" ng-model="$ctrl.place">
+    <input type = "text" ng-model="$ctrl.place">
   </p>
   <p>
-    <input type="button" value="Go" ng-click="$ctrl.getData($ctrl.place)">
-    <input type="button" value="My location">
+    <a ui-sref = "search"><input type="button" value="Go" ng-click="$ctrl.getData()"></a>
+    <input type = "button" value="My location">
   </p>
   <div>
   <ul>

@@ -52,12 +52,12 @@ describe('Testing service personService.',() => {
     })
 
     it('4) Should return aray places', () => {
-      const response: any = {
+      service.response = {
         'total_results':45,
         'listings':[1,2,3]
       };
 
-      expect(service.getArrayPlaces(response)).toEqual(response['listings']);
+      expect(service.getArrayPlaces()).toEqual(service.response['listings']);
     })
 
     it('5) Should return current search', () => {

@@ -3,7 +3,7 @@ import { Search } from './formSearch.types';
 export default class FormSearchService {
   public historySearch: Array <Search>;
   public currentUrl: string;
-  public response: Object;
+  public response: any;
   public currentSearch: Search;
 
   constructor(private http: ng.IHttpService) {
@@ -26,8 +26,8 @@ export default class FormSearchService {
     return response.total_results;
   }
 
-  public getArrayPlaces(response: any): Object[] {
-    return response.listings;
+  public getArrayPlaces(): any {
+    return this.response.listings;
   }
 
   public getCurrentSearch(url:string, response: any): Search {
