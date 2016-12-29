@@ -11,7 +11,6 @@ export default class FormSearchService {
   }
 
   public pushSearch(state: Search): void {
-    console.log(this);
     this.historySearch.unshift(state);
     if(this.historySearch.length > 10)
       this.historySearch.splice(this.historySearch.length - 1, 1);
