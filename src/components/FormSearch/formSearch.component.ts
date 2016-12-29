@@ -2,6 +2,7 @@ import FormSearchService from './formSearch.service';
 
 export default class Controller {
   public place: string;
+  public searchState
   constructor(private service: FormSearchService) {
   }
   public getData() {

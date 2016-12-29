@@ -1,4 +1,4 @@
 export interface Search{
-  name: string,
+  url: string,
   count: number
 }

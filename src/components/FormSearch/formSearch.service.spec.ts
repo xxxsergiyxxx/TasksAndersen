@@ -1,7 +1,7 @@
 import  * as angular from 'angular';
 import 'angular-mocks';
 import  FormSearchService  from './formSearch.service';
-//import { Man } from './types';
+import { Search } from './formSearch.types';
 //import { MansData } from './types';
 describe('Testing service personService.',()=> {
   const module = angular.mock.module;
@@ -10,7 +10,7 @@ describe('Testing service personService.',()=> {
   let httpBackend: ng.IHttpBackendService;
   beforeEach(module('mainApp'));
 
-  describe('testing controller for personService', ()=>{ 
+  describe('testing controller for formSearch.service', ()=>{ 
     beforeEach(()=>{
       inject(($injector)=>{
         injector=$injector;
@@ -20,22 +20,44 @@ describe('Testing service personService.',()=> {
       
     });
 
-    it('1) Test calling ', ()=>{
-      const tasks=["task1", "task2", "task3"];
-      service.getData(tasks);
-      spyOn(service,'encryptTask');
-      service.encrypting();
-      expect(service.encryptTask.calls.count()).toEqual(tasks.length);
+    it('1) Should adding element in first position ', ()=>{
+      const newSearchState: Search={
+        url:'',
+        count:0
+      };
+      service.$onInit();
+      jasmine.addCustomEqualityTester(angular.equals);
+      service.pushSearch(newSearchState);
+      expect(service.historySearch[0]).toEqual(newSearchState);
     });
 
-    it('4) Test expect value', () => {
-      const tasks = ["task1"];
-      service.setTasks(tasks);
-      spyOn(service,'encryptTask');
-      service.encrypting();
-      expect(service.encryptTask).toHaveBeenCalledWith(tasks[0]);
+    it('2) Should move right on one position ', ()=>{
+      const newSearchState: Search={
+        url:'',
+        count:0
+      };
+      service.$onInit();
+      jasmine.addCustomEqualityTester(angular.equals);
+      service.historySearch[7]=newSearchState;
+      service.pushSearch(newSearchState);
+      expect(service.historySearch[8]).toEqual(newSearchState);
+    });
+
+    it('3) Get totla results', () => {
+      const response: any={
+        'total_results':45
+      }
+      expect(service.getTotalResults(response)).toBe(response['total_results']);
     })
 
+    it('4) Get aray places', () => {
+      const response: any={
+        'total_results':45,
+        'listings':[1,2,3]
+      }
+      expect(service.getArrayPlaces(response)).toEqual(response['listings']);
+    })
+/*
     it('5) Search man', () => {
       service.mansData=[
       {
@@ -49,7 +71,7 @@ describe('Testing service personService.',()=> {
         "tasks":[ "task1", "task2", "task3"]
       }]
       expect(service.searchMan('Valera', 'Volosyan')).toEqual(0);
-    })
+    })*/
 
   })
 })
