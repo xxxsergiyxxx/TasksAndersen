@@ -12,7 +12,8 @@
       "angular-mocks",
       "angular-ui-router",
       "jasmine",
-      "lodash"
+      "lodash",
+      "angular-sanitize"
     ]
   },
   "exclude": [

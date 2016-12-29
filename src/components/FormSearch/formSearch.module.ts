@@ -1,11 +1,17 @@
 import * as angular from 'angular';
 import Controller from './formSearch.component';
+import FormSearchService from './formSearch.service';
 
 const template = require('./formSearch.template.html');
-
-export default angular.module('formSearch', [])
+export default angular.module('formSearch', [
+  ])
+  .service('formSearchService', ['$http', FormSearchService])
   .component('formSearch', {
-    controller:Controller,
+    controller:['formSearchService', Controller],
     template
-  });
-  
+  }).config(($sceDelegateProvider)=>{
+    $sceDelegateProvider.resourceUrlWhitelist([
+    'self',
+    'http://api.nestoria.co.uk/**'
+  ]);
+});
