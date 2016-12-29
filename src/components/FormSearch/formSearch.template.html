@@ -1,9 +1,9 @@
 <div>
   <p>
-    <input type="text">
+    <input type="text" ng-model="$ctrl.place">
   </p>
   <p>
-    <input type="button" value="Go" ng-click="$ctrl.getData()">
+    <input type="button" value="Go" ng-click="$ctrl.getData($ctrl.place)">
     <input type="button" value="My location">
   </p>
 </div>
