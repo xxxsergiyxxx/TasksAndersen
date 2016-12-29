@@ -2,15 +2,15 @@ import  * as angular from 'angular';
 import 'angular-mocks';
 import  FormSearchService  from './formSearch.service';
 import { Search } from './formSearch.types';
-//import { MansData } from './types';
-describe('Testing service personService.',()=> {
+
+describe('Testing service personService.',() => {
   const module = angular.mock.module;
   let injector: any;
   let service: FormSearchService;
   let httpBackend: ng.IHttpBackendService;
   beforeEach(module('mainApp'));
 
-  describe('testing controller for formSearch.service', ()=>{ 
+  describe('testing controller for formSearch.service', () =>{ 
     beforeEach(()=>{
       inject(($injector)=>{
         injector=$injector;
@@ -20,7 +20,7 @@ describe('Testing service personService.',()=> {
       
     });
 
-    it('1) Should adding element in first position ', ()=>{
+    it('1) Should adding element in first position ', () =>{
       const newSearchState: Search={
         url:'',
         count:0
@@ -31,7 +31,7 @@ describe('Testing service personService.',()=> {
       expect(service.historySearch[0]).toEqual(newSearchState);
     });
 
-    it('2) Should move right on one position ', ()=>{
+    it('2) Should move right on one position ', () =>{
       const newSearchState: Search={
         url:'',
         count:0
@@ -72,21 +72,5 @@ describe('Testing service personService.',()=> {
       jasmine.addCustomEqualityTester(angular.equals);
       expect(service.getCurrentSearch('url', response)).toEqual(search);
     })
-/*
-    it('5) Search man', () => {
-      service.mansData=[
-      {
-         "firstName": "Valera",
-         "lastName": "Volosyan",
-        "tasks":[ "task1", "task2", "task3"]
-      },
-      {
-        "firstName":"Igor",
-        "lastName":"Volosyan",
-        "tasks":[ "task1", "task2", "task3"]
-      }]
-      expect(service.searchMan('Valera', 'Volosyan')).toEqual(0);
-    })*/
-
   })
 })
