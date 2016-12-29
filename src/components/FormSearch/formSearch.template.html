@@ -6,4 +6,11 @@
     <input type="button" value="Go" ng-click="$ctrl.getData($ctrl.place)">
     <input type="button" value="My location">
   </p>
+  <div>
+  <ul>
+    <li ng-repeat="history in $ctrl.service.historySearch">
+      <a href="#" ng-bind-template="Search # {{$index + 1}} ({{history.count}}) "></a>
+    </li>
+  </ul>
+  </div>
 </div>

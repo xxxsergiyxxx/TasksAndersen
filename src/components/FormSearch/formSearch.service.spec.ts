@@ -25,7 +25,7 @@ describe('Testing service personService.',()=> {
         url:'',
         count:0
       };
-      service.$onInit();
+
       jasmine.addCustomEqualityTester(angular.equals);
       service.pushSearch(newSearchState);
       expect(service.historySearch[0]).toEqual(newSearchState);
@@ -36,26 +36,41 @@ describe('Testing service personService.',()=> {
         url:'',
         count:0
       };
-      service.$onInit();
+
       jasmine.addCustomEqualityTester(angular.equals);
       service.historySearch[7]=newSearchState;
       service.pushSearch(newSearchState);
       expect(service.historySearch[8]).toEqual(newSearchState);
     });
 
-    it('3) Get totla results', () => {
+    it('3) Should return totla results', () => {
       const response: any={
         'total_results':45
-      }
+      };
+
       expect(service.getTotalResults(response)).toBe(response['total_results']);
     })
 
-    it('4) Get aray places', () => {
+    it('4) Should return aray places', () => {
       const response: any={
         'total_results':45,
         'listings':[1,2,3]
-      }
+      };
+
       expect(service.getArrayPlaces(response)).toEqual(response['listings']);
+    })
+
+    it('5) Should return current search', () => {
+      const count=5;
+      const search: Search={
+        url: 'url',
+        count: count
+      };
+      const response: any={
+        'total_results': count
+      }
+      jasmine.addCustomEqualityTester(angular.equals);
+      expect(service.getCurrentSearch('url', response)).toEqual(search);
     })
 /*
     it('5) Search man', () => {
