@@ -3,14 +3,15 @@ import * as uiRouter from 'angular-ui-router';
 class Provider{
   static $inject = ['$stateProvider', '$urlRouterProvider'];
   constructor(stateProvider: uiRouter.StateProvider, urlRouterProvider: uiRouter.UrlRouterProvider) {
-    var states=
+    const states=
     [
-       {
-          name: 'person',
-          url: '/person',
-          component: 'personTasks'
-       }
-     ]
+      {
+        name: 'person',
+        url: '/person',
+        component: 'personTasks'
+      }
+    ]
+
    states.forEach(state => {
       stateProvider.state(state);
    });
