@@ -22,7 +22,7 @@ class Provider {
          url: '/search',
          template: '<search-list func="{{$resolve.func}}"></search-list>',
          resolve: {
-           func: this.getResult
+           func: ['formSearchService', this.getResult]
          }
        },
        {
@@ -37,8 +37,8 @@ class Provider {
     urlRouterProvider.otherwise('/');
   }
 
-  public getResult() {
-    return 'service.getArrayPlaces();';
+  public getResult(service: formSearchService) {
+    return service.getArrayPlaces();
   }
 }
 export default Provider;

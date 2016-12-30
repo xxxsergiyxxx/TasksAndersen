@@ -5,7 +5,7 @@ import FormSearchService from './formSearch.service';
 const template = require('./formSearch.template.html');
 export default angular.module('formSearch', [
   ])
-  .service('formSearchService', ['$http', FormSearchService])
+  .service('formSearchService', ['$q', '$http', FormSearchService])
   .component('formSearch', {
     controller:['formSearchService', Controller],
     template

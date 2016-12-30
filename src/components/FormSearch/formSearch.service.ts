@@ -5,9 +5,10 @@ export default class FormSearchService {
   public currentUrl: string;
   public response: any;
   public currentSearch: Search;
-
-  constructor(private http: ng.IHttpService) {
+  public deffered: ng.IDeferred<any>
+  constructor(private $q: ng.IQService, private http: ng.IHttpService) {
     this.historySearch = []
+    this.deffered = $q.defer(); 
   }
 
   public pushSearch(state: Search): void {
@@ -26,8 +27,8 @@ export default class FormSearchService {
     return response.total_results;
   }
 
-  public getArrayPlaces(): any {
-    return this.response.listings;
+  public getArrayPlaces(): ng.IPromise <any> {
+    return this.deffered.promise;
   }
 
   public getCurrentSearch(url:string, response: any): Search {

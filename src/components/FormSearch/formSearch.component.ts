@@ -8,9 +8,10 @@ export default class Controller {
   
   public getData() {
     this.service.getData(this.place).then((res: any) => {
-      this.service.response=res.data.response;
-      this.service.currentSearch=this.service.getCurrentSearch(this.service.currentUrl, this.service.response);
+      this.service.response = res.data.response;
+      this.service.currentSearch = this.service.getCurrentSearch(this.service.currentUrl, this.service.response);
       this.service.pushSearch(this.service.currentSearch);
+      this.service.deffered.resolve(this.service.getArrayPlaces());
     });
   }
 }
