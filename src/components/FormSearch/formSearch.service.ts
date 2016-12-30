@@ -5,7 +5,11 @@ export default class FormSearchService {
   public currentUrl: string;
   public response: any;
   public currentSearch: Search;
-  public deffered: ng.IDeferred<any>
+  public deffered: ng.IDeferred <any>
+  public showLoaded: boolean = false;
+  public place: string;
+  public totalPages: number;
+  
   constructor(private $q: ng.IQService, private http: ng.IHttpService) {
     this.historySearch = []
     this.deffered = $q.defer(); 
@@ -20,6 +24,8 @@ export default class FormSearchService {
   public getData(place: string): ng.IPromise <any> {
     this.currentUrl = 'http://api.nestoria.co.uk/api?' +
     'country=uk&pretty=1&action=search_listings&encoding=json&listing_type=buy&page=1&place_name=' + place;
+    this.showLoaded = true;
+    this.place = place;
     return this.http.jsonp(this.currentUrl);
   }
 
@@ -28,7 +34,9 @@ export default class FormSearchService {
   }
 
   public getArrayPlaces(): ng.IPromise <any> {
-    return this.deffered.promise;
+    return this.deffered.promise.then((res)=>{
+        return  res;
+      });
   }
 
   public getCurrentSearch(url:string, response: any): Search {

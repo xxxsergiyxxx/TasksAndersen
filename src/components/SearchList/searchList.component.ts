@@ -1,13 +1,16 @@
+import SearchListService from './searchList.service'
 export default class Controller{
-  public func: string;
+  public places: any;
+  public place: string;
+  public totalPages: number;
 
-  constructor() {
-     //console.log("+");
+  constructor(private service: SearchListService) {
   }
 
   public $onInit() {
-    //alert("");
-    //console.log(this.func);
+    //this.viewPages this.service
+    this.service.place=this.place;
+    console.log(this.places);
   }
   
 }

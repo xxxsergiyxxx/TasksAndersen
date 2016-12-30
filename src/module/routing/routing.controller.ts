@@ -20,9 +20,11 @@ class Provider {
        {
          name: 'search',
          url: '/search',
-         template: '<search-list func="{{$resolve.func}}"></search-list>',
+         template: '<search-list places="$resolve.places" place={{$resolve.place}} total-pages={{$resolve.totalPages}}></search-list>',
          resolve: {
-           func: ['formSearchService', this.getResult]
+           places: ['formSearchService', this.getResult],
+           place: ['formSearchService', this.getPlace],
+           totalPages: ['formSearchService', this.getTotalPages]
          }
        },
        {
@@ -39,6 +41,14 @@ class Provider {
 
   public getResult(service: formSearchService) {
     return service.getArrayPlaces();
+  }
+
+  public getPlace(service: formSearchService){
+    return service.place;
+  }
+
+  public getTotalPages(service: formSearchService){
+    return service.totalPages;
   }
 }
 export default Provider;

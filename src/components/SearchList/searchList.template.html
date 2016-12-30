@@ -1,6 +1,23 @@
-<h4>Lalaalalalall</h4>
-
-
-
-
-<p>{{}}</p>
+<div>
+  <ol>
+    <li ng-repeat='place in $ctrl.places'>
+    <div>
+      <img ng-src="{{place.img_url}}">
+    </div>
+    <div>
+      <p ng-bind="place.price_formatted">
+        
+      </p>
+      <p ng-bind="place.summary">
+      </p>
+    </div>
+    </li>
+  </ol>
+  <ul class="pagination">
+    <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+    <ng-repeat>
+    <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+    <li><a href="#">2 <span class="sr-only">(current)</span></a></li>
+    <li class="disabled"><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+  </ul>
+</div>
