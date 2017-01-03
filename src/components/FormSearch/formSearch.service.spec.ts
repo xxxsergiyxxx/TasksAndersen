@@ -26,8 +26,11 @@ describe('Testing service personService.',() => {
 
     it('1) Should adding element in first position ', () => {
       const newSearchState: Search = {
-        url:'',
-        count:0
+        url: '',
+        count: 0,
+        places: [],
+        place: '',
+        totalPages: 0
       };
 
       jasmine.addCustomEqualityTester(angular.equals);
@@ -37,8 +40,11 @@ describe('Testing service personService.',() => {
 
     it('2) Should move right on one position ', () => {
       const newSearchState: Search = {
-        url:'',
-        count:0
+        url: '',
+        count: 0,
+        places: [],
+        place: '',
+        totalPages: 0
       };
 
       jasmine.addCustomEqualityTester(angular.equals);

@@ -29,7 +29,7 @@ class Provider {
        },
        {
          name: 'search.detail',
-         url: '/{place}'
+         url: '/{page}'
        }
     ]
 
@@ -44,6 +44,8 @@ class Provider {
   }
 
   public getPlace(service: formSearchService){
+    // for(let state in service)
+    // console.log('service '+state);
     return service.place;
   }
 

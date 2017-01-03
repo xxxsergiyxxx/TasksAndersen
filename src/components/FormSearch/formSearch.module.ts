@@ -7,7 +7,7 @@ export default angular.module('formSearch', [
   ])
   .service('formSearchService', ['$q', '$http', FormSearchService])
   .component('formSearch', {
-    controller:['formSearchService', Controller],
+    controller:['formSearchService', '$state', Controller],
     template
   }).config(($sceDelegateProvider)=>{
     $sceDelegateProvider.resourceUrlWhitelist([

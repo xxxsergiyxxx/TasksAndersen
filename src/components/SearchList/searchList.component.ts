@@ -8,9 +8,24 @@ export default class Controller{
   }
 
   public $onInit() {
-    //this.viewPages this.service
+    this.service.remainingPages = this.totalPages;
     this.service.place=this.place;
-    console.log(this.places);
+    this.service.getViewNextPages();
+    this.service.fillArray();
+    //console.log(this.service.numberPages);
+    
+    console.log(this.totalPages);
+    // console.log(this.service.remainingPages);
+  }
+
+  public nextPages(): void {
+    this.service.getViewNextPages();
+    this.service.fillArray();
+  }
+
+  public previousPages(): void {
+    this.service.getViewPreviousPages();
+    this.service.fillArray();
   }
   
 }
