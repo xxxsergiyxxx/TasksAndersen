@@ -3,14 +3,21 @@
     <input type="text" ng-model="$ctrl.place">
   </p>
   <p>
-  <input type="button" value="Go" ng-click="$ctrl.getData()">
+    <input type="button" 
+           value="Go" 
+           ng-click="$ctrl.getData()">
     <input type="button" value="My location">
   </p>
   <div>
-  <p ng-show="$ctrl.service.showLoaded"> Loaded...</p>
+  <p ng-show="$ctrl.service.showLoaded"> 
+    Loaded...
+  </p>
   <ul>
     <li ng-repeat="history in $ctrl.service.historySearch">
-      <a ui-sref="search" ng-click="$ctrl.getHistoryState($index)" ng-bind-template="Search # {{$index + 1}} ({{history.count}}) "></a>
+      <a ui-sref="search" 
+         ng-click="$ctrl.getHistoryState($index)" 
+         ng-bind-template="Search # {{$index + 1}} ({{history.count}}) ">
+      </a>
     </li>
   </ul>
   </div>
