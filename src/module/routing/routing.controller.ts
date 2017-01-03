@@ -2,11 +2,7 @@ import * as angular from 'angular';
 import * as uiRouter from 'angular-ui-router';
 import formSearchService from '../../components/FormSearch/formSearch.service';
 
-const propertySearchContainer = require('../../components/PropertySearchContainer/propertySearchContainer.template.html');
-const searchList = require('../../components/SearchList/searchList.template.html');
-
 class Provider {
-  
   private static $inject: string[] = ['$stateProvider', '$urlRouterProvider'];
 
   constructor(stateProvider: uiRouter.IStateProvider, urlRouterProvider: uiRouter.IUrlRouterProvider) {
@@ -20,11 +16,9 @@ class Provider {
        {
          name: 'search',
          url: '/search',
-         template: '<search-list places="$resolve.places" place={{$resolve.place}} total-pages={{$resolve.totalPages}}></search-list>',
+         template: '<search-list-container form-search-service="$resolve.formSearchService" ></search-list-container',
          resolve: {
-           places: ['formSearchService', this.getResult],
-           place: ['formSearchService', this.getPlace],
-           totalPages: ['formSearchService', this.getTotalPages]
+           formSearchService: ['formSearchService', this.getService]
          }
        },
        {
@@ -43,14 +37,16 @@ class Provider {
     return service.getArrayPlaces();
   }
 
-  public getPlace(service: formSearchService){
-    // for(let state in service)
-    // console.log('service '+state);
+  public getPlace(service: formSearchService) {
     return service.place;
   }
 
-  public getTotalPages(service: formSearchService){
+  public getTotalPages(service: formSearchService) {
     return service.totalPages;
+  }
+
+  public getService (service: formSearchService) {
+    return service;
   }
 }
 export default Provider;

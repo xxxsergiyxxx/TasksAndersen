@@ -10,8 +10,6 @@ export default angular
     controller: ['searchListService', Controller],
     template,
     bindings: {
-    	places: '<',
-      place: '@',
-      totalPages: '@'
+      places: '<'
     }
   })

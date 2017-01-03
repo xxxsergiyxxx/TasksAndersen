@@ -61,30 +61,6 @@ describe('Testing service personService.',() => {
       expect(service.getTotalResults(response)).toBe(response['total_results']);
     })
 
-    /*it('4) Should return aray places', () => {
-      service.response = {
-        'total_results':45,
-        'listings':[1,2,3]
-      };
-      ng-agro = "I`M ALIVE!
-      СЕРЫЙ НЕ РУГАЙСЯ, ЭТО НАДО!
-      ЭТО ПРОВЕРКА!"
-      expect(service.getArrayPlaces()).toEqual(service.response['listings']);
-    })*/
-
-    /*it('5) Should return current search', () => {
-      const count = 5;
-      const search: Search = {
-        url: 'url',
-        count: count
-      };
-      const response: any = {
-        'total_results': count
-      }
-      jasmine.addCustomEqualityTester(angular.equals);
-      expect(service.getCurrentSearch('url', response)).toEqual(search);
-    })*/
-
     it('6) Should return data', () => {
       const url = 'http://api.nestoria.co.uk/api?' +
       'country=uk&pretty=1&action=search_listings&encoding=json&listing_type=buy&page=1&place_name=london&callback=JSON_CALLBACK';

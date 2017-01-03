@@ -1,6 +1,6 @@
 import  * as angular from 'angular';
 import 'angular-mocks';
-import SearchListService from './searchList.service';
+import SearchListService from './searchListContainer.service';
 
 describe('Test searchList.service', () => {
   const module = angular.mock.module;
@@ -11,7 +11,7 @@ describe('Test searchList.service', () => {
   describe('Testing returning data', () => {
     beforeEach(() => {
       inject(($injector) => {
-        service = $injector.get('searchListService');
+        service = $injector.get('searchListContainerService');
       })
     })
 

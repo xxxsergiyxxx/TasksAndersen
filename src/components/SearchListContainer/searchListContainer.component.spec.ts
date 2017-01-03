@@ -1,12 +1,12 @@
 import * as angular from 'angular';
 import 'angular-mocks';
-import searchList from './searchList.component';
-describe('Test module FirstModule. ', ()=>{
+import searchListContainer from './searchListContainer.component';
+describe('Test module searchListContainer ', ()=>{
   const module=angular.mock.module;
   beforeEach(module('mainApp'));
 
   describe('Test ComponentPerson. ',()=>{
-    let controller: searchList;
+    let controller: searchListContainer;
     let $componentController;
     beforeEach(()=>{
       inject(($injector,_$componentController_)=> {
@@ -16,12 +16,10 @@ describe('Test module FirstModule. ', ()=>{
 
     it ("check message", () =>{
       const bindings={
-        place:'london',
-        places: []
+        formSearchService: {}
       }
-      controller=$componentController('searchList', null, bindings);
-      expect( controller.place ).toEqual('london');
-      expect( controller.places ).toEqual([]);
+      controller=$componentController('searchListContainer', null, bindings);
+      expect( controller.formSearchService ).toEqual({});
     });
   })
 

@@ -7,9 +7,9 @@ export default angular.module('formSearch', [
   ])
   .service('formSearchService', ['$q', '$http', FormSearchService])
   .component('formSearch', {
-    controller:['formSearchService', '$state', Controller],
+    controller: ['formSearchService', '$state', Controller],
     template
-  }).config(($sceDelegateProvider)=>{
+  }).config(($sceDelegateProvider) => {
     $sceDelegateProvider.resourceUrlWhitelist([
     'self',
     'http://api.nestoria.co.uk/**'
