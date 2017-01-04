@@ -1,16 +1,21 @@
 <div>
-  <p>
-    <input type="text" ng-model="$ctrl.place">
-  </p>
-  <p>
-    <input type="button" 
-           value="Go" 
-           ng-click="$ctrl.getData()">
-    <input type="button" value="My location">
-  </p>
+  <form>
+    <md-input-container>
+        <input type="text" ng-model="$ctrl.place" required placeholder="Place">
+        <button md-button 
+                ng-click="$ctrl.getData()"
+                class="md-raised md-primary">
+                Go
+        </button>
+        <button md-button 
+                class="md-raised md-primary">
+                My Location
+        </button>
+    </md-input-container>
+  </form>
   <div>
-  <p ng-show="$ctrl.service.showLoaded"> 
-    Loaded...
+  <p ng-show="$ctrl.service.showLoaded" ng-bind="$ctrl.service.myAlert"> 
+    
   </p>
   <ul>
     <li ng-repeat="history in $ctrl.service.historySearch">

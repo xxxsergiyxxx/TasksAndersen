@@ -3,16 +3,19 @@ import 'angular-mocks';
 import  FormSearchService  from './formSearch.service';
 import { Search } from './formSearch.types';
 import  Controller  from './formSearch.component';
+import  { isEqual } from 'lodash';
 
 describe('Testing service personService.',() => {
-  const module = angular.mock.module;
   let injector: any;
   let service: FormSearchService;
   let httpBackend: ng.IHttpBackendService;
   let controller: Controller;
-  beforeEach(module('mainApp'));
+  const module = angular.mock.module;
 
-  describe('testing controller for formSearch.service', () => { 
+  beforeEach(module('mainApp'));
+  
+  describe('testing controller for formSearch.service', () => {
+
     beforeEach(() => {
       inject(($injector) => {
         injector = $injector;
@@ -35,7 +38,7 @@ describe('Testing service personService.',() => {
 
       jasmine.addCustomEqualityTester(angular.equals);
       service.pushSearch(newSearchState);
-      expect(service.historySearch[0]).toEqual(newSearchState);
+      expect(isEqual(service.historySearch[0], newSearchState)).toEqual(true);
     });
 
     it('2) Should move right on one position ', () => {
@@ -50,12 +53,12 @@ describe('Testing service personService.',() => {
       jasmine.addCustomEqualityTester(angular.equals);
       service.historySearch[7] = newSearchState;
       service.pushSearch(newSearchState);
-      expect(service.historySearch[8]).toEqual(newSearchState);
+      expect(isEqual(service.historySearch[8], newSearchState)).toEqual(true);
     });
 
     it('3) Should return totla results', () => {
       const response: any = {
-        'total_results':45
+        'total_results': 45
       };
 
       expect(service.getTotalResults(response)).toBe(response['total_results']);
@@ -74,7 +77,7 @@ describe('Testing service personService.',() => {
       });
       httpBackend.flush();
       jasmine.addCustomEqualityTester(angular.equals);
-      expect(service.response).toEqual(response.response);
+      expect(isEqual(service.response, response.response)).toEqual(true);
     })
   })
 })

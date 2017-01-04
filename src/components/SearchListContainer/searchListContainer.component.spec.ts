@@ -4,11 +4,13 @@ import searchListContainer from './searchListContainer.component';
 
 describe('Test module searchListContainer ', () => {
   const module = angular.mock.module;
+
   beforeEach(module('mainApp'));
 
   describe('Test ComponentPerson. ',() => {
     let controller: searchListContainer;
     let $componentController;
+    
     beforeEach(() => {
       inject(($injector,_$componentController_) => {
         $componentController = _$componentController_;

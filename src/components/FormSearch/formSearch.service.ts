@@ -9,6 +9,7 @@ export default class FormSearchService {
   public showLoaded: boolean = false;
   public place: string;
   public totalPages: number;
+  public myAlert: string;
 
   constructor(private $q: ng.IQService, private http: ng.IHttpService) {
     this.historySearch = []
@@ -17,6 +18,7 @@ export default class FormSearchService {
   public initDefer(): void {
     this.deffered = this.$q.defer();
   }
+  
   public pushSearch(state: Search): void {
     this.historySearch.unshift(state);
 
@@ -30,6 +32,7 @@ export default class FormSearchService {
     'country=uk&pretty=1&action=search_listings&encoding=json&listing_type=buy&page=1&place_name=' + place;
     this.showLoaded = true;
     this.place = place;
+    this.myAlert = 'Loading...';
     return this.http.jsonp(this.currentUrl);
   }
 
@@ -57,9 +60,7 @@ export default class FormSearchService {
   }
 
   public getArrayPlaces(): ng.IPromise <any> {
-    return this.deffered.promise.then((res) => {
-        return  res;
-      });
+    return this.deffered.promise;
   }
 
   public getCurrentSearch(url: string, response: any): Search {

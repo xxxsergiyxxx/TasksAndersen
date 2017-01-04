@@ -3,6 +3,7 @@ import * as uiRouter from 'angular-ui-router';
 
 export default class Controller {
   public place: string;
+  
   constructor(private service: FormSearchService, private $state: uiRouter.IStateService) {
   }
 
@@ -17,7 +18,7 @@ export default class Controller {
         throw new Error('Connection error');
       }
     ).catch((error: Error) => {
-      error.message;
+      this.service.myAlert = error.message;
     })
   }
 

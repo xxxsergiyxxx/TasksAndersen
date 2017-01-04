@@ -1,0 +1,6 @@
+.detail-container div {
+  display: inline-block;
+}
+.detail-container {
+  margin: 10px;
+}

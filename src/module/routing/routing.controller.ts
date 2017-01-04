@@ -1,6 +1,7 @@
 import * as angular from 'angular';
 import * as uiRouter from 'angular-ui-router';
 import formSearchService from '../../components/FormSearch/formSearch.service';
+import searchList from '../../components/SearchList/searchList.service';
 
 class Provider {
   private static $inject: string[] = ['$stateProvider', '$urlRouterProvider'];
@@ -22,8 +23,12 @@ class Provider {
          }
        },
        {
-         name: 'search.detail',
-         url: '/{page}'
+         name: 'detail',
+         url: '/search/detail',
+         template: '<detail detail="$resolve.detail"></detail>',
+         resolve: {
+           detail: ['searchListService', this.getDetail]
+         }
        }
     ]
 
@@ -45,8 +50,12 @@ class Provider {
     return service.totalPages;
   }
 
-  public getService (service: formSearchService) {
+  public getService(service: formSearchService) {
     return service;
+  }
+
+  public getDetail(service: searchList) {
+    return service.getCurrent();
   }
 }
 export default Provider;
