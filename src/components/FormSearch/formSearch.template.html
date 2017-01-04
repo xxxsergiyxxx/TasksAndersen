@@ -3,11 +3,12 @@
     <md-input-container>
         <input type="text" ng-model="$ctrl.place" required placeholder="Place">
         <button md-button 
-                ng-click="$ctrl.getData()"
+                ng-click="$ctrl.getDataPlace()"
                 class="md-raised md-primary">
                 Go
         </button>
         <button md-button 
+                ng-click="$ctrl.getDataLocation()"
                 class="md-raised md-primary">
                 My Location
         </button>

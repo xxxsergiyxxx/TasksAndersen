@@ -7,8 +7,8 @@ export default class Controller {
   constructor(private service: FormSearchService, private $state: uiRouter.IStateService) {
   }
 
-  public getData(): void {
-    this.service.getData(this.place).then(
+  public getData(url: string): void {
+    this.service.getData(url).then(
       (res: any) => {
         this.service.initDefer();
         this.service.viewContent(res);
@@ -20,6 +20,18 @@ export default class Controller {
     ).catch((error: Error) => {
       this.service.myAlert = error.message;
     })
+  }
+  
+  public getDataPlace(): void {
+    const url: string = this.service.setPlaceUrl(this.place);
+
+    this.getData(url);
+  }
+
+  public getDataLocation(): void {
+    const url: string = this.service.setLocationUrl(51.684183, -3.431481);
+
+    this.getData(url);
   }
 
   public getHistoryState(index: number): void {

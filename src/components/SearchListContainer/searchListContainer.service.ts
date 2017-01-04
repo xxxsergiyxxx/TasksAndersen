@@ -5,6 +5,7 @@ export default class SearchListContainerService {
   public remainingPages: number;
   public numberPages: number[] = [];
   public countNext: number;
+  private countView: number = 20;
 
   constructor(private http: ng.IHttpService) {
     this.countNext = this.viewPages * (-1);
@@ -36,6 +37,10 @@ export default class SearchListContainerService {
   }
 
   public getViewPreviousPages(): void {
-    this.countNext -= this.viewPages;
+    if (this.countNext > 0) {
+      this.remainingPages += this.viewPages;
+      this.viewPages = this.countView;
+      this.countNext -= this.viewPages;      
+    }
   }
 }

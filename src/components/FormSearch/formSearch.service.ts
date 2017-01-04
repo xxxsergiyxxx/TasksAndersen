@@ -18,7 +18,17 @@ export default class FormSearchService {
   public initDefer(): void {
     this.deffered = this.$q.defer();
   }
-  
+
+  public setPlaceUrl(place: string): string {
+    this.place = place;
+    return 'http://api.nestoria.co.uk/api?' +
+    'country=uk&pretty=1&action=search_listings&encoding=json&listing_type=buy&page=1&place_name=' + place;
+  }
+  public setLocationUrl(pointX: number, pointY: number): string {
+    return 'http://api.nestoria.co.uk/api?'+
+    'country=uk&pretty=1&action=search_listings&encoding=json&'+
+    'listing_type=buy&page=1&centre_point=' + pointX + ',' + pointY;
+  }
   public pushSearch(state: Search): void {
     this.historySearch.unshift(state);
 
@@ -27,11 +37,9 @@ export default class FormSearchService {
     }
   }
 
-  public getData(place: string): ng.IPromise <any> {
-    this.currentUrl = 'http://api.nestoria.co.uk/api?' +
-    'country=uk&pretty=1&action=search_listings&encoding=json&listing_type=buy&page=1&place_name=' + place;
+  public getData(url: string): ng.IPromise <any> {
+    this.currentUrl=url;
     this.showLoaded = true;
-    this.place = place;
     this.myAlert = 'Loading...';
     return this.http.jsonp(this.currentUrl);
   }
