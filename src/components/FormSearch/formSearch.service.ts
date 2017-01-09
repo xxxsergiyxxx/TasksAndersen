@@ -22,12 +22,12 @@ export default class FormSearchService {
   public setPlaceUrl(place: string): string {
     this.place = place;
     return 'http://api.nestoria.co.uk/api?' +
-    'country=uk&pretty=1&action=search_listings&encoding=json&listing_type=buy&page=1&place_name=' + place;
+            'country=uk&pretty=1&action=search_listings&encoding=json&listing_type=buy&page=1&place_name=' + place;
   }
   public setLocationUrl(pointX: number, pointY: number): string {
-    return 'http://api.nestoria.co.uk/api?'+
-    'country=uk&pretty=1&action=search_listings&encoding=json&'+
-    'listing_type=buy&page=1&centre_point=' + pointX + ',' + pointY;
+    return 'http://api.nestoria.co.uk/api?' +
+          'country=uk&pretty=1&action=search_listings&encoding=json&' +
+          'listing_type=buy&page=1&centre_point=' + pointX + ',' + pointY;
   }
   public pushSearch(state: Search): void {
     this.historySearch.unshift(state);

@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --inline --hot",
-    "test": "karma start karma.conf.js"
+    "test": "karma start karma.conf.js",
+    "update-webdriver": "webdriver-manager update",
+    "preprotractor": "npm run update-webdriver",
+    "protractor": "protractor e2e-tests/protractor.conf.js"
   },
   "keywords": [],
   "author": "",
