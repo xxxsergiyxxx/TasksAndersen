@@ -3,7 +3,7 @@ import * as uiRouter from 'angular-ui-router';
 
 export default class Controller {
   public place: string;
-  
+
   constructor(private service: FormSearchService, private $state: uiRouter.IStateService) {
   }
 
@@ -13,7 +13,7 @@ export default class Controller {
         this.service.initDefer();
         this.service.viewContent(res);
         this.$state.go('search');
-      }, 
+      },
       (res: any) => {
         throw new Error('Connection error');
       }

@@ -38,7 +38,7 @@ export default class FormSearchService {
   }
 
   public getData(url: string): ng.IPromise <any> {
-    this.currentUrl=url;
+    this.currentUrl = url;
     this.showLoaded = true;
     this.myAlert = 'Loading...';
     return this.http.jsonp(this.currentUrl);
