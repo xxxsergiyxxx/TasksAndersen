@@ -1,4 +1,5 @@
-'use strict';
+import  * as angular from 'angular';
+import 'angular-mocks';
 
 describe('Steal Mya Admin Application', () => {
 
@@ -8,14 +9,15 @@ describe('Steal Mya Admin Application', () => {
   });
 
   describe('View: list', () => {
-    beforeEach(() => {
-      browser.get('index.html#!/');
-    });
     const queryField = element(by.model('$ctrl.place'));
     const search_button = $('.search_button'); 
     const location_button = $('.location_button');
 
-    it('should be return list', () =>{
+    beforeEach(() => {
+      browser.get('index.html#!/');
+    });
+    
+    it('should be return list', () => {
       const placeList = element.all(by.repeater('place in $ctrl.places')); 
 
       queryField.sendKeys('london');
@@ -23,7 +25,7 @@ describe('Steal Mya Admin Application', () => {
       expect(placeList.count()).toBe(20);
     });
 
-    it('should be return empty list', () =>{ 
+    it('should be return empty list', () => { 
       const placeList = element.all(by.repeater('place in $ctrl.places'));   
 
       queryField.sendKeys('aaaaaaaaaaaaa');
@@ -31,7 +33,7 @@ describe('Steal Mya Admin Application', () => {
       expect(placeList.count()).toBe(0);
     });
 
-    it('should be return history list', () =>{
+    it('should be return history list', () => {
       const history = element.all(by.repeater('history in $ctrl.service.historySearch'));
 
       queryField.sendKeys('london');
@@ -40,7 +42,7 @@ describe('Steal Mya Admin Application', () => {
       expect(history.count()).toBe(1);
     });
 
-    it('should be return location  list', () =>{
+    it('should be return location  list', () => {
       const placeList = element.all(by.repeater('place in $ctrl.places'));    
       const location_button = $('.location_button');
 
@@ -48,7 +50,7 @@ describe('Steal Mya Admin Application', () => {
       expect(placeList.count()).toBe(20);
     });
 
-    it('should be return history list', () =>{
+    it('should be return history list', () => {
       const placeList = element.all(by.repeater('place in $ctrl.places'));
       const search_link = $('.search-link');
 
@@ -59,7 +61,7 @@ describe('Steal Mya Admin Application', () => {
       expect(placeList.count()).toBe(20);
     });
 
-    it('should be return url /search', () =>{
+    it('should be return url /search', () => {
       search_button.click();
       expect(browser.getLocationAbsUrl()).toBe('/search');
     });

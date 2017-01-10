@@ -5,10 +5,14 @@ export default class SearchListComponentController {
   public places: any;
   public formSearchService: formSearchService;
 
-  constructor(public service: SearchCntainerService) {
+  constructor(private service: SearchCntainerService) {
 
   }
 
+  public getPages() {
+    return this.service.numberPages;
+  }
+  
   public $onInit(): void {
     this.service.viewPages = 20;
     this.service.countNext = -20;

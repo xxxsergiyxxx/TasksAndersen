@@ -6,7 +6,8 @@ module.exports = (config)=> {
             'src/**/*.ts'
         ],
         preprocessors: {
-            'src/**/*.ts': ['karma-typescript']
+            'src/**/*.ts': ['karma-typescript'],
+            'e2e-tests/**/*.ts': ['karma-typescript']
         },
         reporters: ['progress', 'karma-typescript'],
         karmaTypescriptConfig: {

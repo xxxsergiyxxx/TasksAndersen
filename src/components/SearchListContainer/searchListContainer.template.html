@@ -7,7 +7,7 @@
       <span aria-hidden="true">&laquo;</span>
     </a>
   </li>
-  <li ng-repeat="page in $ctrl.service.numberPages">
+  <li ng-repeat="page in $ctrl.getPages()">
     <a ng-bind="page" 
        ng-click="$ctrl.getPlaces(page)">
     </a>
