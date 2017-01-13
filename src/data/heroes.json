@@ -1,0 +1,22 @@
+[
+    {
+        "id": "1",
+        "name": "batman",
+        "story": "kill parents"
+    },
+    {
+        "id": "2",
+        "name": "superman",
+        "story": "kill parents"
+    },
+    {
+        "id": "3",
+        "name": "iron man",
+        "story": "kill parents"
+    },
+    {
+        "id": "4",
+        "name": "hulk",
+        "story": "Get super power after gamma analysis"
+    }
+]

@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+}
+.container {
+}
+.container__box {
+  padding: 20px;
+  text-align: center;
+  color: #8a8b92;
+  max-height: 220px;
+  min-width: 150px;
+  background-color: #e3e6f3;
+  border-radius: 2px;
+  margin-right:5px;
+}
+.container__link {
+  width: 25%;
+  display: inline-block;
+  margin-right: 10px;
+}

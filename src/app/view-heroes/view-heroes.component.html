@@ -1,0 +1,7 @@
+<div class="container">
+    <a *ngFor="let hero of heroes" [routerLink]="['/hero', hero.id]" class="container__link" >
+        <div class="container__box">
+            <h3>{{hero.name}}</h3>
+        </div>
+    </a>
+</div>
