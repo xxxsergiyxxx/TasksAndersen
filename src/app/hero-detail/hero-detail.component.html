@@ -3,3 +3,8 @@
 {{service.testValue}}
 <button (click)="incrTestValue()">KEK</button>
 <a routerLink="/">Link</a>
+<input type="text" #box 
+       (keyup.enter)="myKeyUp(box.value)"
+       (blur)="myKeyUp(box.value)" [(ngModel)]="value">
+{{values}}
+{{value}}

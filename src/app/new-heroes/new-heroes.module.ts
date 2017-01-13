@@ -1,4 +1,5 @@
 import { NgModule }             from '@angular/core';
+import { FormsModule }          from '@angular/forms';
 import { NewHeroes }            from './new-heroes.component';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -10,6 +11,7 @@ const routes: Routes = [
 ]
 @NgModule({
     imports: [
+        FormsModule,
         RouterModule.forChild(routes)
     ],
     exports: [ RouterModule ],

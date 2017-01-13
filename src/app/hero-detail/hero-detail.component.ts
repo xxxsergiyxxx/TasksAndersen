@@ -11,6 +11,7 @@ import { HeroDetailService } from './hero-detail.service';
 export class HeroDetail implements OnInit {
     public currentHero: Hero;
     public value: number;
+    public values: string;
     constructor(
         private route: ActivatedRoute,
         private service: HeroDetailService
@@ -25,9 +26,13 @@ export class HeroDetail implements OnInit {
             });
         this.value = this.service.testValue;
     }
-    public incrTestValue() {
+    public incrTestValue(): void {
         this.service.testValue++;
         this.value++;
+    }
+    public myKeyUp(value: string): void {
+        this.values = value;
+        console.log(value);
     }
 }
 function logCall(target: any, key: string, value: any) {
