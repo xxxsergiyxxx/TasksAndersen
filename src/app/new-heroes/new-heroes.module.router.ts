@@ -1,8 +1,9 @@
 import { NgModule }             from '@angular/core';
-import { NewHeroes }            from './new-heroes.component';
 import { RouterModule, Routes } from '@angular/router';
+import { NewHeroes }            from './new-heroes.component';
 
-import { BigBoss }              from './big-boss/big-bos.component';
+import { BigBoss }              from './big-boss/big-boss.component';
+import { ListHeroes }           from './list-heroes/list-heroes.component';
 
 const routes: Routes = [
     {
@@ -10,8 +11,14 @@ const routes: Routes = [
         component: NewHeroes,
         children: [
             {
-                path: 'bigboss',
-                component: BigBoss
+                path: '',
+                component: ListHeroes,
+                children: [
+                    {
+                        path: 'bigBoss',
+                        component: BigBoss
+                    }
+                ]
             }
         ]
     }

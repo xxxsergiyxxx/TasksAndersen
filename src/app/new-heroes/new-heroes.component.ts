@@ -1,4 +1,5 @@
 import { Component }                from '@angular/core';
+import { Route, ActivatedRoute}     from '@angular/router';
 
 @Component({
     moduleId: String(module.id),
@@ -6,4 +7,5 @@ import { Component }                from '@angular/core';
     styleUrls: ['./new-heroes.component.css']
 })
 export class NewHeroes {
+
 }
