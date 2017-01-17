@@ -1,10 +1,11 @@
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { HeroDetail }           from '../hero-detail/hero-detail.component';
-import { HeroDetailService }    from '../hero-detail/hero-detail.service';
 import { ViewHeroes }           from '../view-heroes/view-heroes.component';
-import { FormsModule }          from '@angular/forms';
-import { CommonModule }         from '@angular/common';
+import { HeroService }          from '../processing-hero/heroes';
+import { NewHeroes }            from '../new-heroes/new-heroes.component';
+import { HeroResolver}          from '../view-heroes/view-heroes.resolve.service';
 
 const routes: Routes = [
     {
@@ -16,7 +17,14 @@ const routes: Routes = [
     },
     {
         path: 'view',
-        component: ViewHeroes
+        component: ViewHeroes,
+        resolve : {
+            heroes: HeroResolver
+        }
+    },
+    {   
+        path: 'newHeroes', 
+        loadChildren: '../new-heroes/new-heroes.module#NewHeroesModule'
     },
     {   
         path: '', 
@@ -28,17 +36,13 @@ const routes: Routes = [
 @NgModule({
     imports: [
         RouterModule.forRoot(routes),
-        FormsModule,
-        CommonModule
-    ],
-    declarations: [
-        ViewHeroes,
-        HeroDetail
     ],
     exports: [
         RouterModule 
     ],
-    providers: [HeroDetailService]
+    providers: [
+        HeroResolver
+    ]
 })
 export class Router {
 

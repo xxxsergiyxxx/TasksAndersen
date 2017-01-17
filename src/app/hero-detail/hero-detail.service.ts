@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Heroes } from '../processing-hero/heroes';
-import { Hero } from '../processing-hero/heroes';
+import { Hero, HeroService } from '../processing-hero/heroes';
 
 @Injectable()
 export class HeroDetailService {
+
+    constructor(private heroService: HeroService) {
+
+    }
     public testValue: number=0;
     public FindHero(id: number): Hero{
-        return Heroes.find( (elem: Hero) => {
+        return this.heroService.Heroes.find( (elem: Hero) => {
             return elem.id ===id;
         })
     }

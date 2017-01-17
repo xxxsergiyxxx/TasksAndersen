@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Heroes } from '../processing-hero/heroes';
 import { Hero } from '../processing-hero/heroes';
 
 @Component({
@@ -11,5 +10,4 @@ import { Hero } from '../processing-hero/heroes';
 
 export class AppComponent {
   title = 'Tour of Heroes';
-  heroes: Hero[] = Heroes;
 }
