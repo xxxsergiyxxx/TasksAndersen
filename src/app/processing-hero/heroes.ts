@@ -17,19 +17,18 @@ export class Hero {
 @Injectable()
 export class HeroService {
     public Heroes: Hero[];
-
     constructor(private http: Http) {
 
     }
     
-    public getHeroes(): Promise <any> {
-        const url: string = '/src/data/heroes.json';
-        return this.http.get(url)
-        .toPromise();
+    public getHeroes(): Promise <Hero[]> {
+        return new Promise ((resolve, reject) =>{
+            setTimeout(()=>{
+                const url: string = '/src/data/heroes.json';
+                 this.http.get(url)
+                .toPromise().then(res => resolve(res.json()));
+            }, 2000
+        )
+        });
     }
 }
-// export const Heroes: Hero[] =[
-//     new Hero(1, 'batman', 'kill parents'),
-//     new Hero(2, 'superman', 'dead world'),
-//     new Hero(3, 'iron man', 'dead parents')
-// ]

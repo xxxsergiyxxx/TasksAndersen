@@ -1,7 +1,7 @@
-import { Injectable }               from '@angular/core';
+import { Injectable }                       from '@angular/core';
 import { Router, Resolve, RouterStateSnapshot,
-        ActivatedRouteSnapshot  }   from'@angular/router';
-import { Hero, HeroService }        from '../processing-hero/heroes';
+        ActivatedRouteSnapshot  }           from'@angular/router';
+import { Hero, HeroService }                from '../processing-hero/heroes';
 
 @Injectable()
 export class HeroResolver implements Resolve<Hero[]> {
@@ -9,8 +9,8 @@ export class HeroResolver implements Resolve<Hero[]> {
 
     }
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot ): Promise<Hero[]> {
-        return this.service.getHeroes().then( res => {
-            this.service.Heroes = res.json();
+        return this.service.getHeroes().then <Hero[]>( (res: Hero[]) => {
+            return this.service.Heroes = res;
         })
     }
 }

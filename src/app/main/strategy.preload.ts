@@ -5,12 +5,8 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class PreloadBatleHeroes implements PreloadingStrategy {
-    preloadedModules: string[] = [];
-
     preload(route: Route, load: () => Observable<any> ): Observable <any> {
         if (route.data && route.data['preload']) {
-            this.preloadedModules.push(route.path);
-            console.log('Preloaded: ' + route.path);
             return load();
         } else {
             return Observable.of(null);

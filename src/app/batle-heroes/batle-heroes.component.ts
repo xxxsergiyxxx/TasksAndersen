@@ -18,9 +18,7 @@ export class BatleHeroes {
     constructor(
         private route: ActivatedRoute,
         private preloadStrategy: PreloadBatleHeroes
-  ) {
-        this.modules = preloadStrategy.preloadedModules;
-  }
+  ) {}
 
     ngOnInit() {
         this.sessionId = this.route
