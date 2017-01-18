@@ -14,9 +14,9 @@ import { ListHeroes }           from './list-heroes/list-heroes.component';
         NewHeroesRouter
     ],
     declarations: [ 
-        NewHeroes,
         BigBoss,
-        ListHeroes 
+        ListHeroes,
+        NewHeroes        
     ]
 })
 export class NewHeroesModule {

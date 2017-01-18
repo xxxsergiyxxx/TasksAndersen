@@ -6,6 +6,7 @@ import { ViewHeroes }           from '../view-heroes/view-heroes.component';
 import { HeroService }          from '../processing-hero/heroes';
 import { NewHeroes }            from '../new-heroes/new-heroes.component';
 import { HeroResolver}          from '../view-heroes/view-heroes.resolve.service';
+import { PreloadBatleHeroes }   from '../main/strategy.preload';
 
 const routes: Routes = [
     {
@@ -27,6 +28,13 @@ const routes: Routes = [
         loadChildren: '../new-heroes/new-heroes.module#NewHeroesModule'
     },
     {   
+        path: 'batleHeroes', 
+        loadChildren: '../batle-heroes/batle-heroes.module#BatleHeroesModule',
+        data: {
+            preload: true
+        }
+    },
+    {   
         path: '', 
         redirectTo: '/', 
         pathMatch: 'full' 
@@ -35,7 +43,9 @@ const routes: Routes = [
 
 @NgModule({
     imports: [
-        RouterModule.forRoot(routes),
+        RouterModule.forRoot(routes, {
+            preloadingStrategy: PreloadBatleHeroes
+        })
     ],
     exports: [
         RouterModule 

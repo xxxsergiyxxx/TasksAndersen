@@ -1,5 +1,4 @@
 import { Component }                from '@angular/core';
-import { Route, ActivatedRoute}     from '@angular/router';
 
 @Component({
     moduleId: String(module.id),

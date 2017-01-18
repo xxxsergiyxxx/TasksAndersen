@@ -7,10 +7,10 @@ export class HeroDetailService {
     constructor(private heroService: HeroService) {
 
     }
-    public testValue: number=0;
-    public FindHero(id: number): Hero{
+    public testValue: number = 0;
+    public FindHero(id: number): Hero {
         return this.heroService.Heroes.find( (elem: Hero) => {
-            return elem.id ===id;
+            return +elem.id === id;
         })
     }
 } 

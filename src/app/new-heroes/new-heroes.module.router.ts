@@ -15,7 +15,7 @@ const routes: Routes = [
                 component: ListHeroes,
                 children: [
                     {
-                        path: 'bigBoss',
+                        path: 'bigboss',
                         component: BigBoss
                     }
                 ]
@@ -27,7 +27,9 @@ const routes: Routes = [
     imports: [
         RouterModule.forChild(routes)
     ],
-    exports: [ RouterModule ]
+    exports: [ 
+        RouterModule 
+    ]
 })
 export class NewHeroesRouter {
 

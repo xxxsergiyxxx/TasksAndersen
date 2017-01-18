@@ -11,6 +11,7 @@ import { NewHeroes }            from '../new-heroes/new-heroes.component';
 import { AppComponent }         from './app.component';
 import { Router }               from '../routing/routing.module';
 import { NewHeroesModule }      from '../new-heroes/new-heroes.module';
+import { PreloadBatleHeroes }   from './strategy.preload';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { NewHeroesModule }      from '../new-heroes/new-heroes.module';
   ],
   providers: [
       HeroDetailService,
-      HeroService
+      HeroService,
+      PreloadBatleHeroes
   ]
 })
 export class AppModule { }

@@ -24,7 +24,7 @@ export class HeroDetail implements OnInit {
         .subscribe ((hero: Hero) => {
                 this.currentHero = hero;
             });
-        this.value = this.service.testValue;
+        console.log(this.currentHero);
     }
 
     public incrTestValue(): void {
@@ -35,11 +35,5 @@ export class HeroDetail implements OnInit {
     public myKeyUp(value: string): void {
         this.values = value;
         console.log(value);
-    }
-
-    public getHeroes() {
-        this.HeroesService.getHeroes().then(res => {
-            console.log(res.json());
-        })
     }
 }
