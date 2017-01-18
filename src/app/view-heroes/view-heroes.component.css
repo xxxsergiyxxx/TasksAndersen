@@ -2,9 +2,16 @@
   box-sizing: border-box;
 }
 .container__link {
-  width: 25%;
+  width: 20%;
   display: inline-block;
+  height: 420px;
+}
+.hero_container {
+  position: relative;
+  float: left;
 }
 .container__box {
   padding: 10px;
+  float:left;
+  width: 100%;
 }

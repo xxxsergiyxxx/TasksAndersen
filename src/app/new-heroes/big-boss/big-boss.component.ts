@@ -12,12 +12,18 @@ export class BigBoss {
     public story: string;
     public id: number;
     public hero: Hero;
+    public image: string;
     constructor(private heroService: HeroService) {
     }
 
     public addHero() {
         this.id = this.heroService.Heroes.length + 1;
-        this.heroService.Heroes.push(new Hero(this.id, this.name, this.story));
+        this.heroService.Heroes.push(new Hero(
+            this.id, 
+            this.name, 
+            this.story, 
+            this.image)
+            );
         this.name = '';
         this.story = '';
     }

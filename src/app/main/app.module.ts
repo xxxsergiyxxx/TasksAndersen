@@ -2,6 +2,8 @@ import { NgModule }             from '@angular/core';
 import { BrowserModule }        from '@angular/platform-browser';
 import { HttpModule }           from '@angular/http';
 import { FormsModule }          from '@angular/forms';
+import { MaterialModule }       from '@angular/material';
+
 import { HeroDetail }           from '../hero-detail/hero-detail.component';
 import { HeroDetailService }    from '../hero-detail/hero-detail.service';
 import { ViewHeroes }           from '../view-heroes/view-heroes.component';
@@ -16,7 +18,8 @@ import { HeroView }             from '../view-heroes/hero/hero.component';
     FormsModule,
     Router,
     BrowserModule,
-    HttpModule
+    HttpModule,
+    MaterialModule.forRoot()
   ],
   declarations: [
     AppComponent,

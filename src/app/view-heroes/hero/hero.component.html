@@ -1,7 +1,12 @@
-<div class="hero_content">
-    <div class="hero_image">
-    </div>
-    <div class="hero_info">
-        <h3>{{hero.name}}</h3>
-    </div>
-</div>
+<md-card class="example-card">
+  <md-card-header>
+    <div md-card-avatar class="example-header-image"></div>
+    <md-card-title>{{hero.name}}</md-card-title>
+  </md-card-header>
+  <img md-card-image [src]="hero.image" class="hero_image">
+  <md-card-content class="hero_content">
+    <p>
+      {{hero.story}}
+    </p>
+  </md-card-content>
+</md-card>

@@ -2,21 +2,25 @@
     {
         "id": "1",
         "name": "batman",
-        "story": "kill parents"
+        "story": "kill parents",
+        "image": "/src/data/images/batman.png"
     },
     {
         "id": "2",
         "name": "superman",
-        "story": "kill parents"
+        "story": "kill parents",
+        "image": "/src/data/images/superman.png"
     },
     {
         "id": "3",
         "name": "iron man",
-        "story": "kill parents"
+        "story": "kill parents",
+        "image": "/src/data/images/ironman.png"
     },
     {
         "id": "4",
         "name": "hulk",
-        "story": "Get super power after gamma analysis"
+        "story": "Get super power after gamma analysis",
+        "image": "/src/data/images/hulk.png"
     }
 ]

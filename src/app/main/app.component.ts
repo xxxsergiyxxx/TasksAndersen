@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Hero } from '../processing-hero/heroes';
+import '../../public/style.css';
 
 @Component({
   moduleId: String(module.id),
