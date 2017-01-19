@@ -27,8 +27,8 @@ import { HeroView }             from '../view-heroes/hero/hero.component';
     HeroDetail,
     HeroView
   ],
-  bootstrap: [ 
-    AppComponent 
+  bootstrap: [
+    AppComponent
   ],
   providers: [
       HeroDetailService,

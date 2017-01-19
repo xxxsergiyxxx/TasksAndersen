@@ -11,7 +11,7 @@ export class ListHeroes {
     constructor(private route: ActivatedRoute, private router: Router ) {
 
     }
-    
+
     public toBigBoss() {
         this.router.navigate(['./bigboss'], { relativeTo: this.route });
     }

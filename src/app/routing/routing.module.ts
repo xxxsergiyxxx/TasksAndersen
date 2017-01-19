@@ -3,8 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HeroDetail }           from '../hero-detail/hero-detail.component';
 import { ViewHeroes }           from '../view-heroes/view-heroes.component';
-import { HeroService }          from '../processing-hero/heroes';
-import { NewHeroes }            from '../new-heroes/new-heroes.component';
 import { HeroResolver}          from '../view-heroes/view-heroes.resolve.service';
 import { PreloadBatleHeroes }   from '../main/strategy.preload';
 
@@ -23,21 +21,21 @@ const routes: Routes = [
             heroes: HeroResolver
         }
     },
-    {   
-        path: 'newHeroes', 
+    {
+        path: 'newHeroes',
         loadChildren: '../new-heroes/new-heroes.module#NewHeroesModule'
     },
-    {   
-        path: 'batleHeroes', 
+    {
+        path: 'batleHeroes',
         loadChildren: '../batle-heroes/batle-heroes.module#BatleHeroesModule',
         data: {
             preload: true
         }
     },
-    {   
-        path: '', 
-        redirectTo: '/', 
-        pathMatch: 'full' 
+    {
+        path: '',
+        redirectTo: '/',
+        pathMatch: 'full'
     }
 ]
 
@@ -48,7 +46,7 @@ const routes: Routes = [
         })
     ],
     exports: [
-        RouterModule 
+        RouterModule
     ],
     providers: [
         HeroResolver

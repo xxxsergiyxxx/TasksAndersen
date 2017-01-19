@@ -6,7 +6,7 @@ import { BatleHeroesRouter }    from './batle-heroes.router';
 import { BatleHeroes }          from './batle-heroes.component';
 
 @NgModule({
-    imports: [ 
+    imports: [
         FormsModule,
         CommonModule,
         BatleHeroesRouter
@@ -17,4 +17,4 @@ import { BatleHeroes }          from './batle-heroes.component';
 })
 export class BatleHeroesModule {
     
-} 
+}

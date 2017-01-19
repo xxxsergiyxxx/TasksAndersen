@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+
 export class Hero {
     public id: number;
     public name: string;
@@ -10,7 +11,7 @@ export class Hero {
         name: string,
         story: string,
         image: string
-    ){
+    ) {
         this.id = id;
         this.name = name;
         this.story = story;
@@ -23,15 +24,16 @@ export class HeroService {
     constructor(private http: Http) {
 
     }
-    
+
     public getHeroes(): Promise <Hero[]> {
-        return new Promise ((resolve, reject) =>{
-            setTimeout(()=>{
-                const url: string = '/src/data/heroes.json';
-                 this.http.get(url)
+        return new Promise ((resolve, reject) => {
+            setTimeout(() => {
+                const url = '/src/data/heroes.json';
+                this.http.get(url)
                 .toPromise().then(res => resolve(res.json()));
-            }, 2000
-        )
-        });
+                }, 2000
+            )
+        }
+    );
     }
 }

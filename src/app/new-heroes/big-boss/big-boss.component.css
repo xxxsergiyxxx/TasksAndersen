@@ -6,5 +6,6 @@
   border-left: 5px solid #a94442; /* red */
 }
 .container {
-  width: 60%;
+  width: 30%;
+  float: left;
 }

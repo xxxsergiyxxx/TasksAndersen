@@ -1,14 +1,14 @@
 import { RouterModule, Routes } from '@angular/router';
-import { NgModule } from '@angular/core';
+import { NgModule }             from '@angular/core';
 
-import { BatleHeroes } from './batle-heroes.component';
+import { BatleHeroes }          from './batle-heroes.component';
 
 const routes: Routes = [
     {
-        path:'',
+        path: '',
         component: BatleHeroes
     }
-]
+    ]
 
 @NgModule({
     imports: [
@@ -19,5 +19,5 @@ const routes: Routes = [
     ]
 })
 export class BatleHeroesRouter {
-    
+
 }

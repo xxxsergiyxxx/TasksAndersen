@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
-import { Hero } from '../processing-hero/heroes';
+import { Component }  from '@angular/core';
+
 import '../../public/style.css';
 
 @Component({
   moduleId: String(module.id),
   selector: 'my-app',
-  templateUrl:'./app.component.html',
+  templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 

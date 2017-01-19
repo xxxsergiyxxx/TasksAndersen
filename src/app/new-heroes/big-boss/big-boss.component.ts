@@ -8,30 +8,26 @@ import { Hero, HeroService }        from '../../processing-hero/heroes';
     styleUrls: ['./big-boss.component.css']
 })
 export class BigBoss {
-    public name: string;
-    public story: string;
-    public id: number;
-    public hero: Hero;
-    public image: string;
+    powers = ['Really Smart', 'Super Flexible', 'Weather Changer'];
+    hero = new Hero(18, 'Dr. WhatIsHisWayTooLongName', this.powers[0], 'Dr. What');
+    submitted = false;
+
     constructor(private heroService: HeroService) {
-    }
 
-    public addHero() {
-        this.id = this.heroService.Heroes.length + 1;
-        this.heroService.Heroes.push(new Hero(
-            this.id, 
-            this.name, 
-            this.story, 
-            this.image)
-            );
-        this.name = '';
-        this.story = '';
-    }
-
-    public onSubmit() {
-        alert('sssss');
     }
     public setValid(model: any): void {
         console.log(model);
+    }
+
+    onSubmit() {
+        this.submitted = true;
+    }
+
+    addHero() {
+        this.hero = new Hero(42, '', '','');
+    }
+
+    log(name: any) {
+        console.log(name);
     }
 }

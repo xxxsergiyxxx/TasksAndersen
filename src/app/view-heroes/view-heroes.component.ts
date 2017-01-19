@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HeroService,Hero } from '../processing-hero/heroes';
+
+import { HeroService, Hero } from '../processing-hero/heroes';
 
 @Component({
     moduleId: String(module.id),
@@ -8,7 +9,7 @@ import { HeroService,Hero } from '../processing-hero/heroes';
 })
 export class ViewHeroes implements OnInit {
     public heroes: Hero[];
-    constructor(private service: HeroService){
+    constructor(private service: HeroService) {
 
     }
     ngOnInit(): void {

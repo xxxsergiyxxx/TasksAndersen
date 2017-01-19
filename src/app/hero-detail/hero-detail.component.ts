@@ -5,7 +5,7 @@ import { HeroDetailService } from './hero-detail.service';
 
 @Component({
     moduleId: String(module.id),
-    templateUrl:'./hero-detail.component.html'
+    templateUrl: './hero-detail.component.html'
 })
 export class HeroDetail implements OnInit {
     public currentHero: Hero;

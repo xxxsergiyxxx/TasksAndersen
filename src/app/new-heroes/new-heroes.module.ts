@@ -13,10 +13,10 @@ import { ListHeroes }           from './list-heroes/list-heroes.component';
         FormsModule,
         NewHeroesRouter
     ],
-    declarations: [ 
+    declarations: [
         BigBoss,
         ListHeroes,
-        NewHeroes        
+        NewHeroes
     ]
 })
 export class NewHeroesModule {
