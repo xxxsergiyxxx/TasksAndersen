@@ -7,10 +7,10 @@ export class Hero {
     public story: string;
     public image: string;
     constructor(
-        id: number,
-        name: string,
-        story: string,
-        image: string
+        id?: number,
+        name?: string,
+        story?: string,
+        image?: string
     ) {
         this.id = id;
         this.name = name;

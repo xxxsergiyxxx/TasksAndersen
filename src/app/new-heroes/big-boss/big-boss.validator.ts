@@ -74,7 +74,7 @@ export class AsyncValidator {
         return (control: AbstractControl): any => {
             control.setErrors({ 'panding': true })
             const name = control.value;
-            return this.http.get('/src/data/heroes.json').map(res => {
+            return this.http.get('/src/data/big_bosses.json').map(res => {
                 const data = res.json();
                 const find = data.find((elem: Hero) => {
                     return (elem.name === name)

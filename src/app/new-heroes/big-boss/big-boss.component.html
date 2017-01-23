@@ -1,21 +1,26 @@
 <div class="container">
     <h1>Big BOSS</h1>
-    <form [formGroup]="signUpForm">
+    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
-        <label for="name">E-mail</label>
-        <div>
-          <input class="form-control" formControlName="name" required >
+        <div class="form_input">
+          <div class="form_input_container">
+            <label for="name">Name</label>
+            <input formControlName="name" required name="name" class="form-control">
+          </div>
           <div *ngIf="formErrors.name" class="alert alert-danger">
             {{ formErrors.name }}
           </div>
         </div>
-        <div>
-          <input class="form-control" formControlName="story" required >
+        <div class="form_input">
+          <div class="form_input_container">
+            <label for="story">Story</label>
+            <input class="form-control" formControlName="story" type="textarea" name="story">
+          </div>
           <div *ngIf="formErrors.story" class="alert alert-danger">
             {{ formErrors.story }}
           </div>
         </div>
       </div>
-      <button (click)="test()">Check errors</button>
+      <button md-raised-button [disabled]="!signUpForm.valid" type="submit">Submit</button>
     </form>
 </div>

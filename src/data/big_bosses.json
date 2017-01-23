@@ -1,0 +1,26 @@
+[
+    {
+        "id": "1",
+        "name": "tanos",
+        "story": "kill parents",
+        "image": "/src/data/images/batman.png"
+    },
+    {
+        "id": "2",
+        "name": "darkside",
+        "story": "kill parents",
+        "image": "/src/data/images/superman.png"
+    },
+    {
+        "id": "3",
+        "name": "galactus",
+        "story": "kill parents",
+        "image": "/src/data/images/ironman.png"
+    },
+    {
+        "id": "4",
+        "name": "lobo",
+        "story": "Get super power after gamma analysis",
+        "image": "/src/data/images/hulk.png"
+    }
+]

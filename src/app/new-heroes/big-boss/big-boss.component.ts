@@ -4,7 +4,7 @@ import { FormGroup, FormBuilder, Validators, NgForm, NG_ASYNC_VALIDATORS, FormCo
 import { Hero, HeroService } from '../../processing-hero/heroes';
 import { AsyncValidator } from './big-boss.validator';
 import { IValidation } from './big-boss.validator';
-import { BigBossService, ValidParametr} from './big-boss.service';
+import { BigBossService, ValidParametr } from './big-boss.service';
 
 @Component({
     selector: 'bigboss',
@@ -24,10 +24,10 @@ export class BigBoss implements OnInit {
         'name': '',
         'story': ''
     };
-    constructor(private fb: FormBuilder, 
-                private asyncValidator: AsyncValidator, 
-                private bigBossService: BigBossService) 
-                {}
+    constructor(private fb: FormBuilder,
+        private asyncValidator: AsyncValidator,
+        private bigBossService: BigBossService)
+    { }
 
     ngOnInit() {
         this.bigBossService.formErrors = this.formErrors;
@@ -41,7 +41,7 @@ export class BigBoss implements OnInit {
             'story',
             this.bigBossService.validationMessages.story.forbiddenName
         )
-        this.hero = new Hero(5, '', '', '');
+        this.hero = new Hero();
         this.name = new FormControl(this.hero.name,
             Validators.compose([
                 Validators.required,
@@ -64,5 +64,8 @@ export class BigBoss implements OnInit {
             this.bigBossService.onValueChanged();
         })
 
+    }
+    onSubmit() {
+        this.hero = new Hero();
     }
 }

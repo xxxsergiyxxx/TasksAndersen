@@ -25,6 +25,7 @@ export class BigBossService {
                 }
             }
         }
+        console.log(this.signUpForm.valid);
     }
     validationMessages = {
         'name': {
