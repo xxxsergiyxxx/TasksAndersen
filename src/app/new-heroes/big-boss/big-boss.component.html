@@ -1,45 +1,21 @@
 <div class="container">
-  <div [hidden]="submitted">
     <h1>Big BOSS</h1>
-    <form [formGroup]="heroForm"  *ngIf="active"  (ngSubmit)="onSubmit()">
+    <form [formGroup]="signUpForm">
       <div class="form-group">
         <label for="name">E-mail</label>
-        <input type="text" id="mail" class="form-control"
-               AsyncValidator
-               formControlName="mail" required >
-      </div>
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" id="name" class="form-control"
-               formControlName="name" required >
-
-        <div *ngIf="formErrors.name" class="alert alert-danger">
-          {{ formErrors.name }}
+        <div>
+          <input class="form-control" formControlName="name" required >
+          <div *ngIf="formErrors.name" class="alert alert-danger">
+            {{ formErrors.name }}
+          </div>
+        </div>
+        <div>
+          <input class="form-control" formControlName="story" required >
+          <div *ngIf="formErrors.story" class="alert alert-danger">
+            {{ formErrors.story }}
+          </div>
         </div>
       </div>
-
-      <div class="form-group">
-        <label for="alterEgo">Alter Ego</label>
-        <input type="text" id="alterEgo" class="form-control"
-            formControlName="alterEgo"  >
-      </div>
-
-      <div class="form-group">
-        <label for="power">Hero Power</label>
-        <select id="power" class="form-control"
-            formControlName="power" required >
-          <option *ngFor="let p of powers" [value]="p">{{p}}</option>
-        </select>
-
-        <div *ngIf="formErrors.power" class="alert alert-danger">
-          {{ formErrors.power }}
-        </div>
-      </div>
-
-      <button type="submit" class="btn btn-default"
-             [disabled]="!heroForm.valid">Submit</button>
-      <button type="button" class="btn btn-default"
-             (click)="addHero()">New Hero</button>
+      <button (click)="test()">Check errors</button>
     </form>
-  </div>
 </div>
