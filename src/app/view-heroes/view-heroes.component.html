@@ -1,8 +1,9 @@
 <div class="hero_container">
-    <a *ngFor="let hero of heroes" [routerLink]="['/hero', hero.id]" class="container__link clearfix" >
+    <a *ngFor="let hero of heroes" [routerLink]="['/view', hero.id]" class="container__link clearfix" >
         <hero 
             class="container__box"
             [hero]="hero">
         </hero>
     </a>
 </div>
+<router-outlet></router-outlet>

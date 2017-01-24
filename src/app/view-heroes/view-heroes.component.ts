@@ -9,10 +9,14 @@ import { HeroService, Hero } from '../processing-hero/heroes';
 })
 export class ViewHeroes implements OnInit {
     public heroes: Hero[];
+    public show: boolean = true;
     constructor(private service: HeroService) {
 
     }
     ngOnInit(): void {
         this.heroes = this.service.Heroes;
+    }
+    showComponent(flag: boolean) {
+        this.show = flag;
     }
 }

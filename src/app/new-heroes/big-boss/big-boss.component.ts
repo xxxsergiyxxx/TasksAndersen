@@ -41,7 +41,7 @@ export class BigBoss implements OnInit {
             'story',
             this.bigBossService.validationMessages.story.forbiddenName
         )
-        this.hero = new Hero();
+        this.hero = new Hero(5,'sss','aaaa', 'img');
         this.name = new FormControl(this.hero.name,
             Validators.compose([
                 Validators.required,
@@ -66,6 +66,6 @@ export class BigBoss implements OnInit {
 
     }
     onSubmit() {
-        this.hero = new Hero();
+        console.log(this.hero.name);
     }
 }

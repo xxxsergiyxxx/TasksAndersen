@@ -3,16 +3,16 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { HeroDetail }           from '../hero-detail/hero-detail.component';
 import { ViewHeroes }           from '../view-heroes/view-heroes.component';
-import { HeroResolver}          from '../view-heroes/view-heroes.resolve.service';
+import { HeroResolver, SkillResolver}          from '../view-heroes/view-heroes.resolve.service';
 import { PreloadBatleHeroes }   from '../main/strategy.preload';
 
 const routes: Routes = [
     {
-        path: 'hero/:id',
+        path: 'view/:id',
         component: HeroDetail,
-        data: {
-                name: 'test'
-            }
+        resolve: {
+            skills: SkillResolver
+        }
     },
     {
         path: 'view',
@@ -49,7 +49,8 @@ const routes: Routes = [
         RouterModule
     ],
     providers: [
-        HeroResolver
+        HeroResolver,
+        SkillResolver
     ]
 })
 export class Router {

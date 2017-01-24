@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { HeroService, Hero } from '../processing-hero/heroes';
+import { HeroService, Hero, Skill } from '../processing-hero/heroes';
 import { HeroDetailService } from './hero-detail.service';
 
 @Component({
@@ -11,6 +11,7 @@ export class HeroDetail implements OnInit {
     public currentHero: Hero;
     public value: number;
     public values: string;
+    public skills: Skill[];
     constructor(
         private route: ActivatedRoute,
         private service: HeroDetailService,
@@ -24,7 +25,8 @@ export class HeroDetail implements OnInit {
         .subscribe ((hero: Hero) => {
                 this.currentHero = hero;
             });
-        console.log(this.currentHero);
+        this.skills = this.route.snapshot.data['skills'];
+        console.log(this.skills);
     }
 
     public incrTestValue(): void {
