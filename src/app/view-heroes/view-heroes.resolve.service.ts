@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Response } from '@angular/http';
 import {
     Router, Resolve, RouterStateSnapshot,
     ActivatedRouteSnapshot
@@ -13,7 +12,7 @@ export class HeroResolver implements Resolve<Hero[]> {
 
     }
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<Hero[]> {
-        if(this.service.Heroes){
+        if(this.service.Heroes) {
             return new Promise<Hero>(resolve => {
                 resolve();
             })
@@ -31,19 +30,19 @@ export class SkillResolver implements Resolve<Skill[]> {
     }
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Skill[]> {
         const id = +route.params['id'];
-        return new Observable<Skill[]>((observer: Observer<any>) =>{
+        return new Observable<Skill[]>((observer: Observer<any>) => {
                 this.heroResolve.resolve(route, state).then(res => {
                         this.service.getSkills().map(res => {
                             return this.service.Skills = res.json();
                     }).subscribe(res => {
-                        const currentSkils: Skill[] = []; 
+                        const currentSkils: Skill[] = [];
                         Observable.from(res).filter((res: Skill) => {
                             return +res.heroid === id;
                         }).subscribe(res => {
                             currentSkils.push(res);
-                        }, 
+                        },
                         error => {
-                            console.log('KhrolEnok or KhrolenOk, what of fuck is this?')
+                            console.log('error');
                         }, 
                         () => {
                             observer.next(currentSkils);

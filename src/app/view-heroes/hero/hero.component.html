@@ -6,7 +6,7 @@
   <img md-card-image [src]="hero.image" class="hero_image">
   <md-card-content class="hero_content">
     <p>
-      {{hero.story}}
+      {{hero.story | subHystory: 100}}
     </p>
   </md-card-content>
 </md-card>

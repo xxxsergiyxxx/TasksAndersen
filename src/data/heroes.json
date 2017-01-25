@@ -2,13 +2,13 @@
     {
         "id": "1",
         "name": "batman",
-        "story": "kill parents",
+        "story": "Batman's secret identity is Bruce Wayne, an American billionaire, playboy, philanthropist, and owner of Wayne Enterprises. After witnessing the murder of his parents Thomas Wayne and Martha Wayne as a child, he swore vengeance against criminals, an oath tempered by a sense of justice. Wayne trains himself physically and intellectually and crafts a bat-inspired persona to fight crime.[7] Batman operates in the fictional Gotham City, with assistance from various supporting characters, including his butler Alfred, police commissioner Gordon, and vigilante allies such as Robin. Unlike most superheroes, Batman does not possess any superpowers; rather, he relies on his genius intellect, physical prowess, martial arts abilities, detective skills, science and technology, vast wealth, intimidation, and indomitable will. A large assortment of villains make up Batman's rogues gallery, including his archenemy, the Joker.",
         "image": "/src/data/images/batman.png"
     },
     {
         "id": "2",
         "name": "superman",
-        "story": "kill parents",
+        "story": "Superman resides and operates in the fictional American city of Metropolis. As Clark Kent, he is a journalist for the Daily Planet, a Metropolis newspaper. Superman's love interest is generally Lois Lane, and his archenemy is supervillain Lex Luthor. He is typically a member of the Justice League and close ally of Batman and Wonder Woman. Like other characters in the DC Universe, several alternate versions of Superman have been depicted over the years.",
         "image": "/src/data/images/superman.png"
     },
     {

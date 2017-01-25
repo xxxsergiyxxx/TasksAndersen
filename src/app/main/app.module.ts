@@ -12,6 +12,7 @@ import { AppComponent }         from './app.component';
 import { Router }               from '../routing/routing.module';
 import { PreloadBatleHeroes }   from './strategy.preload';
 import { HeroView }             from '../view-heroes/hero/hero.component';
+import { SubHistoryPipe }       from '../view-heroes/hero/hero.pipe';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { HeroView }             from '../view-heroes/hero/hero.component';
     AppComponent,
     ViewHeroes,
     HeroDetail,
-    HeroView
+    HeroView,
+    SubHistoryPipe
   ],
   bootstrap: [
     AppComponent

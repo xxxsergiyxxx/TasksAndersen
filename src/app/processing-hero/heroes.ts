@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs';
+
 export class Hero {
     constructor(
         public id?: number,
@@ -24,6 +25,7 @@ export class Skill {
 export class HeroService {
     public Heroes: Hero[];
     public Skills: Skill[];
+    public maxDamage: number = 1000;
     constructor(private http: Http) {
 
     }

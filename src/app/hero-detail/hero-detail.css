@@ -1,0 +1,26 @@
+.hero >* {
+    display: inline-block;
+}
+.hero {
+    margin-left: 15px;
+    width: 100%;
+}
+.hero_image_container {
+    width: 25%;
+}
+.hero_image_container img {
+    width: 100%;
+}
+.hero_info {
+    vertical-align: top;
+    width: 70%;
+}
+.hero_story {
+    margin: 10px;
+}
+.hero_story, .hero_skill h3 {
+    text-align: center;
+}
+.damage {
+    width:200px;
+}
