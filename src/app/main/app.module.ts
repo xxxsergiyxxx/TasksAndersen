@@ -3,6 +3,7 @@ import { BrowserModule }        from '@angular/platform-browser';
 import { HttpModule }           from '@angular/http';
 import { FormsModule }          from '@angular/forms';
 import { MaterialModule }       from '@angular/material';
+import { MdDialog  }            from '@angular/material';
 
 import { HeroDetail }           from '../hero-detail/hero-detail.component';
 import { HeroDetailService }    from '../hero-detail/hero-detail.service';
@@ -13,6 +14,7 @@ import { Router }               from '../routing/routing.module';
 import { PreloadBatleHeroes }   from './strategy.preload';
 import { HeroView }             from '../view-heroes/hero/hero.component';
 import { SubHistoryPipe }       from '../view-heroes/hero/hero.pipe';
+import { HeroModalDialog }      from '../hero-detail/hero-detail-modal/hero-detail-modal.component';
 
 @NgModule({
   imports: [
@@ -27,7 +29,8 @@ import { SubHistoryPipe }       from '../view-heroes/hero/hero.pipe';
     ViewHeroes,
     HeroDetail,
     HeroView,
-    SubHistoryPipe
+    SubHistoryPipe,
+    HeroModalDialog
   ],
   bootstrap: [
     AppComponent
@@ -35,7 +38,11 @@ import { SubHistoryPipe }       from '../view-heroes/hero/hero.pipe';
   providers: [
       HeroDetailService,
       HeroService,
-      PreloadBatleHeroes
+      PreloadBatleHeroes,
+      MdDialog
+  ],
+  entryComponents: [
+    HeroModalDialog
   ]
 })
 export class AppModule { }

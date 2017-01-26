@@ -2,6 +2,15 @@
 <div class="hero">
     <div class="hero_image_container">
         <img calss="hero_image" [src]="currentHero.image">
+        <button md-raised-button 
+                [disabled]="exist" 
+                (click) = "addToTeam()"> 
+                Add 
+        </button>
+        <div class="alert alert-success"
+            *ngIf="exist">
+            This hero already added
+        </div>
     </div>
     <div class="hero_info">
         <div class="panel panel-default">
@@ -18,10 +27,10 @@
                         Caption: {{skill.skill.name}}
                     </p>
                     <p>
-                        Damage
+                        Damage. (Click for demonstration)
                     </p> 
                     <div class="damage">
-                        <div class="progress">
+                        <div class="progress" (click)="openDialog(i)">
                             <div class="progress-bar" 
                                 role="progressbar" 
                                 aria-valuenow="60" 

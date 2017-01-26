@@ -4,7 +4,6 @@ import { CommonModule }         from '@angular/common';
 
 import { BatleHeroesRouter }    from './batle-heroes.router';
 import { BatleHeroes }          from './batle-heroes.component';
-
 @NgModule({
     imports: [
         FormsModule,

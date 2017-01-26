@@ -1,7 +1,8 @@
-import { Directive, forwardRef, Injectable } from '@angular/core';
-import { FormControl, AbstractControl, ValidatorFn, AsyncValidatorFn } from '@angular/forms';
-import { Observable, Subscription, Observer } from 'rxjs/Rx';
+import { Injectable } from '@angular/core';
+import { AbstractControl, AsyncValidatorFn } from '@angular/forms';
+import { Observable, Observer } from 'rxjs/Rx';
 import { Http } from '@angular/http';
+
 import { Hero } from '../../processing-hero/heroes';
 import { ValidParametr } from './big-boss.service';
 
@@ -17,13 +18,13 @@ export class AsyncValidator {
 
     validateUnique(interval: number, validParam: ValidParametr): AsyncValidatorFn {
         return (control: AbstractControl): any => {
-            control.setErrors({ 'panding': true })
+            control.setErrors({ 'panding': true });
             const name = control.value;
             return new Observable((observer: Observer<IValidation>) => {
                 this.http.get('/src/data/heroes.json').subscribe(res => {
                     const data = res.json();
                     const find = data.find((elem: Hero) => {
-                        return (elem.name === name)
+                        return (elem.name === name);
                     });
                     setTimeout(() => {
                         console.log(interval);
@@ -36,19 +37,19 @@ export class AsyncValidator {
                         }
                         observer.complete();
                     }, interval);
-                })
-            }).toPromise()
-        }
+                });
+            }).toPromise();
+        };
     }
 
     validateUnique2(validParam: ValidParametr): AsyncValidatorFn {
         return (control: AbstractControl): any => {
-            control.setErrors({ 'panding': true })
+            control.setErrors({ 'panding': true });
             const name = control.value;
             return this.http.get('/src/data/big_bosses.json').map(res => {
                 const data = res.json();
                 const find = data.find((elem: Hero) => {
-                    return (elem.name === name)
+                    return (elem.name === name);
                 });
                 if (find) {
                     validParam.setError();
@@ -57,7 +58,7 @@ export class AsyncValidator {
                     validParam.delError();
                     return (null);
                 }
-            }).first().toPromise()
-        }
+            }).first().toPromise();
+        };
     }
 }

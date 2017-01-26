@@ -1,8 +1,12 @@
-<p>Batle heroes</p>
-
-<p>Session ID: {{ sessionId | async }}</p>
-<a id="anchor"></a>
-<p>Token: {{ token | async }}</p>
+<div class="container_teams">
+    <div class="radiant_team">
+        <div *ngFor="let hero of heroes | slice: start: end"
+             class="hero">
+             <img [src]="hero.image">
+        </div>
+    </div>
+    <div class="dire_team"></div>
+</div>
 
 Preloaded Modules
 <router-outlet></router-outlet>

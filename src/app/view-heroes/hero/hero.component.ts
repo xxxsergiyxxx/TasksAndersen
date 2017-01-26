@@ -1,6 +1,10 @@
-import { Component, Input, Output }             from '@angular/core';
-
-import { Hero }                                 from '../../processing-hero/heroes';
+import { Component, 
+            Input, 
+            Output, 
+            OnChanges, 
+            SimpleChanges, 
+            DoCheck }             from '@angular/core';
+import { Hero }                   from '../../processing-hero/heroes';
 
 @Component({
     moduleId: String(module.id),
@@ -10,7 +14,14 @@ import { Hero }                                 from '../../processing-hero/hero
 })
 export class HeroView {
     @Input() hero: Hero;
+    @Input() test: Object;
+
     constructor() {
 
+    }
+
+    change() {
+        this.test="asad" + this.test;
+        console.log('move');
     }
 }

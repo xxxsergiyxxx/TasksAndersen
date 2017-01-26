@@ -15,11 +15,11 @@ export class HeroResolver implements Resolve<Hero[]> {
         if(this.service.Heroes) {
             return new Promise<Hero>(resolve => {
                 resolve();
-            })
+            });
         } else {
             return this.service.getHeroes().then<Hero[]>((res: Hero[]) => {
                 return this.service.Heroes = res;
-            })
+            });
         }
     }
 }
@@ -49,7 +49,7 @@ export class SkillResolver implements Resolve<Skill[]> {
                             observer.complete();
                         });
                     });
-                })
+                });
         });
     }
 }

@@ -1,9 +1,7 @@
-import { Component, OnInit, AfterViewChecked, ViewChild } from '@angular/core';
-import { Observable, Subscription, Observer, AsyncSubject } from "rxjs/Rx";
-import { FormGroup, FormBuilder, Validators, NgForm, NG_ASYNC_VALIDATORS, FormControl } from '@angular/forms';
-import { Hero, HeroService } from '../../processing-hero/heroes';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { Hero } from '../../processing-hero/heroes';
 import { AsyncValidator } from './big-boss.validator';
-import { IValidation } from './big-boss.validator';
 import { BigBossService, ValidParametr } from './big-boss.service';
 
 @Component({
@@ -25,9 +23,10 @@ export class BigBoss implements OnInit {
         'story': ''
     };
     constructor(private fb: FormBuilder,
-        private asyncValidator: AsyncValidator,
-        private bigBossService: BigBossService)
-    { }
+                private asyncValidator: AsyncValidator,
+                private bigBossService: BigBossService) {
+
+                }
 
     ngOnInit() {
         this.bigBossService.formErrors = this.formErrors;
@@ -40,8 +39,8 @@ export class BigBoss implements OnInit {
             this.bigBossService.formErrors,
             'story',
             this.bigBossService.validationMessages.story.forbiddenName
-        )
-        this.hero = new Hero(5,'sss','aaaa', 'img');
+        );
+        this.hero = new Hero(5, 'sss', 'aaaa', 'img');
         this.name = new FormControl(this.hero.name,
             Validators.compose([
                 Validators.required,
@@ -58,11 +57,11 @@ export class BigBoss implements OnInit {
         this.signUpForm = this.fb.group({
             'name': this.name,
             'story': this.story
-        })
+        });
         this.bigBossService.signUpForm = this.signUpForm;
         this.signUpForm.valueChanges.subscribe(res => {
             this.bigBossService.onValueChanged();
-        })
+        });
 
     }
     onSubmit() {

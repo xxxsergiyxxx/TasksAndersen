@@ -24,3 +24,9 @@
 .damage {
     width:200px;
 }
+.progress {
+    cursor: pointer;
+}
+.hero_image_container >* {
+    margin: 5px;
+}

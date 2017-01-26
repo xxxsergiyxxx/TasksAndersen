@@ -1,1 +1,4 @@
 @import url('~@angular/material/core/theming/prebuilt/deeppurple-amber.css');
+body {
+    margin: 15px;
+}
