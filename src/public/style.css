@@ -1,4 +1,5 @@
 @import url('~@angular/material/core/theming/prebuilt/deeppurple-amber.css');
+@import url('~bootstrap/dist/css/bootstrap.min.css');
 body {
     margin: 15px;
 }

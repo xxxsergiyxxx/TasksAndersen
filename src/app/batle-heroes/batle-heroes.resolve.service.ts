@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable, Observer } from 'rxjs';
 import {
-    Router, Resolve,
+    Router, 
+    Resolve,
     RouterStateSnapshot,
     ActivatedRouteSnapshot
-}                     from '@angular/router';
+}                                  from '@angular/router';
 
 import { Hero, HeroService }       from '../processing-hero/heroes';
 

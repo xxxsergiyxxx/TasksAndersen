@@ -1,12 +1,39 @@
 <div class="container_teams">
-    <div class="radiant_team">
-        <div *ngFor="let hero of heroes | slice: start: end"
-             class="hero">
-             <img [src]="hero.image">
+    <div class="row">
+        <div class="radiant_team clearfix col-md-6">
+            <div class="row">
+                <div class="col-sm-6 col-md-2 navigation"
+                  (click)="back()"
+                  [ngStyle]="leftArrowStyle">
+                    <md-icon class="size-icon">chevron_left</md-icon>
+                </div>
+                <div class="col-sm-6 col-md-2 hero" 
+                    *ngFor="let hero of heroes | slice: start: end; let i=index">
+                    <div class="thumbnail" 
+                         animate
+                         time="2"
+                         x="400"
+                         y="200">
+                        <img [src]="heroes[i+shift].image">
+                        <div class="caption">
+                            {{heroes[i+shift].name}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-2 navigation" 
+                    (click)="next()"
+                    [ngStyle]="rightArrowStyle">
+                        <md-icon class="size-icon right">chevron_right</md-icon>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="dire_team"></div>
+        <div class="info"></div>
+        <div class="dire_team clearfix col-md-6">
+            <div class="boss">
+                <img [src]="bigBosses[0].image">
+            </div>
+        </div> 
+    </div>  
 </div>
 
-Preloaded Modules
 <router-outlet></router-outlet>

@@ -1,9 +1,33 @@
 .hero {
-    width: 150px;
-    height: 300px;
-    margin: 5px;
-    display: inline-block;
+    padding-right: 5px;
+    z-index: 100;
 }
 .hero img {
     width: 100%;
+}
+.thumbnail {
+    min-height: 150px;
+}
+.thumbnail img {
+    height: 100px;
+}
+.radiant_team {
+    height: 200px;
+}
+.navigation .md-button-focus-overlay {
+    background-color: transparent;
+}
+.size-icon {
+    font-size: 150px;
+    display: block;
+}
+.right {
+    margin-left:-50px;
+}
+.navigation {
+    user-select: none;
+}
+.boss img {
+    float: right;
+    width: 40%;
 }

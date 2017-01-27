@@ -21,4 +21,7 @@ export class ViewHeroes implements OnInit {
     showComponent(flag: boolean) {
         this.show = flag;
     }
+    adding() {
+        this.service.myTeam = this.heroes;
+    }
 }

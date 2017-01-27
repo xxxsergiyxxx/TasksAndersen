@@ -44,8 +44,7 @@ export class HeroDetail implements OnInit {
         this.damage = [];
         this.skills = this.route.snapshot.data['skills'];
         this.skills.forEach((element: Skill, index: number) => {
-            this.damage.push(
-                {
+            this.damage.push({
                     'width': element.skill.damage * 100/this.HeroesService.maxDamage + '%'
                 }
             )
