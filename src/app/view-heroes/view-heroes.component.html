@@ -1,5 +1,6 @@
 <div class="hero_container">
     <a *ngFor="let hero of heroes" [routerLink]="['/view', hero.id]" class="container__link clearfix" >
+        {{hero.name}}
         <hero 
             class="container__box"
             [hero]="hero"

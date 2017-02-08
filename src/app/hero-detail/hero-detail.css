@@ -11,6 +11,9 @@
 .hero_image_container img {
     width: 80%;
 }
+.hero_image_footer {
+    text-align: center;
+}
 .hero_info {
     vertical-align: top;
     width: 70%;

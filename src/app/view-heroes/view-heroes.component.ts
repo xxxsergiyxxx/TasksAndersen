@@ -24,4 +24,7 @@ export class ViewHeroes implements OnInit {
     adding() {
         this.service.myTeam = this.heroes;
     }
+    changeName(event: any, hero: Hero) {
+        hero.name = event
+    }
 }

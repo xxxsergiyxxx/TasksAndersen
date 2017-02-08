@@ -1,10 +1,11 @@
 import { Component, OnInit }               from '@angular/core';
 import { ActivatedRoute }                  from '@angular/router';
 import { Observable }                      from 'rxjs/Observable';
-
+import { Router }                          from '@angular/router';
 import { PreloadBatleHeroes }              from '../main/strategy.preload';
 import { HeroService, Hero }               from '../processing-hero/heroes';
 import { BatleService}                     from './batle-heroes.service';
+import { fill }                            from 'lodash';
 
 @Component({
     moduleId: String(module.id),
@@ -18,6 +19,7 @@ export class BatleHeroes {
     public token: Observable<string>;
     public modules: string[];
     public heroes: Hero[];
+    public isSquad: boolean[] = [];
     public bigBosses: Hero[];
     public start: number;
     public end: number;
@@ -31,7 +33,8 @@ export class BatleHeroes {
         private route: ActivatedRoute,
         private preloadStrategy: PreloadBatleHeroes,
         private heroService: HeroService,
-        private service: BatleService
+        private service: BatleService,
+        private router: Router
   ) {}
 
     public ngOnInit(): void {
@@ -47,6 +50,8 @@ export class BatleHeroes {
             this.end = this.heroes.length;
             this.rightArrowStyle = this.service.disabledStyle;
         }
+        fill(this.isSquad, false, 0, this.heroes.length);
+        console.log(this.isSquad);
     }
 
     public next(): void {
@@ -67,9 +72,14 @@ export class BatleHeroes {
                 this.leftArrowStyle = this.service.disabledStyle;
             }
         }
+    } 
+
+    public toInfo(index: number) {
+        this.selection = this.service.selection;
+        this.router.navigate(['/view', this.heroes[index].id]);
     }
 
-    public select() {
-        this.selection = this.service.selection;
+    addToSquad() {
+        
     }
 }

@@ -14,6 +14,9 @@
 .radiant_team {
     height: 200px;
 }
+.radiant_team h3 {
+    text-align: center;
+}
 .navigation .md-button-focus-overlay {
     background-color: transparent;
 }

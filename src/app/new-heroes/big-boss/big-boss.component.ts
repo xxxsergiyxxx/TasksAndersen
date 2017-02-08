@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { Hero } from '../../processing-hero/heroes';
 import { AsyncValidator } from './big-boss.validator';
 import { BigBossService, ValidParametr } from './big-boss.service';
+import { Observable }from 'rxjs';
 
 @Component({
     selector: 'bigboss',
@@ -18,6 +19,11 @@ export class BigBoss implements OnInit {
     public formError: Object;
     public paramValidName: ValidParametr;
     public paramValidHistory: ValidParametr;
+    public arraySymbols: number[] = [];
+    public obsArray: Observable<any>;
+    public lastSymbol: number;
+    public firstSymbol: number;
+    public indexSymbol: number = 0;
     public formErrors: Object = {
         'name': '',
         'story': ''
@@ -29,6 +35,9 @@ export class BigBoss implements OnInit {
                 }
 
     ngOnInit() {
+        this.obsArray = Observable.from(this.arraySymbols);
+        this.firstSymbol = 65;
+        this.arraySymbols.push(this.firstSymbol);
         this.bigBossService.formErrors = this.formErrors;
         this.paramValidName = new ValidParametr(
             this.bigBossService.formErrors,
@@ -59,12 +68,29 @@ export class BigBoss implements OnInit {
             'story': this.story
         });
         this.bigBossService.signUpForm = this.signUpForm;
-        this.signUpForm.valueChanges.subscribe(res => {
+        this.signUpForm.valueChanges.map(res=>res.name).distinctUntilChanged()
+        .subscribe(res => {
+            console.log(res);
             this.bigBossService.onValueChanged();
         });
 
     }
     onSubmit() {
         console.log(this.hero.name);
+    }
+
+    getValue() {
+        if(this.arraySymbols[this.indexSymbol] == 90){
+            this.arraySymbols.push(65);
+            this.indexSymbol++;
+        }
+        this.obsArray.map(res => {
+            return String.fromCharCode(res);
+        }).reduce((a: any, b: any) => {
+            return a+b;
+        }).subscribe(res => {
+            console.log(res);
+        })
+        this.arraySymbols[this.indexSymbol]++;
     }
 }

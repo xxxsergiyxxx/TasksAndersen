@@ -1,9 +1,11 @@
 import { Component, 
             Input, 
             Output, 
+            EventEmitter,
             OnChanges, 
             SimpleChanges, 
-            DoCheck }             from '@angular/core';
+            DoCheck,
+            ViewEncapsulation }             from '@angular/core';
 import { Hero }                   from '../../processing-hero/heroes';
 
 @Component({
@@ -15,7 +17,7 @@ import { Hero }                   from '../../processing-hero/heroes';
 export class HeroView {
     @Input() hero: Hero;
     @Input() test: Object;
-
+    @Output() changeNam = new EventEmitter<string>();
     constructor() {
 
     }
@@ -23,5 +25,9 @@ export class HeroView {
     change() {
         this.test="asad" + this.test;
         console.log('move');
+    }
+
+    public testEvent() {
+        this.changeNam.emit(this.hero.name + '' + this.hero.id); 
     }
 }

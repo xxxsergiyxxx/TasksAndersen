@@ -13,7 +13,8 @@ export class Hero {
         public id?: number,
         public name?: string,
         public story?: string,
-        public image?: string
+        public image?: string,
+        public health?: number
     ) {}
 }
 

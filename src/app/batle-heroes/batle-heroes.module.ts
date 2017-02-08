@@ -6,7 +6,7 @@ import { MaterialModule }       from '@angular/material';
 import { BatleHeroesRouter }    from './batle-heroes.router';
 import { BatleHeroes }          from './batle-heroes.component';
 import { BatleService }         from './batle-heroes.service';
-import { Animate }            from './batle-heroes.directive';
+import { Animate }              from './batle-heroes.directive';
 @NgModule({
     imports: [
         FormsModule,

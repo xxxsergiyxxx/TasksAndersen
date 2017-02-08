@@ -2,11 +2,16 @@
 <div class="hero">
     <div class="hero_image_container">
         <img calss="hero_image" [src]="currentHero.image">
-        <button md-raised-button 
-                [disabled]="exist" 
-                (click) = "addToTeam()"> 
-                Add 
-        </button>
+        <div class="hero_image_footer">
+            <p>
+                Health: {{currentHero.health}}
+            </p>
+            <button md-raised-button 
+                    [disabled]="exist" 
+                    (click) = "addToTeam()"> 
+                    Add 
+            </button>
+        </div>
         <div class="alert alert-success"
             *ngIf="exist">
             This hero already added
