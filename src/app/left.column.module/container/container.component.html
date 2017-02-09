@@ -1,3 +1,9 @@
-<h3>Container</h3>
-<link-competition>
-</link-competition>
+<div>
+    <h3>Container</h3>
+    <ol>
+        <li *ngFor="let competition of competitions">
+            <link-competition [competition]="competition">
+            </link-competition>
+        </li>
+    </ol>
+</div>

@@ -1,0 +1,12 @@
+.left_column {
+    display: flex;
+}
+
+.content {
+    flex: 3;
+    padding-left: 15px;
+}
+
+.container_link {
+    flex: 1;
+}

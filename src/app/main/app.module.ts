@@ -9,6 +9,7 @@ import { MdDialog  }            from '@angular/material';
 import { AppComponent }         from './app.component';
 import { PreloadBatleHeroes }   from './strategy.preload';
 import { LeftColumnModule }     from '../left.column.module/left.column.module';
+import { GetDataService }       from '../shared.services/http.getdata.service';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { LeftColumnModule }     from '../left.column.module/left.column.module';
   ],
   providers: [
       PreloadBatleHeroes,
-      MdDialog
+      MdDialog,
+      GetDataService
   ],
   entryComponents: [
     //HeroModalDialog
