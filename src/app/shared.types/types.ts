@@ -22,7 +22,7 @@ export class Statistic {
     ){}
 }
 
-export class Team {
+export class TeamLeague {
     constructor(
         public _links?: Object,
         public position?: number,

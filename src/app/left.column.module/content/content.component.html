@@ -1,3 +1,11 @@
-<div>
-    <h3>aaaaaaaaaaaaaaa</h3>
+<div class="teams_container">
+    <div class="team" 
+        *ngFor="let team of teams; let i=index"
+        border
+         mdTooltip="Tooltip!" 
+         [mdTooltipPosition]="position"
+         (mouseEnter)="getInfo(index)">
+        <img [src]="team.crestURI">
+        {{team.teamName}}
+    </div>
 </div>

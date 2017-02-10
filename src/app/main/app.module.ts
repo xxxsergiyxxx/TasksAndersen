@@ -4,7 +4,7 @@ import { HttpModule,
          JsonpModule }          from '@angular/http';
 import { FormsModule }          from '@angular/forms';
 import { MaterialModule }       from '@angular/material';
-import { MdDialog  }            from '@angular/material';
+import { MdDialog }             from '@angular/material';
 
 import { AppComponent }         from './app.component';
 import { PreloadBatleHeroes }   from './strategy.preload';

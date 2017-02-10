@@ -3,6 +3,9 @@
 body {
     margin: 15px;
 }
+li {
+    list-style-type: none;
+}
 img {
     max-width: 100%;
 }
