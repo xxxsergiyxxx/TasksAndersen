@@ -20,17 +20,16 @@ export class Content implements OnInit {
     constructor(private route : ActivatedRoute, 
                 private getDataservice: GetDataService,
                 private contentService: ContentService) {
-        this.tooltip = 'Loading...';
         this.route.data.subscribe(res => {
             this.teams = res['teams'];
             if(this.teamInfo) {
                 this.teamInfo = null;
             }
+            this.contentService.setId(this.teams);
         })
     }
 
     ngOnInit(): void {
-        
     }
 
     public getInfo(index: number) {

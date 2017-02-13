@@ -62,5 +62,6 @@ export class TeamLeague {
         public losses?: number,
         public home?: Statistic,
         public away?: Statistic,
+        public id?: string
     ){}
 }

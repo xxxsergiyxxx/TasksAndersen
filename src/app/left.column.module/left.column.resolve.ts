@@ -6,7 +6,7 @@ import { Router,
 import { Observable }               from 'rxjs';
 import { Response }                 from '@angular/http';
 import { GetDataService }           from '../shared.services/http.getdata.service';
-import { TeamLeague }                     from '../shared.types/types';
+import { TeamLeague }               from '../shared.types/types';
 
 @Injectable()
 export class TeamsResolver implements Resolve <TeamLeague[]> {
@@ -20,7 +20,6 @@ export class TeamsResolver implements Resolve <TeamLeague[]> {
         this.url = `http://api.football-data.org/v1/competitions/${route.params['id']}/leagueTable`
         return this.dataService.getData(this.url)
                 .map((res: Response) => {
-                    console.log('work');
                     return res.json().standing;
                 })
     }

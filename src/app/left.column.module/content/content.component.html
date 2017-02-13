@@ -6,6 +6,6 @@
          [mdTooltipPosition]="position"
          (mouseenter)="getInfo(i)">
         <img [src]="team.crestURI">
-        <a [routerLink]="['./test'']">{{team.teamName}}</a>
+        <a [routerLink]="['/team',team.id]">{{team.teamName}}</a>
     </div>
 </div>

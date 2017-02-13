@@ -10,21 +10,21 @@ import { Content } from './content/content.component';
 import { MainRouter } from './left.column.routing';
 import { Border } from './content/content.directive';
 import { ContentService } from './content/content.service';
-import { PlayerComponent }      from './content/team.info.module/players/players.component';
+import { TeamInfo } from '../team.info.module/team.info.module';
 
 @NgModule({
     imports: [
         CommonModule,
         MainRouter,
-        MaterialModule.forRoot()
+        MaterialModule.forRoot(),
+        TeamInfo
     ],
     declarations: [
         LeftColumn,
         Container,
         Link,
         Content,
-        Border,
-        PlayerComponent
+        Border
     ],
     exports: [
         LeftColumn
