@@ -10,5 +10,5 @@ import '../../public/style.css';
 })
 
 export class AppComponent {
-  title = 'Tour of Heroes';
+  title = 'Football informer';
 }

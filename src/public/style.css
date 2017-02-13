@@ -2,6 +2,8 @@
 @import url('~bootstrap/dist/css/bootstrap.min.css');
 body {
     margin: 15px;
+    background: rgba(137,208,224, 0.64); 
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5); 
 }
 li {
     list-style-type: none;

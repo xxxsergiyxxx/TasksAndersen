@@ -9,6 +9,8 @@ import { Link } from './link/link.component';
 import { Content } from './content/content.component';
 import { MainRouter } from './left.column.routing';
 import { Border } from './content/content.directive';
+import { ContentService } from './content/content.service';
+import { PlayerComponent }      from './content/team.info.module/players/players.component';
 
 @NgModule({
     imports: [
@@ -21,10 +23,14 @@ import { Border } from './content/content.directive';
         Container,
         Link,
         Content,
-        Border
+        Border,
+        PlayerComponent
     ],
     exports: [
         LeftColumn
+    ],
+    providers: [
+        ContentService
     ]
 })
 export class LeftColumnModule {

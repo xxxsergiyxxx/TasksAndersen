@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { Content }              from './content/content.component';
 import { TeamsResolver }        from './left.column.resolve';
+import { PlayerComponent }      from './content/team.info.module/players/players.component';
 
 const routes: Routes = [
     {
@@ -10,7 +11,13 @@ const routes: Routes = [
         component: Content,
         resolve: {
             teams: TeamsResolver
-        }
+        },
+        children : [
+            {
+                path: 'test',
+                component: PlayerComponent
+            }
+        ]
     }
 ]
 @NgModule({

@@ -2,10 +2,10 @@
     <div class="team" 
         *ngFor="let team of teams; let i=index"
         border
-         mdTooltip="Tooltip!" 
+         [mdTooltip]="tooltip" 
          [mdTooltipPosition]="position"
-         (mouseEnter)="getInfo(index)">
+         (mouseenter)="getInfo(i)">
         <img [src]="team.crestURI">
-        {{team.teamName}}
+        <a [routerLink]="['./test'']">{{team.teamName}}</a>
     </div>
 </div>

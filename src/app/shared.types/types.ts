@@ -12,6 +12,19 @@ export class Competition {
         public lastUpdated?: string
     ) {}
 }
+
+export class Player {
+    constructor(
+        public name?: string,
+        public position?: string,
+        public jerseyNumber?: number,
+        public dateOfBirth?: string,
+        public nationality?: string,
+        public contractUntil?: string,
+        public marketValue?: string
+    ) {}
+}
+
 export class Statistic {
     constructor(
         public goals?: number,
@@ -20,6 +33,17 @@ export class Statistic {
         public draws?: number,
         public losses?: number,
     ){}
+}
+
+export class TeamInfo {
+    constructor(
+        public _links?: Object,
+        public code?: number,
+        public name?: string,
+        public shortName?: string,
+        public squadMarketValue?: string,
+        public crestUrl?: string
+    ) { }
 }
 
 export class TeamLeague {
