@@ -18,3 +18,5 @@ export class TeamResolver implements Resolve <TeamInfo> {
                 .map(res => res.json());
     }
 }
+
+
