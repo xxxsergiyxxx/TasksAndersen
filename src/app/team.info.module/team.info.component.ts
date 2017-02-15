@@ -5,5 +5,7 @@ import { Component } from '@angular/core';
     templateUrl: './team.info.component.html'
 })
 export class TeamInfo {
-    
+    constructor() {
+        
+    }
 } 
