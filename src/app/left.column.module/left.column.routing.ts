@@ -24,6 +24,7 @@ const routes: Routes = [
         TeamsResolver
     ]
 })
+
 export class MainRouter {
 
 }
