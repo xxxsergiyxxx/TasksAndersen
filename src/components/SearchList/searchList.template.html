@@ -1,0 +1,34 @@
+<div>
+  <ol>
+    <li ng-repeat="place in $ctrl.places" class="small-info">
+    <md-card md-theme="{{ showDarkTheme ? 'dark-orange' : 'default' }}" md-theme-watch>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-headline" ng-bind="place.summary"></span>
+        <span class="md-subhead" ng-bind="place.price_formatted"></span>
+      </md-card-title-text>
+    </md-card-title>
+    <md-card-content layout="row" layout-align="space-between">
+      <div class="md-media-xl card-media">
+        <img md-whiteframe="13"
+             class="list-img" 
+             ng-src="{{place.img_url}}" 
+             ng-click="$ctrl.setCurrentPlace(place)">
+      </div>
+      <md-card-actions layout="column">
+        <md-button class="md-icon-button" aria-label="Favorite">
+          <md-icon md-font-set="md">favorite</md-icon>
+        </md-button>
+        <md-button class="md-icon-button" aria-label="Settings">
+          <md-icon md-font-set="md">menu</md-icon>
+        </md-button>
+        <md-button class="md-icon-button" aria-label="Share">
+          <md-icon md-font-set="md">share</md-icon>
+        </md-button>
+      </md-card-actions>
+    </md-card-content>
+  </md-card>
+      
+    </li>
+  </ol>
+</div>
